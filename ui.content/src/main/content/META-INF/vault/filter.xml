@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/conf/adlc-crowdstrike" mode="merge"/>
+    <filter root="/content/adlc-crowdstrike" mode="merge"/>
+    <filter root="/content/dam/adlc-crowdstrike" mode="merge">
+        <exclude pattern="/content/dam/adlc-crowdstrike(/.*)?"/>
+        <include pattern="/content/dam/adlc-crowdstrike/jcr:content(/.*)?"/>
+    </filter>
+    <filter root="/content/dam/adlc-crowdstrike/asset.jpg" mode="merge"/>
+    <filter root="/content/experience-fragments/adlc-crowdstrike" mode="merge"/>
+</workspaceFilter>
