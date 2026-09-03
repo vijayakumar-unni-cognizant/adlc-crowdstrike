@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" jcr:primaryType="cq:Template"><jcr:content jcr:primaryType="cq:PageContent" cq:templateType="/conf/adlc-crowdstrike/settings/wcm/template-types/page" jcr:title="Racing Page" jcr:description="CrowdStrike Racing editorial page" status="enabled" allowedPaths="[/content/adlc-crowdstrike(/.*)?]"/></jcr:root>

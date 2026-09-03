@@ -1,0 +1,1 @@
+const { test, expect } = require('@playwright/test'); const { open } = require('./helpers'); test('UI-009 editorial content mapping', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); await expect(page.locator('.cmp-teaser--racing-editorial')).toHaveCount(4); });

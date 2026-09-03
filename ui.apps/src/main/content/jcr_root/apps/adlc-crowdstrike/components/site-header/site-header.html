@@ -1,0 +1,23 @@
+<sly data-sly-use.model="com.adlccrowdstrike.aem.core.models.SiteHeaderModel"/>
+<header class="cmp-site-header ${currentStyle.cssClasses}">
+  <a class="cmp-site-header__skip-link" href="#main-content">${'Skip to main content' @ i18n}</a>
+  <div class="cmp-site-header__inner">
+    <a class="cmp-site-header__brand" href="${model.homeUrl @ context='uri'}">
+      <img data-sly-test="${model.logoReference}" class="cmp-site-header__logo" src="${model.logoReference @ context='uri'}" alt="${model.logoAlt}"/>
+      <span data-sly-test="${!model.logoReference}" class="cmp-site-header__brand-text">${model.logoAlt}</span>
+    </a>
+    <button class="cmp-site-header__menu-toggle" type="button" aria-expanded="false" aria-controls="site-header-navigation" data-open-label="${model.menuLabel}" data-close-label="${model.closeLabel}">${model.menuLabel}</button>
+    <nav id="site-header-navigation" class="cmp-site-header__navigation" aria-label="${model.navigationLabel}">
+      <ul class="cmp-site-header__list">
+        <li data-sly-test="${model.teamLabel}" class="cmp-site-header__item ${model.teamItems ? 'cmp-site-header__item--has-submenu' : ''}">
+          <a class="cmp-site-header__link ${model.teamUrl == model.currentPath ? 'cmp-site-header__link--current' : ''}" href="${model.teamUrl @ context='uri'}" aria-current="${model.teamUrl == model.currentPath ? 'page' : ''}">${model.teamLabel}</a>
+          <button data-sly-test="${model.teamItems}" class="cmp-site-header__submenu-toggle" type="button" aria-expanded="false" aria-controls="site-header-team-menu">${model.teamLabel}</button>
+          <ul data-sly-test="${model.teamItems}" id="site-header-team-menu" class="cmp-site-header__submenu">
+            <li data-sly-list.item="${model.teamItems}"><a class="cmp-site-header__submenu-link ${item.current ? 'cmp-site-header__link--current' : ''}" href="${item.url @ context='uri'}" target="${item.external ? '_blank' : ''}" rel="${item.external ? 'noopener noreferrer' : ''}" aria-current="${item.current ? 'page' : ''}">${item.label}</a></li>
+          </ul>
+        </li>
+        <li data-sly-repeat.item="${model.primaryItems}" class="cmp-site-header__item"><a class="cmp-site-header__link ${item.current ? 'cmp-site-header__link--current' : ''}" href="${item.url @ context='uri'}" target="${item.external ? '_blank' : ''}" rel="${item.external ? 'noopener noreferrer' : ''}" aria-current="${item.current ? 'page' : ''}">${item.label}</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

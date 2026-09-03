@@ -188,6 +188,20 @@
                 </policy_641528232375303>
             </title>
             <experiencefragment jcr:primaryType="nt:unstructured">
+                <racing-footer
+                    jcr:description="Racing page footer Experience Fragment wrapper."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Racing Footer"
+                    sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </racing-footer>
+                <racing-header
+                    jcr:description="Racing page header Experience Fragment wrapper."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Racing Header"
+                    sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </racing-header>
                 <policy_header
                     cq:styleDefaultElement="header"
                     jcr:description="Sets a &lt;header> element on the page header experience fragment."
@@ -206,6 +220,86 @@
                 </policy_footer>
             </experiencefragment>
             <container jcr:primaryType="nt:unstructured">
+                <racing-band
+                    jcr:description="Editorial band permits only the project Teaser."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Racing Editorial Band"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    components="[/apps/adlc-crowdstrike/components/teaser]">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0 cq:styleGroupLabel="Width" jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0 cq:styleClasses="cmp-container--racing-full-bleed" cq:styleId="20260902012" cq:styleLabel="Full Bleed" jcr:primaryType="nt:unstructured"/>
+                                <item1 cq:styleClasses="cmp-container--racing-content-width" cq:styleId="20260902013" cq:styleLabel="Content Width" jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
+                </racing-band>
+                <racing-editorial-slot
+                    jcr:description="The only editable editorial surface; it permits project Teasers and editorial bands."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Racing Editorial Slot"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    components="[/apps/adlc-crowdstrike/components/teaser,/apps/adlc-crowdstrike/components/container]">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0 cq:styleGroupLabel="Width" jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0 cq:styleClasses="cmp-container--racing-full-bleed" cq:styleId="20260902012" cq:styleLabel="Full Bleed" jcr:primaryType="nt:unstructured"/>
+                                <item1 cq:styleClasses="cmp-container--racing-content-width" cq:styleId="20260902013" cq:styleLabel="Content Width" jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
+                </racing-editorial-slot>
+                <racing-hero-slot
+                    jcr:description="The hero authoring surface permits only the project Teaser."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Racing Hero Slot"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    components="[/apps/adlc-crowdstrike/components/teaser]">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0 cq:styleGroupLabel="Width" jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0 cq:styleClasses="cmp-container--racing-full-bleed" cq:styleId="20260902011" cq:styleLabel="Full Bleed" jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
+                </racing-hero-slot>
+                <racing-main
+                    cq:styleDefaultElement="main"
+                    jcr:description="Locked main structural container for the racing page."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Racing Main"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    components="[]">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </racing-main>
+                <racing-root
+                    jcr:description="Locked root structural container for the racing page."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Racing Root"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    components="[]">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </racing-root>
+                <racing-xf-footer
+                    jcr:description="Footer Experience Fragment root allows only the atomic site footer."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Racing XF Footer Root"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    components="[/apps/adlc-crowdstrike/components/site-footer]">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </racing-xf-footer>
+                <racing-xf-header
+                    jcr:description="Header Experience Fragment root allows only the atomic site header."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Racing XF Header Root"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    components="[/apps/adlc-crowdstrike/components/site-header]">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </racing-xf-header>
                 <policy_1574694950110
                     jcr:description="Allows the template components and defines the component mapping (this configures what components should be automatically created when authors drop assets from the content finder to the page editor)."
                     jcr:primaryType="nt:unstructured"
@@ -306,6 +400,52 @@
                 </policy_1575040440977>
             </container>
             <teaser jcr:primaryType="nt:unstructured">
+                <racing-editorial
+                    allowedTypes="[h2]"
+                    imageDelegate="adlc-crowdstrike/components/image"
+                    jcr:description="Editorial Teaser policy. All approved editorial variants are consolidated here."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Racing Editorial Teaser"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    titleType="h2">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0 cq:styleGroupLabel="Layout" jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0 cq:styleClasses="cmp-teaser--racing-editorial" cq:styleId="20260902002" cq:styleLabel="Editorial Split" jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                        <item1 cq:styleGroupLabel="Direction" jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0 cq:styleClasses="cmp-teaser--racing-content-first" cq:styleId="20260902003" cq:styleLabel="Content First" jcr:primaryType="nt:unstructured"/>
+                                <item1 cq:styleClasses="cmp-teaser--racing-media-first" cq:styleId="20260902004" cq:styleLabel="Media First" jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
+                        <item2 cq:styleGroupLabel="Surface" jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0 cq:styleClasses="cmp-teaser--racing-light" cq:styleId="20260902005" cq:styleLabel="Light" jcr:primaryType="nt:unstructured"/>
+                                <item1 cq:styleClasses="cmp-teaser--racing-dark" cq:styleId="20260902006" cq:styleLabel="Dark" jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item2>
+                    </cq:styleGroups>
+                </racing-editorial>
+                <racing-hero
+                    allowedTypes="[h1]"
+                    imageDelegate="adlc-crowdstrike/components/image"
+                    jcr:description="Hero Teaser policy with the page's only h1."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Racing Hero Teaser"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    titleType="h1">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0 cq:styleGroupLabel="Racing Hero" jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0 cq:styleClasses="cmp-teaser--racing-hero" cq:styleId="20260902001" cq:styleLabel="Racing Hero" jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
+                </racing-hero>
                 <policy_1575031387650
                     jcr:description="Sets the title size to H3."
                     jcr:primaryType="nt:unstructured"
@@ -339,6 +479,15 @@
                     clientlibsJsHead="adlc-crowdstrike.dependencies">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy>
+                <racing-page
+                    jcr:description="Includes the required client libraries for the racing site pages."
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Racing Page"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    clientlibs="[adlc-crowdstrike.dependencies,adlc-crowdstrike.site]"
+                    clientlibsJsHead="adlc-crowdstrike.dependencies">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </racing-page>
             </page>
         </components>
     </adlc-crowdstrike>

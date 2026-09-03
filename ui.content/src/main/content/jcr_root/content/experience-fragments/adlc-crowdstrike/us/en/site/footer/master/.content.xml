@@ -13,14 +13,27 @@
             jcr:primaryType="nt:unstructured"
             sling:resourceType="adlc-crowdstrike/components/container"
             layout="responsiveGrid">
-            <separator
+            <site_footer
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="adlc-crowdstrike/components/separator"/>
-            <text
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="adlc-crowdstrike/components/text"
-                text="&lt;p>Copyright 2026, ADLC Crowdstrike .&amp;nbsp;All rights reserved.&lt;/p>&#xd;&#xa;&lt;p>345 Park Avenue,&amp;nbsp;San Jose, CA 95110-2704, USA&lt;/p>&#xd;&#xa;"
-                textIsRich="true"/>
+                sling:resourceType="adlc-crowdstrike/components/site-footer"
+                logoReference="/content/dam/adlc-crowdstrike/racing/about-us/crowdstrike-racing-logo.svg"
+                logoAlt="CrowdStrike Racing Logo"
+                homeUrl="/"
+                racingGroupTitle="CrowdStrike Racing"
+                whyGroupTitle="Why CrowdStrike?"
+                socialGroupTitle="Follow us!"
+                copyrightText="Copyright © 2025">
+                <racingLinks jcr:primaryType="nt:unstructured">
+                    <item0 jcr:primaryType="nt:unstructured" label="Home" url="/"/>
+                    <item1 jcr:primaryType="nt:unstructured" label="Swag Shop" url="https://www.crowdstrikeswag.com/" openInNewTab="{Boolean}true"/>
+                </racingLinks>
+                <whyLinks jcr:primaryType="nt:unstructured">
+                    <item0 jcr:primaryType="nt:unstructured" label="About CrowdStrike" url="https://www.crowdstrike.com/" openInNewTab="{Boolean}true"/>
+                    <item1 jcr:primaryType="nt:unstructured" label="Services" url="https://www.crowdstrike.com/en-us/services/" openInNewTab="{Boolean}true"/>
+                    <item2 jcr:primaryType="nt:unstructured" label="Industry Validation" url="https://www.crowdstrike.com/en-us/why-crowdstrike/crowdstrike-industry-validation/" openInNewTab="{Boolean}true"/>
+                    <item3 jcr:primaryType="nt:unstructured" label="Our Customers" url="https://www.crowdstrike.com/en-us/resources/customer-stories/" openInNewTab="{Boolean}true"/>
+                </whyLinks>
+            </site_footer>
         </root>
     </jcr:content>
 </jcr:root>

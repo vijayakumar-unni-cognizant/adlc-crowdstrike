@@ -1,0 +1,1 @@
+const { test, expect } = require('@playwright/test'); const { open } = require('./helpers'); test('UI-017 browser semantic parity', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); await expect(page.locator('.cmp-site-header')).toBeVisible(); });

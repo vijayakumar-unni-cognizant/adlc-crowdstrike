@@ -1,0 +1,1 @@
+const { test, expect } = require('@playwright/test'); const { open } = require('./helpers'); test('UI-013 footer responsive and accessible', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); await expect(page.locator('.cmp-site-footer')).toHaveCount(1); await expect(page.locator('.cmp-site-footer__groups')).toBeVisible(); });

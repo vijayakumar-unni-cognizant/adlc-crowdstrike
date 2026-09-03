@@ -1,1 +1,5 @@
-.cmp-container {}
+.cmp-container--racing-full-bleed > .cmp-container { width: 100%; max-width: none; }
+.cmp-container--racing-content-width > .cmp-container { width: 100%; max-width: 100%; }
+@media (min-width: 1200px) {
+  .cmp-container--racing-content-width > .cmp-container { width: calc(100% - 128px); max-width: 1280px; margin-inline: auto; }
+}

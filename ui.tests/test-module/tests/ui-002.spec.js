@@ -1,0 +1,1 @@
+const { test, expect } = require('@playwright/test'); const { open } = require('./helpers'); test('UI-002 tablet stack', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await page.setViewportSize({ width: 768, height: 1024 }); await open(page); await expect(page.locator('.cmp-site-header__menu-toggle')).toBeVisible(); });
