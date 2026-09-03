@@ -1,0 +1,20 @@
+phase: release
+agent: pilot
+run_id: 2026-09-02T18-28Z-crowdstrike-racing-about
+status: blocked_release_evidence_correction
+pr:
+  url: https://github.com/vijayakumar-unni-cognizant/adlc-crowdstrike/pull/1
+  base: master
+  head: feature/crowdstrike-racing-about-page
+  pushed_commit: c9d960e
+  feature_commit: 682e25c
+auditron:
+  author_local_status: pass
+  publish_local_validation: waived_by_user
+  unit_tests: { pass: 8, fail: 0 }
+  integration_tests: { pass: 5, fail: 0 }
+release_hold:
+  reason: "Evidence commit includes unrelated pre-staged ADLC toolchain files outside the requested run folder."
+  correction_record: deploy/release-evidence-correction.md
+  sentinel_dispatched: false
+next_action: "Human-approved PR scope/evidence correction; no automatic lifecycle dispatch."
