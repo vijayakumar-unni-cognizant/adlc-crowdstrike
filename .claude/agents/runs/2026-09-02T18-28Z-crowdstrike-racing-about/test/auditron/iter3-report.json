@@ -1,0 +1,21 @@
+{
+  "name": "iter3-report",
+  "title": "Auditron Final Build Gate Report — CrowdStrike Racing About",
+  "agent": "auditron",
+  "stage": "Test — Build and Integration Gate",
+  "runId": "2026-09-02T18-28Z-crowdstrike-racing-about",
+  "timestamp": "2026-09-03T00:00:00Z",
+  "status": "FAIL",
+  "statusClass": "fail",
+  "summary": "Both permitted Maven calls were consumed and failed. Call #1 found an unsupported request API; call #2 compiled but its new header-route unit test failed. Integration was not run. Maven budget: **2/2 used**.",
+  "matrix": [
+    {"track":"Static re-review","verdict":"PASS","class":"pass","detail":"Route normalization and current-state logic are present"},
+    {"track":"Build #1","verdict":"FAIL","class":"fail","detail":"Unsupported getRequestPath() API"},
+    {"track":"Build #2","verdict":"FAIL","class":"fail","detail":"8 tests, 1 failure: marksPublicRouteCurrentForInternalAemPath"},
+    {"track":"Integration","verdict":"NOT RUN","class":"info","detail":"No Maven capacity remains; local Publish 4503 is unavailable"}
+  ],
+  "findings": [
+    {"id":"BLD-HDR-002","sev":"high","track":"Unit test","component":"SiteHeaderModelTest","title":"Public-route current-state regression test fails","issue":"The model test expects /about-us/ to be current for the internal page path, but the adapted model returns false.","evidence":"/tmp/aem-build-2.log: SiteHeaderModelTest.marksPublicRouteCurrentForInternalAemPath line 23, expected true but was false; Surefire: 8 run, 1 failure.","cause":"The test request/resource setup does not supply the model with the intended request resource path, or the model must derive the path from the adaptable resource when request path info is unavailable.","recommendation":"Correct the test setup and/or safely fall back to the adaptable Resource path; add both positive and negative route cases. Start a new Auditron run for validation because this run exhausted its Maven budget.","route":"blockwright","status":"open — terminal gate failure"}
+  ],
+  "sections": [{"title":"Local SDK and integration limitation","badge":"NOT RUN","badgeClass":"warn","open":true,"blocks":[{"p":"Author http://localhost:4502 responded 200 with the project local admin/admin defaults. Publish http://localhost:4503 was unreachable. The it.tests module defines its two-tier execution only under profile local, whereas the dispatch integration profile is absent; regardless, integration cannot be invoked after the exhausted two-call budget."}]}]
+}

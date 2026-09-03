@@ -1,0 +1,173 @@
+phase: design
+agent: designforge
+run_id: 2026-09-02T18-28Z-crowdstrike-racing-about
+status: pass
+summary: >-
+  Implementation-ready server-rendered design pack completed for the CrowdStrike Racing About page:
+  atomic custom header/footer in Experience Fragment chrome, Core Teaser v2 hero/editorial variants,
+  two reachable heading-policy contexts, a new racing-page template without structural Title, exact current-branch
+  content/asset mapping, responsive/pixel criteria, and full functional/UI/authoring test sets.
+project_identifiers:
+  project: adlc-crowdstrike
+  java_root: com.adlccrowdstrike
+  source: POM-derived because .aem-skills-config.yaml is absent
+architecture:
+  rendering: server-rendered-aem-sites
+  page_path: /content/adlc-crowdstrike/us/en/about-us
+  template: /conf/adlc-crowdstrike/settings/wcm/templates/racing-page
+  header_xf: /content/experience-fragments/adlc-crowdstrike/us/en/site/header/master
+  footer_xf: /content/experience-fragments/adlc-crowdstrike/us/en/site/footer/master
+  bridgesmith_required: false
+docs:
+  design_token_audit: .claude/agents/runs/2026-09-02T18-28Z-crowdstrike-racing-about/design/design-token-audit.md
+  source_content_inventory: .claude/agents/runs/2026-09-02T18-28Z-crowdstrike-racing-about/design/source-content-inventory.md
+  reference_assets: .claude/agents/runs/2026-09-02T18-28Z-crowdstrike-racing-about/design/reference-assets.md
+  component_specifications: .claude/agents/runs/2026-09-02T18-28Z-crowdstrike-racing-about/design/component-specifications.md
+  dialog_specifications: .claude/agents/runs/2026-09-02T18-28Z-crowdstrike-racing-about/design/dialog-specifications.md
+  template_design: .claude/agents/runs/2026-09-02T18-28Z-crowdstrike-racing-about/design/template-design.md
+  policy_mapping: .claude/agents/runs/2026-09-02T18-28Z-crowdstrike-racing-about/design/policy-mapping.md
+  authoring_guidelines: .claude/agents/runs/2026-09-02T18-28Z-crowdstrike-racing-about/design/authoring-guidelines.md
+  functional_test_cases: .claude/agents/runs/2026-09-02T18-28Z-crowdstrike-racing-about/design/functional-test-cases.md
+  ui_test_scenarios: .claude/agents/runs/2026-09-02T18-28Z-crowdstrike-racing-about/design/ui-test-scenarios.md
+  authoring_test_cases: .claude/agents/runs/2026-09-02T18-28Z-crowdstrike-racing-about/design/authoring-test-cases.md
+components_specified:
+  - name: site-header
+    role: atomic semantic header/navigation/mobile menu
+    reuse_or_new: new-custom
+    extends: none
+    sling_model_class: com.adlccrowdstrike.aem.core.models.SiteHeaderModel
+    accessors: [logoReference, logoAlt, homeUrl, navigationLabel, menuLabel, closeLabel, teamLabel, teamUrl, teamItems, primaryItems, currentPath]
+  - name: teaser
+    role: hero plus four editorial sections through Style System
+    reuse_or_new: reuse-core-proxy
+    extends: core/wcm/components/teaser/v2/teaser
+    sling_model_class: core-component-inherited
+    variants: [cmp-teaser--racing-hero, cmp-teaser--racing-editorial, cmp-teaser--racing-content-first, cmp-teaser--racing-media-first, cmp-teaser--racing-light, cmp-teaser--racing-dark]
+  - name: container
+    role: page/main authoring contexts and full-bleed/content-width bands
+    reuse_or_new: reuse-core-proxy
+    extends: core/wcm/components/container/v1/container
+    sling_model_class: core-component-inherited
+  - name: site-footer
+    role: atomic grouped links/social/brand/legal footer
+    reuse_or_new: new-custom
+    extends: none
+    sling_model_class: com.adlccrowdstrike.aem.core.models.SiteFooterModel
+    accessors: [logoReference, logoAlt, homeUrl, racingGroupTitle, racingLinks, whyGroupTitle, whyLinks, socialGroupTitle, socialLinks, copyrightText, legalLinks, falconReference, falconDecorative]
+  - name: experiencefragment
+    role: locked template references to canonical chrome masters
+    reuse_or_new: reuse-core-proxy
+    extends: core/wcm/components/experiencefragment/v2/experiencefragment
+    sling_model_class: core-component-inherited
+templates_specified:
+  - name: racing-page
+    template_type: /conf/adlc-crowdstrike/settings/wcm/template-types/page
+    structural_page_heading: absent
+    parsys_areas: [root/container/hero, root/container/container]
+    locked_chrome: [experiencefragment-header, experiencefragment-footer]
+policies_specified:
+  - context: root/container/hero
+    policy: adlc-crowdstrike/components/container/racing-hero-slot
+    allowed_components: [adlc-crowdstrike/components/teaser]
+    allowed_groups: []
+  - context: root/container/container
+    policy: adlc-crowdstrike/components/container/racing-editorial-slot
+    allowed_components: [adlc-crowdstrike/components/teaser, adlc-crowdstrike/components/container]
+    allowed_groups: []
+  - context: nested-racing-band
+    policy: adlc-crowdstrike/components/container/racing-band
+    allowed_components: [adlc-crowdstrike/components/teaser]
+    allowed_groups: []
+  - context: xf-header-master-root
+    allowed_components: [adlc-crowdstrike/components/site-header]
+    allowed_groups: []
+  - context: xf-footer-master-root
+    allowed_components: [adlc-crowdstrike/components/site-footer]
+    allowed_groups: []
+heading_contract:
+  hero_policy: { titleType: h1, allowedTypes: [h1] }
+  editorial_policy: { titleType: h2, allowedTypes: [h2] }
+  structural_title: absent
+  expected_h1_count: 1
+test_id_census:
+  functional:
+    prefix: TC
+    declared_count: 30
+    counted_count: 30
+    ids: TC-001..TC-030
+    unique: true
+    gaps: none
+  ui:
+    prefix: UI
+    declared_count: 20
+    counted_count: 20
+    ids: UI-001..UI-020
+    unique: true
+    gaps: none
+  authoring:
+    prefix: AUTH
+    declared_count: 16
+    counted_count: 16
+    ids: AUTH-001..AUTH-016
+    unique: true
+    gaps: none
+traceability:
+  requirements_to_test_cases:
+    US-001: [TC-010, TC-022, TC-030]
+    US-002: [TC-007, TC-008, TC-009]
+    US-003: [TC-010, TC-011, TC-012, TC-013, TC-014, TC-015]
+    US-004: [TC-004, TC-016, TC-017, TC-029]
+    US-005: [TC-005, TC-018, TC-019, TC-029]
+    US-006: [TC-007, TC-009, TC-015, TC-017, TC-019, TC-024, TC-026]
+    US-007: [TC-003, TC-006, TC-020, TC-027, TC-028]
+    US-008: [TC-001, TC-002, TC-021, TC-022, TC-028]
+    US-009: [TC-022, TC-023, TC-025, TC-026, TC-027]
+ui_test_coverage:
+  publish_scenarios: 18
+  author_scenarios: 2
+  browsers: [chromium, firefox, webkit, mobile-emulation]
+  reference_viewports: [1440x900, 768x1024, 390x844]
+  blockwright_contract: one Playwright spec per UI ID before deployment; migrate/replace Cypress harness
+source_validation:
+  live_url_refetched: true
+  canonical_branch: current-2026 hero-plus-four-editorials
+  excluded: [legacy-duplicate-body, duplicate-2023-footer]
+  verbatim_long_copy_captured: true
+  supplied_png_count: 6
+  supplied_assets_manifested: 6
+  visible_assets_used: 5
+  falcon_asset: seeded-but-intentionally-unused
+  runtime_hotlinks_allowed: false
+  computed_style_capture:
+    status: blocked_by_corporate_zscaler_interstitial
+    mitigation: observed/inferred/project-exact evidence labels, explicit tolerances, post-deploy Sentinel visual capture/iteration
+  content_gaps:
+    - Five legal hrefs and icon-only social destinations require approved-browser validation before Composer seeds them; visible labels/order are exact and placeholders are forbidden.
+dialog_confirmation:
+  status: pending_human
+  required_before_implementation: true
+  components:
+    site-header:
+      tabs: [Brand & accessibility, The Team submenu, Primary links]
+    site-footer:
+      tabs: [Brand, Racing links, CrowdStrike links, Social, Legal]
+    teaser_container_xf: inherited Core dialogs only
+gates:
+  design_pack_complete: true
+  dialog_resource_types_validated: true
+  least_privilege_policies: true
+  all_requirements_have_test_cases: true
+  all_source_items_have_test_trace: true
+  test_id_indices_reconciled: true
+  authoring_surface_coverage_complete: true
+  reference_manifest_complete: true
+  source_content_inventory_verbatim: true
+  no_downstream_stage_descoped: true
+  no_code_artifacts_produced: true
+  maven_invocations: 0
+code_written: false
+downstream_consumers: [blockwright, configsmith, composer, auditron, sentinel]
+next_gate:
+  owner: human
+  name: dialog_spec_confirmation
+  action: Confirm or modify the two custom dialog specifications and inherited Core-dialog policy constraints before implementation fan-out.

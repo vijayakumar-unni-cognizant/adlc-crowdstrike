@@ -1,0 +1,44 @@
+phase: implement
+agent: blockwright
+run_id: 2026-09-02T18-28Z-crowdstrike-racing-about
+status: pass
+project_identifiers:
+  project: adlc-crowdstrike
+  java_root: com.adlccrowdstrike
+  source: POM-derived; .aem-skills-config.yaml absent
+artifacts:
+  components: [site-header, site-footer]
+  models: [SiteHeaderModel, SiteFooterModel]
+  template: racing-page
+  frontend: [site-header, site-footer, teaser variants, container variants]
+ui_tests:
+  harness_state_on_entry: cypress
+  cypress_fully_removed: true
+  package_lock_regenerated: true
+  pom_and_assembly_unmodified: true
+  runner: playwright-1.49.1
+  specs_authored: [UI-001, UI-002, UI-003, UI-004, UI-005, UI-006, UI-007, UI-008, UI-009, UI-010, UI-011, UI-012, UI-013, UI-014, UI-015, UI-016, UI-017, UI-018, UI-019, UI-020]
+  scenario_coverage:
+    scenarios_total: 20
+    scenarios_with_spec: 20
+    unmapped: []
+  discovery:
+    command: npx playwright test --list
+    exit_code: 0
+    spec_files: 20
+    project_expanded_tests: 100
+  eslint:
+    command: npx eslint .
+    exit_code: 0
+  dual_tier_parameterization: [AEM_PUBLISH_URL, AEM_AUTHOR_URL, author-storage-state]
+  executed: false
+  runtime_style_system_smoke: skipped; no local SDK supplied
+validation:
+  maven_invocations: 0
+  xml_well_formed: true
+  static_checks: [template-policy-pointers, component-dialog-shape, tagged-ui-spec-census, playwright-discovery, eslint]
+template:
+  path: ui.content/src/main/content/jcr_root/conf/adlc-crowdstrike/settings/wcm/templates/racing-page
+  policy_pointers: [page/racing-page, container/racing-root, container/racing-main, container/racing-hero-slot, container/racing-editorial-slot, container/racing-band, teaser/racing-hero, teaser/racing-editorial, experiencefragment/racing-header, experiencefragment/racing-footer]
+handoff_notes: implement/blockwright/handoff-notes.md
+ui_test_harness_notes: implement/blockwright/ui-test-harness.md

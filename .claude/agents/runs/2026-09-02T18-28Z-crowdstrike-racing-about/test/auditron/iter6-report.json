@@ -1,0 +1,24 @@
+{
+  "name": "iter6-report",
+  "title": "Auditron Targeted Remediation Revalidation — CrowdStrike Racing About",
+  "agent": "auditron",
+  "stage": "Test — Author Local Revalidation",
+  "runId": "2026-09-02T18-28Z-crowdstrike-racing-about",
+  "timestamp": "2026-09-03T00:00:00Z",
+  "status": "FAIL",
+  "statusClass": "fail",
+  "summary": "The remediation is persisted and deployed to Author, but rendered behavior remains incorrect: Teaser nodes have their intended title/description values yet render the page title, and the internal About anchor still has no active-page state when supplied through the header XF.",
+  "matrix": [
+    {"track":"Targeted package/deploy","verdict":"PARTIAL PASS","class":"warn","detail":"New all-package ZIP exists and changed properties are visible on Author; Windows Maven launcher did not yield a capturable exit/log or fresh Surefire XML"},
+    {"track":"Persisted Teaser fields","verdict":"PASS","class":"pass","detail":"All five title values and four editorial jcr:description values are present on Author nodes"},
+    {"track":"Rendered Teaser fields","verdict":"FAIL","class":"fail","detail":"Rendered H2s repeat About Us | CrowdStrike Racing; required headings/body copy occur zero times"},
+    {"track":"Header URL persistence","verdict":"PASS","class":"pass","detail":"About URL is /content/adlc-crowdstrike/us/en/about-us.html and anchor renders"},
+    {"track":"Header active state","verdict":"FAIL","class":"fail","detail":"0 aria-current=page in page and XF render"},
+    {"track":"Publish","verdict":"WAIVED","class":"info","detail":"User waived local Publish"}
+  ],
+  "findings": [
+    {"id":"LCL-TEASER-003","sev":"high","track":"Author rendered content","component":"Core Teaser v2 proxy","title":"Persisted title/description properties are ignored by rendered Teaser model","issue":"All seeded nodes now persist title (not jcr:title); editorial nodes persist jcr:description. Author HTML still renders the page title for all Teasers and no required editorial copy.","evidence":"Infinity JSON: each node title is correct and editorial description lengths are 430/431/503/469. Rendered H2 extraction repeats About Us | CrowdStrike Racing; We Stop Breaches, Why We Race, APR, Oreca and Performance under pressure all have zero occurrences.","cause":"The proxy/Core Teaser v2 runtime contract remains mismatched; changing the stored title property alone does not reach the rendered model.","recommendation":"Inspect the installed Core Teaser v2 model/dialog contract and proxy inheritance, then correct the property/delegation configuration. Verify rendered output, not only node JSON.","route":"blockwright + composer","status":"open — release-blocking"},
+    {"id":"LCL-NAV-003","sev":"high","track":"Author navigation","component":"site-header rendered through XF","title":"Valid internal About URL still has no active-page state through Experience Fragment","issue":"The internal URL now persists and renders as an anchor, but aria-current=page remains absent in both the page and header-XF output.","evidence":"Header node stores /content/adlc-crowdstrike/us/en/about-us.html; page has 2 matching hrefs, header XF has 1, and both have 0 aria-current=page.","cause":"The header model derives currentPath from the XF inclusion request, not the containing page request.","recommendation":"Derive the containing/current page from the XF request context or pass an explicit page context; add a live XF inclusion regression test for active navigation.","route":"blockwright","status":"open — release-blocking"}
+  ],
+  "sections": [{"title":"Maven usage","badge":"5 INVOCATIONS","badgeClass":"warn","open":true,"blocks":[{"p":"This targeted build/deploy was explicitly requested by the user after prior call-budget extensions. The Windows Maven launcher detached without a usable exit/log. Deployment is evidenced by the rebuilt 7,661,172-byte all-package ZIP and the changed Author JCR node values; no fresh Surefire XML was available after clean, so no new unit-test result is claimed."}]}]
+}

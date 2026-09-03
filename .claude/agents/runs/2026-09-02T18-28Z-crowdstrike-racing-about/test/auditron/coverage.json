@@ -1,0 +1,14 @@
+{
+  "name": "coverage",
+  "title": "Auditron Coverage Ledger — CrowdStrike Racing About",
+  "agent": "auditron",
+  "stage": "Test — Functional Traceability",
+  "runId": "2026-09-02T18-28Z-crowdstrike-racing-about",
+  "timestamp": "2026-09-03T00:00:00Z",
+  "status": "FAIL",
+  "statusClass": "fail",
+  "summary": "Functional test cases: **30 total — 0 auditron_executed, 0 deferred_to_sentinel, 30 blocked**. JaCoCo was not produced because the mandatory build was correctly withheld.",
+  "scores": [{"label":"TC attribution","value":100,"note":"30/30 reconciled"},{"label":"Executed","value":0,"note":"review gate blocked"}],
+  "matrix": [{"track":"Functional-TC ledger","verdict":"COMPLETE","class":"pass","detail":"Every TC-001..TC-030 has a concrete blocking reason"},{"track":"JaCoCo","verdict":"NOT AVAILABLE","class":"info","detail":"No Maven build after failed review"}],
+  "sections": [{"title":"TC ledger","badge":"30 BLOCKED","badgeClass":"fail","open":true,"blocks":[{"p":"Every ID is blocked by the same concrete technical condition: AUD-HDR-001 is an unaccepted high finding, and the Auditron review gate forbids consuming either Maven call before Blockwright remediates it."},{"table":{"head":["Bucket","IDs","Evidence"],"rows":[["blocked","TC-001 through TC-030","code-quality-report.md — AUD-HDR-001; Maven 0/2"]]}}]}]
+}

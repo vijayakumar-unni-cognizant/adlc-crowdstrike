@@ -1,0 +1,31 @@
+{
+  "name": "code-quality-report",
+  "title": "Auditron Code Quality Report — CrowdStrike Racing About",
+  "agent": "auditron",
+  "stage": "Test — Code Quality",
+  "runId": "2026-09-02T18-28Z-crowdstrike-racing-about",
+  "timestamp": "2026-09-03T00:00:00Z",
+  "status": "FAIL",
+  "statusClass": "fail",
+  "summary": "Review gate failed before Maven: **AUD-HDR-001** prevents the required active About navigation state. Maven budget remains **0/2**.",
+  "scores": [{"label":"Static review","value":0,"note":"1 high finding","link":"#cross-file"}],
+  "matrix": [
+    {"track":"Cross-file review","verdict":"FAIL","class":"fail","detail":"One unaccepted high correctness finding"},
+    {"track":"FileVault/XML/DAM","verdict":"PASS","class":"pass","detail":"222 XML files parse; namespace/protected-property checks pass"},
+    {"track":"Policy/template/content","verdict":"PASS","class":"pass","detail":"Template mappings, explicit allowlists, numeric style IDs and DAM paths resolve statically"},
+    {"track":"Playwright migration","verdict":"WARN","class":"warn","detail":"Source/lockfile use Playwright; stale Cypress module coordinates remain in ui.tests/pom.xml"},
+    {"track":"Build gate","verdict":"NOT RUN","class":"info","detail":"Blocked by review gate; Maven 0/2"}
+  ],
+  "findings": [
+    {"id":"AUD-HDR-001","sev":"high","track":"Header correctness","component":"SiteHeaderModel / site-header.html","title":"Current-page comparison cannot match public navigation URLs","issue":"The model returns request.getRequestPath().getResourcePath() (the internal AEM resource path) while seeded URLs are public paths such as /about-us/. isCurrent strips only .html, so /about-us/ cannot equal /content/adlc-crowdstrike/us/en/about-us.","evidence":"SiteHeaderModel.java:29,56 and header master .content.xml public URL /about-us/; HTL consumes item.current and model.currentPath.","cause":"No resource mapping or public-path normalization occurs before equality comparison.","recommendation":"Normalize both values into the same mapped public route (for example ResourceResolver.map(request, resourcePath) or a dedicated normalized request URL) and add unit tests for /about-us/, .html and the internal resource path.","route":"blockwright","status":"open — blocks Maven"},
+    {"id":"AUD-UI-001","sev":"medium","track":"Playwright migration","component":"ui.tests/pom.xml","title":"Cypress naming remains in Maven metadata","issue":"The runner, Docker image, scripts and package lock use Playwright, but artifactId/name/description still state Cypress.","evidence":"ui.tests/pom.xml:28-31; no Cypress dependency or source remains under test-module.","cause":"Migration intentionally left POM unmodified.","recommendation":"Rename only descriptive Maven coordinates/text if compatibility permits; otherwise document the compatibility exception in the UI harness evidence.","route":"blockwright","status":"non-blocking follow-up"},
+    {"id":"CFG-SEO-001","sev":"medium","track":"SEO configuration","component":"Externalizer","title":"Publish-domain mapping is environment-owned","issue":"No source-backed publish hostname is available.","evidence":"configsmith handoff and security-review.md.","cause":"No approved Cloud Manager hostname.","recommendation":"Configure the real publish/author domains and verify the Core Page canonical after deployment.","route":"environment owner","status":"non-blocking"},
+    {"id":"CMP-ASSET-001","sev":"low","track":"Asset governance","component":"DAM fixture manifest","title":"Supplied image rights confirmation remains pending","issue":"Use rights for supplied images and mirrored logo are owner-owned.","evidence":"composer handoff.","cause":"No rights confirmation was supplied.","recommendation":"Obtain and record rights confirmation before production activation.","route":"content owner","status":"non-blocking"}
+  ],
+  "sections": [{"id":"cross-file","title":"Static evidence","badge":"FAIL","badgeClass":"fail","open":true,"blocks":[
+    {"p":"Policy mappings resolve to declared Racing Page, container, Teaser and XF policies; each new editable context has an explicit allowlist. The numeric style IDs 20260902001–20260902006 and 20260902011–20260902013 resolve against seeded content."},
+    {"p":"The source inventory, authored page/XF content and DAM references were compared directly; no closed-loop expected-payload oracle was used. All seven DAM path entries exist, six PNG originals are packaged, five are visible and Falcon is explicitly unused."},
+    {"p":"Both dialogs use declared Granite resource types and model/multifield properties match. No administrative resolver, service resolver, plaintext secret, TODO or protected DAM JCR property was detected."},
+    {"p":"The review skill is unavailable in this workspace; its required checks were performed directly with XML parsing, static searches and contract comparison."}
+  ]}]
+}

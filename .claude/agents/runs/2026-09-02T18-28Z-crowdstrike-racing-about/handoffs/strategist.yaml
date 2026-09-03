@@ -1,0 +1,142 @@
+phase: plan
+agent: strategist
+run_id: 2026-09-02T18-28Z-crowdstrike-racing-about
+status: pass
+summary: "Server-rendered AEM Sites architecture approved for checkpoint presentation: one racing-page editable template, project Core Teaser v2 Style System variants for hero/editorial sections, atomic custom header/footer components hosted in Experience Fragment chrome, and Composer-owned sample page/DAM seeding. No external integration boundary exists."
+artifacts:
+  requirements: ".claude/agents/runs/2026-09-02T18-28Z-crowdstrike-racing-about/plan/requirements.yaml"
+  solution_architecture: ".claude/agents/runs/2026-09-02T18-28Z-crowdstrike-racing-about/plan/technical-specifications.md"
+  source_content_inventory: ".claude/agents/runs/2026-09-02T18-28Z-crowdstrike-racing-about/plan/source-content-inventory.md"
+  reference_deconstruction: ".claude/agents/runs/2026-09-02T18-28Z-crowdstrike-racing-about/plan/reference-deconstruction.md"
+  reference_assets: ".claude/agents/runs/2026-09-02T18-28Z-crowdstrike-racing-about/plan/reference-assets.md"
+architecture:
+  rendering_pattern: server-rendered-aem-sites
+  target_content_path: "/content/adlc-crowdstrike/us/en/about-us"
+  editable_template: "/conf/adlc-crowdstrike/settings/wcm/templates/racing-page"
+  chrome:
+    header_xf: "/content/experience-fragments/adlc-crowdstrike/us/en/site/header/master"
+    footer_xf: "/content/experience-fragments/adlc-crowdstrike/us/en/site/footer/master"
+  components:
+    reuse:
+      - "adlc-crowdstrike/components/teaser: racing-hero Style System variant"
+      - "adlc-crowdstrike/components/teaser: editorial-split content-first/media-first variants"
+      - "adlc-crowdstrike/components/container: page main and section surfaces"
+      - "adlc-crowdstrike/components/experiencefragment: template header/footer references"
+    new:
+      - "adlc-crowdstrike/components/site-header: atomic logo/nested-nav/mobile-menu chrome"
+      - "adlc-crowdstrike/components/site-footer: atomic grouped-navigation/social/legal chrome"
+  content_model: jcr_page_properties
+  sample_content_and_dam_seeding: required
+  external_system_boundary: false
+  bridgesmith_required: false
+source_decisions:
+  web_reference_role: content-source-of-truth
+  local_asset_role: visual-and-asset-source-of-truth
+  canonical_branch: "Primary current 2026 branch: hero plus four editorial sections"
+  excluded_branch: "Crawler-visible older duplicate body/footer branch unless approved browser capture proves it visible"
+  local_assets_mapped: 6
+  primary_assets_used: 5
+  source_hotlinks_allowed: false
+skill_invocations:
+  - best-practices
+best_practices_result:
+  status: pass
+  notes:
+    - "Core Teaser field-set and emitted-DOM visual-fit checks passed for hero/editorial blocks."
+    - "Style System outer-wrapper placement, XF policy context, Core property contracts, and FileVault merge behavior are documented."
+    - "No deprecated AEM API, resolver, scheduler, listener, replication, or external integration pattern is proposed."
+work_breakdown:
+  - stage: plan
+    agent: strategist
+    task: "canonicalize source/content/assets and define AEM architecture"
+    inputs: [dispatch/01-strategist.md, live_reference, local_assets]
+    expected_artifact: "plan artifacts and handoffs/strategist.yaml"
+  - stage: gate
+    agent: human
+    task: "approve architecture, canonical source branch, component reuse triage, and imagery rights-risk acknowledgement"
+    inputs: [handoffs/strategist.yaml]
+    expected_artifact: "DECISIONS.md architecture_review approval"
+  - stage: design
+    agent: designforge
+    task: "measure the approved live reference and produce component, dialog, template/policy, authoring, functional, and Playwright specifications"
+    inputs: [plan/requirements.yaml, plan/technical-specifications.md, plan/source-content-inventory.md, plan/reference-deconstruction.md, plan/reference-assets.md, DECISIONS.md]
+    expected_artifact: "handoffs/designforge.yaml and complete design pack"
+  - stage: gate
+    agent: human
+    task: "approve dialog and design specifications"
+    inputs: [handoffs/designforge.yaml]
+    expected_artifact: "DECISIONS.md dialog_spec_confirmation approval"
+  - stage: implement
+    agent: blockwright
+    task: "implement template, components, Teaser styles, frontend, unit tests, and Playwright harness/spec source"
+    inputs: [handoffs/designforge.yaml, DECISIONS.md]
+    expected_artifact: "handoffs/blockwright.yaml"
+  - stage: implement
+    agent: configsmith
+    task: "perform security/Dispatcher/CDN assessment and implement only source-backed hardening changes"
+    inputs: [handoffs/designforge.yaml, plan/requirements.yaml]
+    expected_artifact: "handoffs/configsmith.yaml"
+  - stage: integrate
+    agent: composer
+    task: "seed cq:Page hierarchy, About page, Experience Fragment content, DAM fixtures, metadata, and render-readiness evidence"
+    inputs: [handoffs/designforge.yaml, plan/source-content-inventory.md, plan/reference-assets.md]
+    expected_artifact: "handoffs/composer.yaml and integrate/composer/dam-fixture-manifest.yaml"
+  - stage: test
+    agent: auditron
+    task: "unified review and Build Validation Gate within Auditron's exclusive two-Maven-call budget"
+    inputs: [handoffs/blockwright.yaml, handoffs/configsmith.yaml, handoffs/composer.yaml]
+    expected_artifact: "handoffs/auditron.yaml"
+  - stage: release
+    agent: pilot
+    task: "raise PR (feature branch -> master)"
+    inputs: [handoffs/auditron.yaml]
+    expected_artifact: "deploy/pr-request.md"
+  - stage: gate
+    agent: human
+    task: "Lead: review/merge PR, deploy to real env, then record real-environment validation approval in DECISIONS.md"
+    inputs: [handoffs/pilot.yaml]
+    expected_artifact: "DECISIONS.md real-environment validation approval block (Author URL + Publish URL + auth modes)"
+  - stage: test
+    agent: sentinel
+    task: "execute the complete UI/visual/a11y/performance/SEO/authoring/observability gate against the REAL Author and Publish URLs (LAST stage)"
+    inputs: [DECISIONS.md, handoffs/auditron.yaml, design_scenarios, plan_reference_oracles]
+    expected_artifact: "handoffs/sentinel.yaml"
+parallel_groups:
+  - [blockwright, configsmith, composer]
+human_checkpoints_required:
+  - architecture_review
+  - dialog_spec_confirmation
+  - real_environment_validation_approval
+  - sentinel_remediation_approval_if_failed
+nfr_owners:
+  performance: sentinel
+  accessibility: sentinel
+  seo: sentinel
+  security: configsmith
+  build_quality: auditron
+  content_and_assets: composer
+open_questions_blocking: []
+open_questions_non_blocking:
+  - "Designforge must replace inferred font/color/spacing values with approved-browser measurements because corporate Zscaler blocked computed-style capture."
+  - "Sentinel must prove that the crawler's older duplicate branch is not rendered in the canonical viewport states."
+risks:
+  - id: R-001
+    severity: medium
+    statement: "Exact live computed tokens were not capturable behind the corporate gateway."
+    mitigation: "Designforge browser measurement before design freeze; evidence rankings prevent invented precision."
+  - id: R-002
+    severity: medium
+    statement: "Large PNG masters can regress LCP and transfer size."
+    mitigation: "AEM responsive modern renditions, intrinsic ratios, eager hero only, lazy below-fold assets."
+  - id: R-003
+    severity: medium
+    statement: "Rights/credit metadata was not supplied."
+    mitigation: "Preserve provenance and require human rights confirmation before public production use."
+out_of_adlc_scope:
+  - "Lead PR merge, Adobe Git sync, and real Cloud Manager deployment"
+  - "Cloud Manager environment promotion, rollback, post-deploy operations, and incident response"
+  - "Linked destination-page implementation and source analytics/consent"
+next_gate:
+  owner: human
+  name: architecture_review
+  decision_required: "Approve the server-rendered template/component plan, canonical primary branch, exact local asset mapping, and non-blocking measured-token follow-up before Designforge dispatch."

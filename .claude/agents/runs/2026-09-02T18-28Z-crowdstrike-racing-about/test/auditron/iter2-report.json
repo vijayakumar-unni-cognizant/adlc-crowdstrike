@@ -1,0 +1,22 @@
+{
+  "name": "iter2-report",
+  "title": "Auditron Iteration 2 Report — CrowdStrike Racing About",
+  "agent": "auditron",
+  "stage": "Test — Re-review and Build Gate",
+  "runId": "2026-09-02T18-28Z-crowdstrike-racing-about",
+  "timestamp": "2026-09-03T00:00:00Z",
+  "status": "FAIL",
+  "statusClass": "fail",
+  "summary": "The static header-route remediation cleared `AUD-HDR-001`; Maven Build Validation Gate call #1 then failed at compile time on **BLD-HDR-001**. Integration did not run. Maven budget: **1/2 used**.",
+  "matrix": [
+    {"track":"Static re-review","verdict":"PASS","class":"pass","detail":"Public/internal About-route comparison and its unit coverage are present"},
+    {"track":"Local SDK discovery","verdict":"WARN","class":"warn","detail":"Author 4502 reachable as admin/admin; Publish 4503 unreachable"},
+    {"track":"Build Validation Gate #1","verdict":"FAIL","class":"fail","detail":"core compilation failure: SlingHttpServletRequest has no getRequestPath()"},
+    {"track":"Integration #2","verdict":"NOT RUN","class":"info","detail":"Forbidden after build failure; one Maven call remains"}
+  ],
+  "findings": [
+    {"id":"BLD-HDR-001","sev":"high","track":"Build gate","component":"SiteHeaderModel","title":"Unsupported Sling request API prevents compilation","issue":"The remediated current-path initialization invokes request.getRequestPath().getResourcePath(), but this project's SlingHttpServletRequest API does not provide getRequestPath().","evidence":"Maven build log /tmp/aem-build.log: SiteHeaderModel.java:[36,79] cannot find symbol method getRequestPath().","cause":"The remediation targeted an unavailable request API.","recommendation":"Use a request/path API available in the configured AEM SDK (for example the supported request-path-info/resource path accessor), retain public-route normalization, and extend the model unit test. Re-run Auditron; only Build Gate call #2 remains in this run.","route":"blockwright","status":"open — blocks build and integration"},
+    {"id":"AUD-HDR-001","sev":"info","track":"Static re-review","component":"SiteHeaderModel","title":"Public-route current-state defect remediated","issue":"Previous public/internal route mismatch.","evidence":"normalizePath plus terminal-route comparison and marksPublicRouteCurrentForInternalAemPath test are present.","cause":"Remediated.","recommendation":"Keep coverage when changing the supported path accessor.","route":"blockwright","status":"fixed, pending successful compilation"}
+  ],
+  "sections": [{"title":"Functional-test ledger","badge":"INCOMPLETE","badgeClass":"fail","open":true,"blocks":[{"p":"The original 30-ID ledger remains reconciled in coverage.md. Because compilation failed, no runtime or integration case can progress; the terminal build blocker is BLD-HDR-001, not the remediated AUD-HDR-001."}]}]
+}

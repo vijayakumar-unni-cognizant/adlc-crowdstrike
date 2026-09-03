@@ -1,0 +1,23 @@
+{
+  "name": "iter5-report",
+  "title": "Auditron Author-Only Live Validation — CrowdStrike Racing About",
+  "agent": "auditron",
+  "stage": "Test — Author Local Validation",
+  "runId": "2026-09-02T18-28Z-crowdstrike-racing-about",
+  "timestamp": "2026-09-03T00:00:00Z",
+  "status": "FAIL",
+  "statusClass": "fail",
+  "summary": "Author bundle activation and custom chrome now pass, but the rendered About page fails source-content and navigation contracts: Teasers use the page title instead of authored section data, and public header routes are invalid/stripped in Author. Publish is waived for this local validation.",
+  "matrix": [
+    {"track":"Core bundle","verdict":"PASS","class":"pass","detail":"Bundle 653 is Active"},
+    {"track":"Custom chrome / XF","verdict":"PASS","class":"pass","detail":"Header and footer XF endpoints return their custom DOM; no model-resolution exception"},
+    {"track":"Semantic hierarchy","verdict":"FAIL","class":"fail","detail":"One H1 but editorial H2s repeat page title; required four section headings/copy are absent"},
+    {"track":"Current navigation","verdict":"FAIL","class":"fail","detail":"0 aria-current=page; public header routes are link-checker invalid and no About anchor renders"},
+    {"track":"Publish","verdict":"WAIVED","class":"info","detail":"User waived local Publish validation"}
+  ],
+  "findings": [
+    {"id":"LCL-TEASER-002","sev":"high","track":"Author rendered content","component":"Core Teaser content mapping","title":"Editorial Teasers render the page title instead of authored section titles and descriptions","issue":"The authored nodes contain jcr:title and jcr:description for We Stop Breaches, Why We Race, CrowdStrike Racing by APR, and No. 4 CrowdStrike Oreca 07, but rendered H2 output is About Us | CrowdStrike Racing and the expected body copy is absent.","evidence":"Author About HTML has 1 H1 and 6 H2s; heading extraction contains repeated ‘About Us | CrowdStrike Racing’, while exact required editorial headings and ‘Performance under pressure’ occur zero times. Each node’s infinity JSON confirms jcr:title/jcr:description/fileReference exist.","cause":"The Core Teaser v2 persisted-property contract is not being met by the seeded field placement; page-level jcr:title is taking precedence in rendered output.","recommendation":"Use the actual Core Teaser v2 persisted title/description fields and verify each rendered section against the source inventory on Author before a new build gate.","route":"blockwright + composer","status":"open — release-blocking"},
+    {"id":"LCL-NAV-002","sev":"high","track":"Author navigation","component":"site-header / XF content","title":"Public navigation routes are invalid in Author and no current page state renders","issue":"The XF renders text-only navigation items: /about-us/ is invalid to Author Link Checker, no About anchor is rendered, and aria-current=page is absent.","evidence":"Header XF and About page both return 0 aria-current=page and 0 href=/about-us/; Author output shows Link Checker ‘invalid link: /about-us/’ markers.","cause":"The seeded public routes do not resolve to AEM content paths in Author; an XF request also does not provide the target page route to the current-state comparison.","recommendation":"Map authored internal routes to valid AEM content paths (or approved absolute destinations), and compute active state from the containing page/original request when rendered through an XF. Add an Author render regression test.","route":"blockwright + composer","status":"open — release-blocking"}
+  ],
+  "sections": [{"title":"Author-only evidence","badge":"FAIL","badgeClass":"fail","open":true,"blocks":[{"table":{"head":["Probe","Observed"],"rows":[["Bundle 653","Active"],["About endpoint","HTTP 200"],["Header/footer XF","rendered; zero Sling Model exceptions"],["Header current state","0 aria-current=page"],["Editorial source headings/body","0 occurrences in rendered HTML"],["Teaser H2","repeated page title instead of section titles"],["Publish","waived by user"]]}},{"callout":{"class":"fail","text":"The formerly blocking OSGi activation issue is resolved, but the new live content and navigation evidence prevents a PASS."}}]}]
+}

@@ -1,0 +1,57 @@
+project: adlc-crowdstrike
+source_directory: C:\Users\2489691\Downloads\crowdstrike-images
+dam_root: /content/dam/adlc-crowdstrike/racing/about-us
+assets:
+  - id: ASSET-001
+    source: D_ABOUTUS_Hero_Interior.png
+    dam_path: /content/dam/adlc-crowdstrike/racing/about-us/about-us-hero-interior.png
+    sha256: 9a5e158d8dcccb5719083c14bab67b175a3769c9da07d0732d82365f9fac50ad
+    dimensions: 2048x744
+    bytes: 1479597
+    usage: about_us_hero
+  - id: ASSET-002
+    source: Falcon-2.png
+    dam_path: /content/dam/adlc-crowdstrike/racing/about-us/falcon-2.png
+    sha256: 318b3fd04e59ff7a3d0f4f540e43e2116fe7060e59e8093a5ae127f6e6dac87c
+    dimensions: 408x320
+    bytes: 103491
+    usage: intentionally-unused
+  - id: ASSET-003
+    source: we-stop-breaches.png
+    dam_path: /content/dam/adlc-crowdstrike/racing/about-us/we-stop-breaches.png
+    sha256: 61ed18b24fb8f4b2708416bf556129e6f5e71057f07ff96812d397bd9e11e894
+    dimensions: 1024x683
+    bytes: 523629
+    usage: we_stop_breaches
+  - id: ASSET-004
+    source: why-we-race.png
+    dam_path: /content/dam/adlc-crowdstrike/racing/about-us/why-we-race.png
+    sha256: f1db05f88fb38a65e99fcd4084f07ff769a83b73541a11ae1c7d1f8803db5e1a
+    dimensions: 1024x683
+    bytes: 865719
+    usage: why_we_race
+  - id: ASSET-005
+    source: IMSAROLEX26_01_23_26_111222_FH_8052.png
+    dam_path: /content/dam/adlc-crowdstrike/racing/about-us/crowdstrike-racing-by-apr.png
+    sha256: 51dc757779c11c8dfaa31b8f82b0c203bb8ea3abe2c796616772d34a2d9b4614
+    dimensions: 2048x1365
+    bytes: 1834929
+    usage: racing_by_apr
+  - id: ASSET-006
+    source: IMSA_D24_26_01_25_001036_JP35529.png
+    dam_path: /content/dam/adlc-crowdstrike/racing/about-us/no-4-crowdstrike-oreca-07.png
+    sha256: 9db6dc808f0a7cf554caff3c5ba656108cd20f7af03bfa8c0b2a480810f4293c
+    dimensions: 2048x1365
+    bytes: 2051715
+    usage: oreca_07
+logo:
+  source: https://assets.crowdstrike.com/is/content/crowdstrikeinc/Crowdstrike%20Racing%20Logo
+  dam_path: /content/dam/adlc-crowdstrike/racing/about-us/crowdstrike-racing-logo.svg
+  sha256: 18a57550b594f2c14a2de12844512beaa14a5f3125e7f4a9ee8c6adc61f7499f
+  bytes: 6262
+  provenance: Live source reference; public-use rights confirmation remains required.
+verification:
+  all_local_png_hashes_match: true
+  all_local_png_dimensions_match: true
+  real_original_binaries_packaged: true
+  raster_dimension_metadata_present: true

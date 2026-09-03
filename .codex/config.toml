@@ -1,0 +1,53 @@
+# OpenAI Codex CLI — project configuration for Lunar (AEM as a Cloud Service)
+#
+# Single source of truth for project context, guardrails, and the Model Routing
+# Matrix is the repository-root AGENTS.md, which Codex loads automatically as the
+# project doc. Do not duplicate its content here.
+#
+# Schema reference: https://learn.chatgpt.com/docs/config-file/config-reference
+# Model slugs:      https://learn.chatgpt.com/docs/models
+
+# ---------------------------------------------------------------------------
+# Default model + reasoning effort
+# ---------------------------------------------------------------------------
+# gpt-5.6-terra is the documented everyday workhorse and the documented
+# replacement for gpt-5.4. Individual agents override this per tier via the
+# files in .codex/agents/ (see the Model Routing Matrix in AGENTS.md).
+model = "gpt-5.6-terra"
+
+# Accepted values: "minimal" | "low" | "medium" | "high" | "xhigh"
+# ("xhigh" is model-dependent.) "medium" is the documented default.
+model_reasoning_effort = "medium"
+
+# ---------------------------------------------------------------------------
+# Project doc discovery
+# ---------------------------------------------------------------------------
+# AGENTS.md is the primary project doc. These are the ordered fallbacks used
+# only when AGENTS.md is missing at a directory level. CLAUDE.md is listed
+# first because in this repo it consists solely of an @AGENTS.md include.
+project_doc_fallback_filenames = ["CLAUDE.md", ".github/copilot-instructions.md"]
+
+# AGENTS.md in this repo is large (routing matrix + modules + build policy +
+# curated AEMaaCS resources). Raise the cap above the 32 KiB default so the
+# whole document is loaded rather than truncated.
+project_doc_max_bytes = 65536
+
+# ---------------------------------------------------------------------------
+# Subagent defaults
+# ---------------------------------------------------------------------------
+# Per-agent model/effort are set in .codex/agents/<name>.toml, mapped to each
+# agent's role tier.
+#
+# The keys below are DELIBERATELY LEFT COMMENTED OUT. Codex's own docs are
+# inconsistent about precedence between an [agents] default and a value set in
+# a custom agent file: the configuration reference orders it
+#   explicit spawn value > [agents] default > custom agent file > parent
+# while the Subagents page states that a value in the custom agent file takes
+# precedence. Setting a global default here therefore risks silently
+# overriding every per-tier assignment in .codex/agents/. Leave these unset so
+# the per-agent files are unambiguously authoritative, and an unlisted agent
+# simply inherits the top-level `model` above.
+#
+# [agents]
+# default_subagent_model = "gpt-5.6-terra"
+# default_subagent_reasoning_effort = "medium"

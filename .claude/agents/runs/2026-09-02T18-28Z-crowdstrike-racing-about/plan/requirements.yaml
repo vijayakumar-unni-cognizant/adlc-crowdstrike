@@ -1,0 +1,189 @@
+intake_source:
+  primary:
+    uri: "https://crowdstrikeracing.com/about-us/"
+    role: content-source-of-truth
+    inspected_at: "2026-09-02"
+  local_assets:
+    path: "C:\\Users\\2489691\\Downloads\\crowdstrike-images"
+    role: visual-and-asset-source-of-truth
+project:
+  project: adlc-crowdstrike
+  package: adlc-crowdstrike
+  java_group_id: com.adlccrowdstrike
+  component_group: "ADLC Crowdstrike - Content"
+  identifier_source: "Root and module Maven POMs; .aem-skills-config.yaml is absent."
+goals:
+  - "Deliver an authorable, server-rendered AEM Sites About page that faithfully reproduces the current 2026 CrowdStrike Racing reference."
+  - "Preserve the reference hierarchy, imagery, typography character, spatial rhythm, alternating editorial layout, navigation, footer, and responsive behavior."
+  - "Seed the sample page and all approved source images into AEM content/DAM without production hotlinks."
+personas:
+  - racing_fan
+  - cybersecurity_customer
+  - aem_content_author
+  - accessibility_and_quality_reviewer
+reference_sources:
+  - id: REF-WEB-001
+    uri: "https://crowdstrikeracing.com/about-us/"
+    role: content-source-of-truth
+    obligation: "Use the primary 2026 branch identified in source-content-inventory.md; do not invent replacement brand copy."
+  - id: REF-ASSET-001
+    uri: "C:\\Users\\2489691\\Downloads\\crowdstrike-images"
+    role: visual-and-asset-source-of-truth
+    obligation: "Map the six inspected PNGs using the hashes, dimensions, visual descriptions, and intended DAM paths in reference-assets.md."
+user_stories:
+  - id: US-001
+    as: racing_fan
+    want: "a page whose visible content and section order match the primary current About page"
+    so_that: "the AEM experience communicates the same racing and CrowdStrike story"
+    acceptance_criteria:
+      - "The visible order is site header, About Us hero, We Stop Breaches, Why We Race, CrowdStrike Racing by APR, No. 4 CrowdStrike Oreca 07, and site footer."
+      - "Headings, CTA labels, specifications, and body meaning trace to SRC-001 through SRC-018 in source-content-inventory.md."
+      - "No legacy duplicate branch or duplicate footer is visible or authored."
+    domain: sites
+    candidate_agents: [designforge, blockwright, composer, auditron, sentinel]
+  - id: US-002
+    as: racing_fan
+    want: "a full-bleed About Us hero with the supplied winning-drivers image"
+    so_that: "the page opens with the same high-impact visual hierarchy"
+    acceptance_criteria:
+      - "The hero uses D_ABOUTUS_Hero_Interior.png from project DAM and never a remote production hotlink."
+      - "At desktop the title overlays the image's intentionally dark left field; the drivers remain legible on the right."
+      - "At tablet and mobile the crop retains the title contrast and all three principal drivers; no horizontal overflow occurs."
+      - "The page contains exactly one semantic h1: About Us."
+    domain: sites
+    candidate_agents: [designforge, blockwright, composer, sentinel]
+  - id: US-003
+    as: cybersecurity_customer
+    want: "four modular editorial sections with the correct text, imagery, CTA, and car specifications"
+    so_that: "the story reads clearly and preserves the source rhythm"
+    acceptance_criteria:
+      - "Desktop and wide tablet use alternating approximately 50/50 media/content rows with full-bleed media inside each row."
+      - "We Stop Breaches maps to we-stop-breaches.png and includes the external Learn more about CrowdStrike action."
+      - "Why We Race maps to why-we-race.png."
+      - "CrowdStrike Racing by APR maps to IMSAROLEX26_01_23_26_111222_FH_8052.png."
+      - "No. 4 CrowdStrike Oreca 07 maps to IMSA_D24_26_01_25_001036_JP35529.png and exposes all three source specifications as a semantic list."
+      - "At phone width each row becomes one column with a deterministic image/content reading order and consistent vertical rhythm."
+    domain: sites
+    candidate_agents: [designforge, blockwright, composer, auditron, sentinel]
+  - id: US-004
+    as: racing_fan
+    want: "the source-equivalent brand header and navigation"
+    so_that: "I can move through the racing site on every input method"
+    acceptance_criteria:
+      - "Desktop exposes The Team with Drivers, Schedule, and Awards, followed by CXO Summits, Photo Gallery, and About Us."
+      - "The Team submenu is keyboard operable and exposes accurate expanded/collapsed state."
+      - "Phone navigation uses a labeled menu control, traps no focus, closes on Escape, and does not obscure page content."
+      - "About Us is indicated as the current page without relying on color alone."
+    domain: sites
+    candidate_agents: [designforge, blockwright, composer, auditron, sentinel]
+  - id: US-005
+    as: racing_fan
+    want: "the source-equivalent responsive footer"
+    so_that: "site navigation, external CrowdStrike links, social follow links, brand identity, and legal links remain available"
+    acceptance_criteria:
+      - "Footer groups include CrowdStrike Racing, Why CrowdStrike?, and Follow us!, followed by a single legal row."
+      - "The logo and Falcon artwork are local/DAM-backed where approved by Designforge; external destination links remain normal authored URLs."
+      - "Footer columns collapse without duplicated content, clipped links, or an illogical focus order."
+    domain: sites
+    candidate_agents: [designforge, blockwright, composer, sentinel]
+  - id: US-006
+    as: accessibility_and_quality_reviewer
+    want: "responsive, accessible, stable rendering at representative viewports"
+    so_that: "the experience works across devices and assistive technology"
+    acceptance_criteria:
+      - "Reference alignment is asserted at 1440x900, 768x1024, and 390x844, plus fluid checks from 320px through 1920px."
+      - "WCAG 2.1 AA automated and keyboard checks pass with no critical or serious axe violations."
+      - "Visible focus, skip link, landmark structure, logical heading order, descriptive link names, and useful image alternatives are present."
+      - "Decorative imagery is explicitly marked decorative and informative racing imagery has concise contextual alternatives."
+    domain: sites
+    candidate_agents: [designforge, blockwright, auditron, sentinel]
+  - id: US-007
+    as: aem_content_author
+    want: "the hero and editorial sections to be authorable through coherent AEM components and policies"
+    so_that: "content can evolve without source changes"
+    acceptance_criteria:
+      - "Hero and editorial rows use project Core Teaser v2 proxy variants where the emitted DOM passes the visual-fit test."
+      - "Header and footer remain Experience Fragment chrome and each has one coherent authoring surface."
+      - "Policies restrict the About template to the approved project proxies and style variants."
+      - "Authors can select DAM assets, edit title/body/action/list content, and preview responsive styles without raw HTML fields."
+    domain: sites
+    candidate_agents: [designforge, blockwright, composer, auditron]
+  - id: US-008
+    as: aem_content_author
+    want: "a ready-to-render sample About page and DAM fixtures"
+    so_that: "the result is demonstrable immediately after package deployment"
+    acceptance_criteria:
+      - "Composer seeds /content/adlc-crowdstrike/us/en/about-us and all intermediate levels are cq:Page."
+      - "All six local PNGs are copied to /content/dam/adlc-crowdstrike/racing/about-us with metadata and hash traceability."
+      - "The five primary page assets are referenced from seeded components; Falcon-2 is used only if the approved footer/final design calls for it, otherwise it is documented as an unused supplied source asset."
+      - "Template registration is valid at /content/adlc-crowdstrike, /content/adlc-crowdstrike/us, and /content/adlc-crowdstrike/us/en."
+    domain: sites
+    candidate_agents: [composer, auditron]
+  - id: US-009
+    as: accessibility_and_quality_reviewer
+    want: "traceable functional, visual, SEO, and performance verification"
+    so_that: "faithfulness and production readiness are independently testable"
+    acceptance_criteria:
+      - "Every source inventory item and every Designforge scenario maps to at least one Auditron or Sentinel assertion."
+      - "Playwright covers anonymous Publish and authenticated Author, Chromium, Firefox, WebKit, and a mobile-emulated project."
+      - "Publish has one indexable canonical URL, unique title/meta description, one h1, crawlable links, Open Graph basics, and no mixed-content or source-site runtime dependency."
+      - "Lighthouse and deep axe/SEO reports meet the NFR thresholds or record an approved gap."
+    domain: ops
+    candidate_agents: [blockwright, auditron, sentinel]
+nfr:
+  performance:
+    lcp_ms_target: 2500
+    inp_ms_target: 200
+    cls_target: 0.1
+    ttfb_ms_target: 800
+    asset_budget:
+      initial_transfer_kb: 1800
+      requirements:
+        - "Hero is eager/high-priority and correctly sized; below-fold imagery is lazy and responsive."
+        - "Use AEM Asset Delivery/Web Optimized Image Delivery where available, with intrinsic dimensions and modern formats."
+        - "Do not ship the 2048px originals to narrow phone layouts."
+  security:
+    - "No remote hotlink, inline secret, unsafe authored script, or raw untrusted HTML."
+    - "External links opened in a new context use rel=noopener noreferrer."
+    - "Configsmith reviews Dispatcher allow-list/cache behavior and headers; no new service user is expected."
+  accessibility: WCAG-2.1-AA
+  seo:
+    - "Indexable server-rendered HTML with canonical URL, page title, meta description, one h1, and meaningful h2 hierarchy."
+    - "Open Graph title, description, image, and URL use project/DAM assets."
+    - "Structured data is optional unless an existing site convention supports Organization/WebPage without invented facts."
+  browsers:
+    - "Latest two stable Chromium, Firefox, and WebKit/Safari generations."
+    - "Responsive range 320px to 1920px; reference viewports 390x844, 768x1024, 1440x900."
+  i18n:
+    - "Initial content locale is en-US."
+    - "No hard-coded UI strings in JavaScript; navigation controls have localizable labels."
+out_of_scope:
+  - "Copying the source site's HTML, CSS, JavaScript, analytics, consent implementation, or proprietary runtime."
+  - "Building the linked Drivers, Schedule, Awards, CXO Summits, Photo Gallery, CrowdStrike corporate, shop, privacy, cookie, or legal destination pages."
+  - "Cloud Manager Dev/Stage/Prod promotion and post-deploy operations; these remain Lead/external process steps."
+  - "Content Fragments, GraphQL, Universal Editor, forms, workflows, schedulers, replication handlers, or external API integrations."
+open_questions:
+  - id: Q-001
+    statement: "Corporate network controls prevented a direct computed-style/full-page screenshot capture. Designforge must measure exact font files, rendered sizes, gutters, colors, and runtime visibility from an approved browser session before freezing visual tokens."
+    blocking: false
+  - id: Q-002
+    statement: "The crawled DOM exposes a legacy duplicate content/footer branch after the current 2026 content. It is excluded because recency, source order, and exact local asset mappings identify the first branch as canonical; Sentinel should prove the live visible branch during reference capture."
+    blocking: false
+constraints:
+  - "AEM as a Cloud Service, Java version from .cloudmanager/java-version, Maven build managed only by Auditron."
+  - "Maximum two Maven invocations for the entire run, both owned exclusively by Auditron."
+  - "Use existing project proxy components before new components, and never reference raw core/wcm resource types from authored content."
+  - "Header/footer use Experience Fragment references in template structure."
+  - "Page parsys uses adlc-crowdstrike/components/container, never foundation responsivegrid."
+  - "Mutable sample page and DAM content live in ui.content; immutable component/template/policy code lives in ui.apps; styles/scripts live in ui.frontend."
+  - "No runtime dependency on crowdstrikeracing.com or assets.crowdstrike.com."
+traceability:
+  US-001: [SRC-001, SRC-005, SRC-007, SRC-010, SRC-012, SRC-014, SRC-018]
+  US-002: [SRC-005, ASSET-001]
+  US-003: [SRC-007, SRC-010, SRC-012, SRC-014, ASSET-003, ASSET-004, ASSET-005, ASSET-006]
+  US-004: [SRC-001, SRC-002, SRC-003, SRC-004]
+  US-005: [SRC-018, ASSET-002]
+  US-006: [REF-WEB-001]
+  US-007: [REF-WEB-001]
+  US-008: [ASSET-001, ASSET-002, ASSET-003, ASSET-004, ASSET-005, ASSET-006]
+  US-009: [REF-WEB-001, REF-ASSET-001]
