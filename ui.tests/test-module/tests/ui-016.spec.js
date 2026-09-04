@@ -1,0 +1,1 @@
+const { test } = require('@playwright/test'); const { open, noSeriousAxe } = require('./helpers'); test('UI-016 a11y states', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); await noSeriousAxe(page); });

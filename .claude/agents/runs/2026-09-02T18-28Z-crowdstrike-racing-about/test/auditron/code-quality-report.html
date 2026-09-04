@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!--
+  Shared ADLC report template (Sentinel + others).
+  Standalone: all CSS inline, no external fonts/scripts/images, no network deps.
+  Works from a file path, as an email attachment, or printed to PDF.
+
+  Placeholders the generating agent substitutes:
+    Auditron Code Quality Report — CrowdStrike Racing About  auditron  Test — Code Quality  2026-09-02T18-28Z-crowdstrike-racing-about  2026-09-03T00:00:00Z
+    FAIL        fail  (pass|fail|warn|info)
+    code-quality-report.md   <div class="scorecard"><a class="gauge-link" href="#cross-file"><figure class="gauge poor" style="--val:0"><div class="ring"><span>0</span></div><figcaption>Static review<small>1 high finding</small></figcaption></figure></a></div><section class="card"><h2>Verdict &amp; track matrix</h2><div class="callout fail">Review gate failed before Maven: <strong>AUD-HDR-001</strong> prevents the required active About navigation state. Maven budget remains <strong>0/2</strong>.</div><table class="matrix"><thead><tr><th>Track</th><th>Verdict</th><th>Detail</th></tr></thead><tbody><tr><td>Cross-file review</td><td><span class="badge fail">FAIL</span></td><td>One unaccepted high correctness finding</td></tr><tr><td>FileVault/XML/DAM</td><td><span class="badge pass">PASS</span></td><td>222 XML files parse; namespace/protected-property checks pass</td></tr><tr><td>Policy/template/content</td><td><span class="badge pass">PASS</span></td><td>Template mappings, explicit allowlists, numeric style IDs and DAM paths resolve statically</td></tr><tr><td>Playwright migration</td><td><span class="badge warn">WARN</span></td><td>Source/lockfile use Playwright; stale Cypress module coordinates remain in ui.tests/pom.xml</td></tr><tr><td>Build gate</td><td><span class="badge info">NOT RUN</span></td><td>Blocked by review gate; Maven 0/2</td></tr></tbody></table></section><section class="card"><h2>Findings &amp; routing</h2><table class="findings"><thead><tr><th>Sev</th><th>Track</th><th>Component</th><th>Finding</th><th>Route</th></tr></thead><tbody><tr><td><span class="chip sev-high">HIGH</span></td><td>Header correctness</td><td>SiteHeaderModel / site-header.html</td><td>Current-page comparison cannot match public navigation URLs</td><td>blockwright</td></tr><tr><td><span class="chip sev-medium">MEDIUM</span></td><td>Playwright migration</td><td>ui.tests/pom.xml</td><td>Cypress naming remains in Maven metadata</td><td>blockwright</td></tr><tr><td><span class="chip sev-medium">MEDIUM</span></td><td>SEO configuration</td><td>Externalizer</td><td>Publish-domain mapping is environment-owned</td><td>environment owner</td></tr><tr><td><span class="chip sev-low">LOW</span></td><td>Asset governance</td><td>DAM fixture manifest</td><td>Supplied image rights confirmation remains pending</td><td>content owner</td></tr></tbody></table></section><details class="track" open><summary>Detailed findings</summary><div><div class="finding sev-high"><h4><span class="chip sev-high">HIGH</span> AUD-HDR-001 — Current-page comparison cannot match public navigation URLs</h4><dl><dt>Issue</dt><dd>The model returns request.getRequestPath().getResourcePath() (the internal AEM resource path) while seeded URLs are public paths such as /about-us/. isCurrent strips only .html, so /about-us/ cannot equal /content/adlc-crowdstrike/us/en/about-us.</dd><dt>Evidence</dt><dd>SiteHeaderModel.java:29,56 and header master .content.xml public URL /about-us/; HTL consumes item.current and model.currentPath.</dd><dt>Cause</dt><dd>No resource mapping or public-path normalization occurs before equality comparison.</dd><dt>Recommended fix</dt><dd>Normalize both values into the same mapped public route (for example ResourceResolver.map(request, resourcePath) or a dedicated normalized request URL) and add unit tests for /about-us/, .html and the internal resource path.</dd><dt>Route</dt><dd>blockwright</dd><dt>Status</dt><dd>open — blocks Maven</dd></dl></div><div class="finding sev-medium"><h4><span class="chip sev-medium">MEDIUM</span> AUD-UI-001 — Cypress naming remains in Maven metadata</h4><dl><dt>Issue</dt><dd>The runner, Docker image, scripts and package lock use Playwright, but artifactId/name/description still state Cypress.</dd><dt>Evidence</dt><dd>ui.tests/pom.xml:28-31; no Cypress dependency or source remains under test-module.</dd><dt>Cause</dt><dd>Migration intentionally left POM unmodified.</dd><dt>Recommended fix</dt><dd>Rename only descriptive Maven coordinates/text if compatibility permits; otherwise document the compatibility exception in the UI harness evidence.</dd><dt>Route</dt><dd>blockwright</dd><dt>Status</dt><dd>non-blocking follow-up</dd></dl></div><div class="finding sev-medium"><h4><span class="chip sev-medium">MEDIUM</span> CFG-SEO-001 — Publish-domain mapping is environment-owned</h4><dl><dt>Issue</dt><dd>No source-backed publish hostname is available.</dd><dt>Evidence</dt><dd>configsmith handoff and security-review.md.</dd><dt>Cause</dt><dd>No approved Cloud Manager hostname.</dd><dt>Recommended fix</dt><dd>Configure the real publish/author domains and verify the Core Page canonical after deployment.</dd><dt>Route</dt><dd>environment owner</dd><dt>Status</dt><dd>non-blocking</dd></dl></div><div class="finding sev-low"><h4><span class="chip sev-low">LOW</span> CMP-ASSET-001 — Supplied image rights confirmation remains pending</h4><dl><dt>Issue</dt><dd>Use rights for supplied images and mirrored logo are owner-owned.</dd><dt>Evidence</dt><dd>composer handoff.</dd><dt>Cause</dt><dd>No rights confirmation was supplied.</dd><dt>Recommended fix</dt><dd>Obtain and record rights confirmation before production activation.</dd><dt>Route</dt><dd>content owner</dd><dt>Status</dt><dd>non-blocking</dd></dl></div></div></details><details class="track" id="cross-file" open><summary>Static evidence <span class="badge fail">FAIL</span></summary><div><p>Policy mappings resolve to declared Racing Page, container, Teaser and XF policies; each new editable context has an explicit allowlist. The numeric style IDs 20260902001–20260902006 and 20260902011–20260902013 resolve against seeded content.</p><p>The source inventory, authored page/XF content and DAM references were compared directly; no closed-loop expected-payload oracle was used. All seven DAM path entries exist, six PNG originals are packaged, five are visible and Falcon is explicitly unused.</p><p>Both dialogs use declared Granite resource types and model/multifield properties match. No administrative resolver, service resolver, plaintext secret, TODO or protected DAM JCR property was detected.</p><p>The review skill is unavailable in this workspace; its required checks were performed directly with XML parsing, static searches and contract comparison.</p></div></details>
+
+  Reusable building blocks the body (<div class="scorecard"><a class="gauge-link" href="#cross-file"><figure class="gauge poor" style="--val:0"><div class="ring"><span>0</span></div><figcaption>Static review<small>1 high finding</small></figcaption></figure></a></div><section class="card"><h2>Verdict &amp; track matrix</h2><div class="callout fail">Review gate failed before Maven: <strong>AUD-HDR-001</strong> prevents the required active About navigation state. Maven budget remains <strong>0/2</strong>.</div><table class="matrix"><thead><tr><th>Track</th><th>Verdict</th><th>Detail</th></tr></thead><tbody><tr><td>Cross-file review</td><td><span class="badge fail">FAIL</span></td><td>One unaccepted high correctness finding</td></tr><tr><td>FileVault/XML/DAM</td><td><span class="badge pass">PASS</span></td><td>222 XML files parse; namespace/protected-property checks pass</td></tr><tr><td>Policy/template/content</td><td><span class="badge pass">PASS</span></td><td>Template mappings, explicit allowlists, numeric style IDs and DAM paths resolve statically</td></tr><tr><td>Playwright migration</td><td><span class="badge warn">WARN</span></td><td>Source/lockfile use Playwright; stale Cypress module coordinates remain in ui.tests/pom.xml</td></tr><tr><td>Build gate</td><td><span class="badge info">NOT RUN</span></td><td>Blocked by review gate; Maven 0/2</td></tr></tbody></table></section><section class="card"><h2>Findings &amp; routing</h2><table class="findings"><thead><tr><th>Sev</th><th>Track</th><th>Component</th><th>Finding</th><th>Route</th></tr></thead><tbody><tr><td><span class="chip sev-high">HIGH</span></td><td>Header correctness</td><td>SiteHeaderModel / site-header.html</td><td>Current-page comparison cannot match public navigation URLs</td><td>blockwright</td></tr><tr><td><span class="chip sev-medium">MEDIUM</span></td><td>Playwright migration</td><td>ui.tests/pom.xml</td><td>Cypress naming remains in Maven metadata</td><td>blockwright</td></tr><tr><td><span class="chip sev-medium">MEDIUM</span></td><td>SEO configuration</td><td>Externalizer</td><td>Publish-domain mapping is environment-owned</td><td>environment owner</td></tr><tr><td><span class="chip sev-low">LOW</span></td><td>Asset governance</td><td>DAM fixture manifest</td><td>Supplied image rights confirmation remains pending</td><td>content owner</td></tr></tbody></table></section><details class="track" open><summary>Detailed findings</summary><div><div class="finding sev-high"><h4><span class="chip sev-high">HIGH</span> AUD-HDR-001 — Current-page comparison cannot match public navigation URLs</h4><dl><dt>Issue</dt><dd>The model returns request.getRequestPath().getResourcePath() (the internal AEM resource path) while seeded URLs are public paths such as /about-us/. isCurrent strips only .html, so /about-us/ cannot equal /content/adlc-crowdstrike/us/en/about-us.</dd><dt>Evidence</dt><dd>SiteHeaderModel.java:29,56 and header master .content.xml public URL /about-us/; HTL consumes item.current and model.currentPath.</dd><dt>Cause</dt><dd>No resource mapping or public-path normalization occurs before equality comparison.</dd><dt>Recommended fix</dt><dd>Normalize both values into the same mapped public route (for example ResourceResolver.map(request, resourcePath) or a dedicated normalized request URL) and add unit tests for /about-us/, .html and the internal resource path.</dd><dt>Route</dt><dd>blockwright</dd><dt>Status</dt><dd>open — blocks Maven</dd></dl></div><div class="finding sev-medium"><h4><span class="chip sev-medium">MEDIUM</span> AUD-UI-001 — Cypress naming remains in Maven metadata</h4><dl><dt>Issue</dt><dd>The runner, Docker image, scripts and package lock use Playwright, but artifactId/name/description still state Cypress.</dd><dt>Evidence</dt><dd>ui.tests/pom.xml:28-31; no Cypress dependency or source remains under test-module.</dd><dt>Cause</dt><dd>Migration intentionally left POM unmodified.</dd><dt>Recommended fix</dt><dd>Rename only descriptive Maven coordinates/text if compatibility permits; otherwise document the compatibility exception in the UI harness evidence.</dd><dt>Route</dt><dd>blockwright</dd><dt>Status</dt><dd>non-blocking follow-up</dd></dl></div><div class="finding sev-medium"><h4><span class="chip sev-medium">MEDIUM</span> CFG-SEO-001 — Publish-domain mapping is environment-owned</h4><dl><dt>Issue</dt><dd>No source-backed publish hostname is available.</dd><dt>Evidence</dt><dd>configsmith handoff and security-review.md.</dd><dt>Cause</dt><dd>No approved Cloud Manager hostname.</dd><dt>Recommended fix</dt><dd>Configure the real publish/author domains and verify the Core Page canonical after deployment.</dd><dt>Route</dt><dd>environment owner</dd><dt>Status</dt><dd>non-blocking</dd></dl></div><div class="finding sev-low"><h4><span class="chip sev-low">LOW</span> CMP-ASSET-001 — Supplied image rights confirmation remains pending</h4><dl><dt>Issue</dt><dd>Use rights for supplied images and mirrored logo are owner-owned.</dd><dt>Evidence</dt><dd>composer handoff.</dd><dt>Cause</dt><dd>No rights confirmation was supplied.</dd><dt>Recommended fix</dt><dd>Obtain and record rights confirmation before production activation.</dd><dt>Route</dt><dd>content owner</dd><dt>Status</dt><dd>non-blocking</dd></dl></div></div></details><details class="track" id="cross-file" open><summary>Static evidence <span class="badge fail">FAIL</span></summary><div><p>Policy mappings resolve to declared Racing Page, container, Teaser and XF policies; each new editable context has an explicit allowlist. The numeric style IDs 20260902001–20260902006 and 20260902011–20260902013 resolve against seeded content.</p><p>The source inventory, authored page/XF content and DAM references were compared directly; no closed-loop expected-payload oracle was used. All seven DAM path entries exist, six PNG originals are packaged, five are visible and Falcon is explicitly unused.</p><p>Both dialogs use declared Granite resource types and model/multifield properties match. No administrative resolver, service resolver, plaintext secret, TODO or protected DAM JCR property was detected.</p><p>The review skill is unavailable in this workspace; its required checks were performed directly with XML parsing, static searches and contract comparison.</p></div></details>) can emit — the CSS below
+  styles all of them, high-contrast and WCAG-AA:
+
+    Score gauges (Lighthouse-style donuts), for the 4 Lighthouse categories:
+      <div class="scorecard">
+        <figure class="gauge good" style="--val:98"><div class="ring"><span>98</span></div><figcaption>Accessibility</figcaption></figure>
+        <figure class="gauge avg"  style="--val:84"><div class="ring"><span>84</span></div><figcaption>Performance</figcaption></figure>
+      </div>
+      gauge class: good (>=90) | avg (50-89) | poor (<50)
+
+    Track verdict matrix:  <table class="matrix"> with a <span class="badge pass|fail|warn|info">…</span> per row.
+
+    Findings & routing table: <table class="findings"> — Severity | Track | Page/Component | Finding | Route to
+      (put a <span class="chip sev-…"> in the Severity cell).
+
+    Detailed finding card (issue / evidence / cause / recommended fix / route / status — the depth the Cypress-era reports had):
+      <div class="finding sev-high">
+        <h4><span class="chip sev-high">HIGH</span> F-PERF-01 — LCP 3046ms exceeds 2500ms</h4>
+        <dl>
+          <dt>Issue</dt><dd>…what is wrong, observable…</dd>
+          <dt>Evidence</dt><dd>…measured values, selectors, tool + audit id…</dd>
+          <dt>Cause</dt><dd>…root cause / why…</dd>
+          <dt>Recommended fix</dt><dd>…concrete remediation a reader can act on — REQUIRED for every failed/blocking finding…</dd>
+          <dt>Route</dt><dd><span class="badge info">blockwright</span> …who owns it…</dd>
+          <dt>Status</dt><dd>…blocking / documented / accepted…</dd>
+        </dl>
+      </div>
+      severity class on BOTH .finding and .chip: sev-critical | sev-high | sev-medium | sev-low | sev-info
+
+    Collapsible per-track section:
+      <details class="track" open><summary>Performance <span class="badge fail">FAIL</span></summary> … </details>
+
+    Callout:  <div class="callout warn">…</div>   (pass|fail|warn|info)
+    Inline status: <span class="badge pass|fail|warn|info|critical|high|medium|low">…</span>
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auditron Code Quality Report — CrowdStrike Racing About</title>
+<style>
+  :root {
+    /* Medium contrast — comfortable, not stark. Text is readable but softened. */
+    --c-text:      #363c44;
+    --c-text-soft: #6b727c;
+    --c-bg:        #f5f7f9;
+    --c-card:      #ffffff;
+    --c-border:    #e4e8ec;
+    --c-accent:    #2563b0;
+
+    --c-good: #2f8a4e;  --c-good-bg: #edf6f0;
+    --c-avg:  #b26a00;  --c-avg-bg:  #fdf1de;
+    --c-poor: #c8443b;  --c-poor-bg: #fbe9e7;
+    --c-info: #2563b0;  --c-info-bg: #eaf0fa;
+
+    --radius: 10px;
+    --shadow: 0 1px 3px rgba(54,60,68,.07), 0 1px 2px rgba(54,60,68,.05);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px; line-height: 1.6; color: var(--c-text); background: var(--c-bg);
+  }
+  /* clickable gauge -> scrolls to its track section */
+  .gauge-link { text-decoration: none; color: inherit; display: block; cursor: pointer; }
+  .gauge-link .ring { transition: transform .12s ease; }
+  .gauge-link:hover .ring { transform: scale(1.05); }
+  .gauge-link:hover figcaption { text-decoration: underline; }
+  :target { scroll-margin-top: 16px; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 28px 20px 64px; }
+
+  /* Header */
+  header.report {
+    background: var(--c-card); border: 1px solid var(--c-border);
+    border-radius: var(--radius); box-shadow: var(--shadow); padding: 22px 26px; margin-bottom: 22px;
+  }
+  header.report .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--c-text-soft); font-weight: 700; }
+  header.report h1 { margin: 6px 0 14px; font-size: 25px; line-height: 1.25; }
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 14px;
+    padding: 7px 16px; border-radius: 999px; border: 1.5px solid;
+  }
+  .status-pill::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+  .status-pill.pass { color: var(--c-good); background: var(--c-good-bg); border-color: var(--c-good); }
+  .status-pill.fail { color: var(--c-poor); background: var(--c-poor-bg); border-color: var(--c-poor); }
+  .status-pill.warn { color: var(--c-avg);  background: var(--c-avg-bg);  border-color: var(--c-avg); }
+  .status-pill.info { color: var(--c-info); background: var(--c-info-bg); border-color: var(--c-info); }
+  .meta { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px 26px; font-size: 13px; color: var(--c-text-soft); }
+  .meta b { color: var(--c-text); font-weight: 600; }
+
+  /* Lighthouse-style score gauges */
+  .scorecard {
+    display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;
+    background: var(--c-card); border: 1px solid var(--c-border);
+    border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px 18px; margin-bottom: 22px;
+  }
+  .gauge { --val: 0; width: 128px; text-align: center; margin: 0; }
+  .gauge .ring {
+    width: 92px; height: 92px; border-radius: 50%; margin: 0 auto; display: grid; place-items: center; position: relative;
+    background: conic-gradient(var(--gc) calc(var(--val) * 1%), var(--rbg) 0);
+  }
+  .gauge .ring::before { content: ""; position: absolute; inset: 9px; border-radius: 50%; background: var(--c-card); }
+  .gauge .ring span { position: relative; font-size: 26px; font-weight: 800; color: var(--gc); }
+  .gauge figcaption { margin-top: 10px; font-size: 13px; font-weight: 600; }
+  .gauge.good { --gc: var(--c-good); --rbg: var(--c-good-bg); }
+  .gauge.avg  { --gc: var(--c-avg);  --rbg: var(--c-avg-bg); }
+  .gauge.poor { --gc: var(--c-poor); --rbg: var(--c-poor-bg); }
+
+  /* Cards / collapsible sections */
+  section.card, details.track {
+    background: var(--c-card); border: 1px solid var(--c-border);
+    border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 18px;
+    scroll-margin-top: 16px;
+  }
+  section.card { padding: 20px 24px; }
+  details.track > summary {
+    list-style: none; cursor: pointer; padding: 16px 24px; font-size: 17px; font-weight: 700;
+    display: flex; align-items: center; gap: 12px;
+  }
+  details.track > summary::-webkit-details-marker { display: none; }
+  details.track > summary::after { content: "\25be"; margin-left: auto; color: var(--c-text-soft); }
+  details.track[open] > summary::after { content: "\25b4"; }
+  details.track > summary:hover { background: var(--c-bg); border-radius: var(--radius); }
+  details.track > *:not(summary) { padding: 0 24px 20px; }
+  h2 { font-size: 20px; margin: 4px 0 14px; }
+  h3 { font-size: 16px; margin: 20px 0 8px; }
+
+  /* Badges & severity chips */
+  .badge, .chip {
+    display: inline-block; font-size: 12px; font-weight: 700; line-height: 1;
+    padding: 4px 9px; border-radius: 6px; white-space: nowrap; vertical-align: middle;
+  }
+  .badge.pass { background: var(--c-good-bg); color: var(--c-good); }
+  .badge.fail { background: var(--c-poor-bg); color: var(--c-poor); }
+  .badge.warn { background: var(--c-avg-bg);  color: var(--c-avg); }
+  .badge.info { background: var(--c-info-bg); color: var(--c-info); }
+  .chip.sev-critical { background: var(--c-poor); color: #fff; }
+  .chip.sev-high     { background: var(--c-poor-bg); color: var(--c-poor); border: 1px solid var(--c-poor); }
+  .chip.sev-medium   { background: var(--c-avg-bg);  color: var(--c-avg);  border: 1px solid var(--c-avg); }
+  .chip.sev-low      { background: var(--c-info-bg); color: var(--c-info); }
+  .chip.sev-info     { background: #eceff3; color: var(--c-text-soft); }
+
+  /* Tables */
+  table { border-collapse: collapse; width: 100%; margin: 10px 0 4px; font-size: 14px; }
+  thead th { text-align: left; background: var(--c-bg); color: var(--c-text); font-weight: 700; }
+  th, td { border: 1px solid var(--c-border); padding: 9px 12px; vertical-align: top; }
+  tbody tr:nth-child(even) td { background: #fafbfc; }
+
+  /* Finding card */
+  .finding {
+    border: 1px solid var(--c-border); border-left: 5px solid var(--c-text-soft);
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0; background: var(--c-card);
+  }
+  .finding.sev-critical, .finding.sev-high { border-left-color: var(--c-poor); }
+  .finding.sev-medium { border-left-color: var(--c-avg); }
+  .finding.sev-low, .finding.sev-info { border-left-color: var(--c-info); }
+  .finding h4 { margin: 0 0 10px; font-size: 15px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .finding dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 0; }
+  .finding dt { font-weight: 700; color: var(--c-text-soft); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; padding-top: 3px; }
+  .finding dd { margin: 0; }
+
+  /* Callouts */
+  .callout { border-radius: 8px; padding: 12px 16px; margin: 14px 0; border: 1px solid; border-left-width: 5px; }
+  .callout.pass { background: var(--c-good-bg); border-color: var(--c-good); }
+  .callout.fail { background: var(--c-poor-bg); border-color: var(--c-poor); }
+  .callout.warn { background: var(--c-avg-bg);  border-color: var(--c-avg); }
+  .callout.info { background: var(--c-info-bg); border-color: var(--c-info); }
+
+  /* Code / misc */
+  code { background: #eceff3; border: 1px solid #dde1e7; border-radius: 4px; padding: 1px 5px; font-family: "SF Mono", "Cascadia Code", Consolas, monospace; font-size: 12.5px; }
+  pre { background: #14181f; color: #e6e9ee; border-radius: 8px; padding: 14px 16px; overflow: auto; font-size: 12.5px; }
+  pre code { background: none; border: none; color: inherit; padding: 0; }
+  a { color: var(--c-accent); text-decoration: none; font-weight: 600; }
+  a:hover { text-decoration: underline; }
+  footer.report { color: var(--c-text-soft); font-size: 12px; text-align: center; margin-top: 26px; }
+  @media (max-width: 640px) { .gauge { width: 44%; } }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="report">
+      <div class="eyebrow">auditron &middot; Test — Code Quality</div>
+      <h1>Auditron Code Quality Report — CrowdStrike Racing About</h1>
+      <span class="status-pill fail">FAIL</span>
+      <div class="meta">
+        <span><b>Run</b> 2026-09-02T18-28Z-crowdstrike-racing-about</span>
+        <span><b>Generated</b> 2026-09-03T00:00:00Z</span>
+        <span><b>Source</b> code-quality-report.md</span>
+      </div>
+    </header>
+
+    <div class="scorecard"><a class="gauge-link" href="#cross-file"><figure class="gauge poor" style="--val:0"><div class="ring"><span>0</span></div><figcaption>Static review<small>1 high finding</small></figcaption></figure></a></div><section class="card"><h2>Verdict &amp; track matrix</h2><div class="callout fail">Review gate failed before Maven: <strong>AUD-HDR-001</strong> prevents the required active About navigation state. Maven budget remains <strong>0/2</strong>.</div><table class="matrix"><thead><tr><th>Track</th><th>Verdict</th><th>Detail</th></tr></thead><tbody><tr><td>Cross-file review</td><td><span class="badge fail">FAIL</span></td><td>One unaccepted high correctness finding</td></tr><tr><td>FileVault/XML/DAM</td><td><span class="badge pass">PASS</span></td><td>222 XML files parse; namespace/protected-property checks pass</td></tr><tr><td>Policy/template/content</td><td><span class="badge pass">PASS</span></td><td>Template mappings, explicit allowlists, numeric style IDs and DAM paths resolve statically</td></tr><tr><td>Playwright migration</td><td><span class="badge warn">WARN</span></td><td>Source/lockfile use Playwright; stale Cypress module coordinates remain in ui.tests/pom.xml</td></tr><tr><td>Build gate</td><td><span class="badge info">NOT RUN</span></td><td>Blocked by review gate; Maven 0/2</td></tr></tbody></table></section><section class="card"><h2>Findings &amp; routing</h2><table class="findings"><thead><tr><th>Sev</th><th>Track</th><th>Component</th><th>Finding</th><th>Route</th></tr></thead><tbody><tr><td><span class="chip sev-high">HIGH</span></td><td>Header correctness</td><td>SiteHeaderModel / site-header.html</td><td>Current-page comparison cannot match public navigation URLs</td><td>blockwright</td></tr><tr><td><span class="chip sev-medium">MEDIUM</span></td><td>Playwright migration</td><td>ui.tests/pom.xml</td><td>Cypress naming remains in Maven metadata</td><td>blockwright</td></tr><tr><td><span class="chip sev-medium">MEDIUM</span></td><td>SEO configuration</td><td>Externalizer</td><td>Publish-domain mapping is environment-owned</td><td>environment owner</td></tr><tr><td><span class="chip sev-low">LOW</span></td><td>Asset governance</td><td>DAM fixture manifest</td><td>Supplied image rights confirmation remains pending</td><td>content owner</td></tr></tbody></table></section><details class="track" open><summary>Detailed findings</summary><div><div class="finding sev-high"><h4><span class="chip sev-high">HIGH</span> AUD-HDR-001 — Current-page comparison cannot match public navigation URLs</h4><dl><dt>Issue</dt><dd>The model returns request.getRequestPath().getResourcePath() (the internal AEM resource path) while seeded URLs are public paths such as /about-us/. isCurrent strips only .html, so /about-us/ cannot equal /content/adlc-crowdstrike/us/en/about-us.</dd><dt>Evidence</dt><dd>SiteHeaderModel.java:29,56 and header master .content.xml public URL /about-us/; HTL consumes item.current and model.currentPath.</dd><dt>Cause</dt><dd>No resource mapping or public-path normalization occurs before equality comparison.</dd><dt>Recommended fix</dt><dd>Normalize both values into the same mapped public route (for example ResourceResolver.map(request, resourcePath) or a dedicated normalized request URL) and add unit tests for /about-us/, .html and the internal resource path.</dd><dt>Route</dt><dd>blockwright</dd><dt>Status</dt><dd>open — blocks Maven</dd></dl></div><div class="finding sev-medium"><h4><span class="chip sev-medium">MEDIUM</span> AUD-UI-001 — Cypress naming remains in Maven metadata</h4><dl><dt>Issue</dt><dd>The runner, Docker image, scripts and package lock use Playwright, but artifactId/name/description still state Cypress.</dd><dt>Evidence</dt><dd>ui.tests/pom.xml:28-31; no Cypress dependency or source remains under test-module.</dd><dt>Cause</dt><dd>Migration intentionally left POM unmodified.</dd><dt>Recommended fix</dt><dd>Rename only descriptive Maven coordinates/text if compatibility permits; otherwise document the compatibility exception in the UI harness evidence.</dd><dt>Route</dt><dd>blockwright</dd><dt>Status</dt><dd>non-blocking follow-up</dd></dl></div><div class="finding sev-medium"><h4><span class="chip sev-medium">MEDIUM</span> CFG-SEO-001 — Publish-domain mapping is environment-owned</h4><dl><dt>Issue</dt><dd>No source-backed publish hostname is available.</dd><dt>Evidence</dt><dd>configsmith handoff and security-review.md.</dd><dt>Cause</dt><dd>No approved Cloud Manager hostname.</dd><dt>Recommended fix</dt><dd>Configure the real publish/author domains and verify the Core Page canonical after deployment.</dd><dt>Route</dt><dd>environment owner</dd><dt>Status</dt><dd>non-blocking</dd></dl></div><div class="finding sev-low"><h4><span class="chip sev-low">LOW</span> CMP-ASSET-001 — Supplied image rights confirmation remains pending</h4><dl><dt>Issue</dt><dd>Use rights for supplied images and mirrored logo are owner-owned.</dd><dt>Evidence</dt><dd>composer handoff.</dd><dt>Cause</dt><dd>No rights confirmation was supplied.</dd><dt>Recommended fix</dt><dd>Obtain and record rights confirmation before production activation.</dd><dt>Route</dt><dd>content owner</dd><dt>Status</dt><dd>non-blocking</dd></dl></div></div></details><details class="track" id="cross-file" open><summary>Static evidence <span class="badge fail">FAIL</span></summary><div><p>Policy mappings resolve to declared Racing Page, container, Teaser and XF policies; each new editable context has an explicit allowlist. The numeric style IDs 20260902001–20260902006 and 20260902011–20260902013 resolve against seeded content.</p><p>The source inventory, authored page/XF content and DAM references were compared directly; no closed-loop expected-payload oracle was used. All seven DAM path entries exist, six PNG originals are packaged, five are visible and Falcon is explicitly unused.</p><p>Both dialogs use declared Granite resource types and model/multifield properties match. No administrative resolver, service resolver, plaintext secret, TODO or protected DAM JCR property was detected.</p><p>The review skill is unavailable in this workspace; its required checks were performed directly with XML parsing, static searches and contract comparison.</p></div></details>
+
+    <footer class="report">Generated by the ADLC auditron agent &middot; canonical source: code-quality-report.md</footer>
+  </div>
+  <script>
+    // Inline, standalone (no network). Clicking a gauge (or any in-page anchor)
+    // opens the target's collapsed <details> before the browser smooth-scrolls to it.
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        var el = document.querySelector(a.getAttribute('href'));
+        if (el) { var d = el.closest('details'); if (d) d.open = true; }
+      });
+    });
+  </script>
+</body>
+</html>

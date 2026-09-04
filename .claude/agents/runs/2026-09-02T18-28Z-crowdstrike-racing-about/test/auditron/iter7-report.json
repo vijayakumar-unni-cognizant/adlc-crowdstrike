@@ -1,0 +1,21 @@
+{
+  "name": "iter7-report",
+  "title": "Auditron Build Gate — Teaser and Navigation Remediation",
+  "agent": "auditron",
+  "stage": "Test — Build Gate",
+  "runId": "2026-09-02T18-28Z-crowdstrike-racing-about",
+  "timestamp": "2026-09-03T00:00:00Z",
+  "status": "FAIL",
+  "statusClass": "fail",
+  "summary": "The custom Teaser renderer and explicit active-navigation change are present on disk, but Maven build/deploy failed before packaging at BND manifest generation. No Author revalidation of these changes is valid.",
+  "matrix": [
+    {"track":"Source remediation presence","verdict":"PASS","class":"pass","detail":"Custom Teaser HTL and header active Boolean are on disk"},
+    {"track":"Build/deploy","verdict":"FAIL","class":"fail","detail":"bnd-maven-plugin Calc manifest failure at filters/package-info.class"},
+    {"track":"Author revalidation","verdict":"NOT RUN","class":"info","detail":"New sources were not deployed"},
+    {"track":"Publish","verdict":"WAIVED","class":"info","detail":"User waived local Publish"}
+  ],
+  "findings": [
+    {"id":"BLD-BND-001","sev":"high","track":"Build gate","component":"core bundle manifest generation","title":"BND manifest calculation fails before package/deploy","issue":"The build cannot produce a validated core bundle after the latest remediation.","evidence":"mvn clean install -PautoInstallSinglePackage exit=1; bnd-maven-plugin:bnd-process reports ‘Calc manifest failed’ at core/target/classes/com/adlccrowdstrike/aem/core/filters/package-info.class.","cause":"BND/package metadata must be diagnosed from the core bundle configuration and the affected package-info source; the Maven tail does not provide a narrower root cause.","recommendation":"Blockwright should inspect the affected package-info and BND export/import configuration, fix the manifest calculation, then request a new Auditron build/deploy before claiming Teaser or navigation remediation is deployed.","route":"blockwright","status":"open — release-blocking"}
+  ],
+  "sections": [{"title":"Unvalidated source changes","badge":"NOT DEPLOYED","badgeClass":"warn","open":true,"blocks":[{"p":"The new custom `teaser.html` directly renders title, jcr:description and fileReference, and header item2 has active=true. Their runtime behavior is not reported as pass because the build failed before deployment."}]}]
+}

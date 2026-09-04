@@ -1,0 +1,11 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates/clientlib.html"/>
+<article class="cmp-teaser">
+  <div class="cmp-teaser__image" data-sly-test="${properties.fileReference}">
+    <img src="${properties.fileReference @ context='uri'}" alt="${properties.imageAlt}" loading="${properties.imageLoading || 'lazy'}"/>
+  </div>
+  <div class="cmp-teaser__content">
+    <h1 data-sly-test="${properties.title && resource.name == 'about_us_hero'}" class="cmp-teaser__title">${properties.title}</h1>
+    <h2 data-sly-test="${properties.title && resource.name != 'about_us_hero'}" class="cmp-teaser__title">${properties.title}</h2>
+    <div data-sly-test="${properties['jcr:description']}" class="cmp-teaser__description">${properties['jcr:description'] @ context='html'}</div>
+  </div>
+</article>

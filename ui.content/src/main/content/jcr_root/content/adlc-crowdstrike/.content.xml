@@ -2,7 +2,7 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:allowedTemplates="[/conf/adlc-crowdstrike/settings/wcm/templates/(?!xf-).*]"
+        cq:allowedTemplates="[/conf/adlc-crowdstrike/settings/wcm/templates/(?!xf-).*,/conf/adlc-crowdstrike/settings/wcm/templates/racing-page$]"
         cq:conf="/conf/adlc-crowdstrike"
         cq:redirectTarget="/content/adlc-crowdstrike/us/en"
         cq:template="/conf/adlc-crowdstrike/settings/wcm/templates/page-content"

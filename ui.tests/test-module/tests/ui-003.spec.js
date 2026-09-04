@@ -1,0 +1,1 @@
+const { test, expect } = require('@playwright/test'); const { open } = require('./helpers'); test('UI-003 mobile navigation', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await page.setViewportSize({ width: 390, height: 844 }); await open(page); await expect(page.locator('.cmp-site-header__menu-toggle')).toBeVisible(); });

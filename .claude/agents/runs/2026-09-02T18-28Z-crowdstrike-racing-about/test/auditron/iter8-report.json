@@ -1,0 +1,20 @@
+{
+  "name": "iter8-report",
+  "title": "Auditron Final Author-Only Validation — CrowdStrike Racing About",
+  "agent": "auditron",
+  "stage": "Test — Author Local Gate",
+  "runId": "2026-09-02T18-28Z-crowdstrike-racing-about",
+  "timestamp": "2026-09-03T00:00:00Z",
+  "status": "PASS (Author-only; Publish waived)",
+  "statusClass": "pass",
+  "summary": "The clean redeploy and Author-only gate pass. Core bundle is Active, 8 unit tests pass, custom header/footer render without exception, all five intended headings and editorial copy render, and the internal About link has `aria-current=page`. Publish validation is explicitly waived.",
+  "matrix": [
+    {"track":"Core bundle","verdict":"PASS","class":"pass","detail":"Bundle 653 Active"},
+    {"track":"Build/package evidence","verdict":"PASS","class":"pass","detail":"All-package ZIP 7,661,580 bytes rebuilt; 8 Surefire tests, 0 failures/errors"},
+    {"track":"Author content hierarchy","verdict":"PASS","class":"pass","detail":"1 H1, intended hero plus 4 editorial H2s, required editorial copy present"},
+    {"track":"Header/footer / XF","verdict":"PASS","class":"pass","detail":"Custom chrome renders; no exceptions; About active state renders"},
+    {"track":"Local integration","verdict":"PASS","class":"pass","detail":"Prior local profile evidence: 5 Failsafe tests, 0 failures/errors"},
+    {"track":"Publish","verdict":"WAIVED","class":"info","detail":"User explicitly waived local Publish validation"}
+  ],
+  "sections": [{"title":"Live Author evidence","badge":"PASS","badgeClass":"pass","open":true,"blocks":[{"table":{"head":["Probe","Observed result"],"rows":[["About endpoint","HTTP 200; zero render exceptions"],["Core bundle 653","Active"],["Header/footer","15 / 18 matching DOM occurrences"],["Heading hierarchy","1 H1 and 6 H2 (four editorial plus footer headings)"],["Required editorial headings","All four present"],["Required body copy","Performance under pressure present"],["Active About navigation","1 aria-current=page; current-link class present"],["Header/footer XF endpoints","HTTP 200 and expected custom DOM"]]}},{"callout":{"class":"info","text":"This is an Author-local pass only. Publish/Dispatcher/CDN and real-tier NFR testing remain waived/deferred, not validated by this report."}}]}]
+}

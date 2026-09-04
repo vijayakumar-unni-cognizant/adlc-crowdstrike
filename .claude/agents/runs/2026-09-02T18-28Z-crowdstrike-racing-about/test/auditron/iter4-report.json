@@ -1,0 +1,22 @@
+{
+  "name": "iter4-report",
+  "title": "Auditron Extended Local SDK Validation — CrowdStrike Racing About",
+  "agent": "auditron",
+  "stage": "Test — Extended Build and Integration Validation",
+  "runId": "2026-09-02T18-28Z-crowdstrike-racing-about",
+  "timestamp": "2026-09-03T00:00:00Z",
+  "status": "FAIL",
+  "statusClass": "fail",
+  "summary": "Human-authorized extension consumed two additional Maven calls. Package/unit and integration reports pass, but live Author rendering fails because the core bundle is **Installed**, not Active; HTL cannot resolve the custom header/footer Sling Models.",
+  "matrix": [
+    {"track":"Extended Build #3","verdict":"PARTIAL PASS","class":"warn","detail":"All-package ZIP 7,661,144 bytes; 8 Surefire tests pass; captured process exit/log unavailable"},
+    {"track":"Extended Integration #4","verdict":"PASS","class":"pass","detail":"Failsafe 5 tests, 0 failures/errors using local profile"},
+    {"track":"Author live render","verdict":"FAIL","class":"fail","detail":"HTTP 200 but zero custom header/footer DOM nodes; HTL model-resolution exception"},
+    {"track":"Publish live render","verdict":"NOT AVAILABLE","class":"warn","detail":"http://localhost:4503 unreachable"}
+  ],
+  "findings": [
+    {"id":"LCL-OSGI-001","sev":"high","track":"Local SDK render","component":"adlc-crowdstrike.core bundle / site header and footer","title":"Core bundle is Installed rather than Active, preventing custom chrome rendering","issue":"The Author page includes both XF wrappers but neither custom header nor footer renders. Each XF contains an HTL compilation exception resolving SiteHeaderModel/SiteFooterModel.","evidence":"Author bundles.json reports bundle 653 ‘ADLC Crowdstrike - Core’ state Installed. GET About page: header=0, footer=0, and exception ‘SiteHeaderModel cannot be resolved to a type’.","cause":"The application bundle has unresolved runtime activation/dependency state; package creation and unit tests do not prove OSGi activation.","recommendation":"Inspect bundle 653’s unresolved imports/activation diagnostics, correct the core bundle manifest/dependency issue, deploy, and verify the bundle is Active plus one rendered header/footer on Author and Publish.","route":"blockwright","status":"open — release-blocking"},
+    {"id":"LCL-PUB-001","sev":"medium","track":"Local SDK availability","component":"Publish tier","title":"Local Publish endpoint is unavailable","issue":"Publish route validation could not run.","evidence":"GET http://localhost:4503/content/adlc-crowdstrike/us/en/about-us.html failed to connect.","cause":"No local Publish process is listening on 4503.","recommendation":"Start/configure local Publish before rerunning tier-specific validation.","route":"environment owner","status":"open"}
+  ],
+  "sections": [{"title":"Verified test evidence","badge":"MIXED","badgeClass":"warn","open":true,"blocks":[{"table":{"head":["Evidence","Observed result"],"rows":[["Surefire","8 tests, 0 failures, 0 errors"],["Failsafe local profile","5 tests, 0 failures, 0 errors"],["Author page","HTTP 200; 1 H1; 0 custom header/footer nodes"],["Core bundle","ID 653, state Installed"],["Publish page","unreachable on localhost:4503"]]}},{"callout":{"class":"fail","text":"The passing generic integration suite does not override the direct rendered-page failure. This run is not promotable."}}]}]
+}

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<!--
+  ADLC Token & Cost Report — Template
+  Standalone: all CSS inline, no external fonts / scripts / images, no network deps.
+  Works from a file path, as an email attachment, or printed to PDF.
+
+  Placeholders the Program Agent substitutes at session close (from tokens.json):
+    {{RUN_ID}}              2026-06-29T18-09Z-feature-slug
+    {{FEATURE_SLUG}}        feature-slug
+    {{RUN_STATUS}}          PASS | FAIL | PAUSED
+    {{RUN_STATUS_CLASS}}    pass | fail | warn
+    {{GENERATED_AT}}        2026-06-29T19:20:00Z
+    {{TOTAL_COST_FMT}}      $3.42
+    {{TOTAL_TOKENS_FMT}}    284,512
+    {{TOTAL_TOKENS_RAW}}    284512   (unformatted, for the total-row)
+    {{WALL_CLOCK_FMT}}      47 min 12 s
+    {{AGENT_COUNT_FMT}}     9 / 10
+
+  Block placeholders — the Program Agent emits one HTML fragment per item:
+    {{TOKEN_BREAKDOWN_ROWS}}   <tr> rows for the token breakdown table (5 category rows)
+    {{COST_BAR_ROWS}}          <div class="bar-row"> blocks, sorted descending by cost
+    {{AGENT_DETAIL_ROWS}}      <tr> rows for the per-agent detail table (10 rows)
+    {{PRICING_REF_ROWS}}       <tr> rows for the pricing reference table (3 rows)
+
+  ── TOKEN BREAKDOWN ROW example ──────────────────────────────────────────────
+  <tr>
+    <td><span class="tok-input">Input</span></td>
+    <td class="num">142,312</td>
+    <td class="num">50.1%</td>
+    <td class="num">$0.43</td>
+    <td class="num">12.6%</td>
+  </tr>
+  Category spans: tok-input | tok-output | tok-cr | tok-cw5 | tok-cw1
+
+  ── COST BAR ROW example ─────────────────────────────────────────────────────
+  <div class="bar-row">
+    <div class="bar-agent">blockwright</div>
+    <div class="bar-track"><div class="bar-fill" style="width:53.2%"></div></div>
+    <div class="bar-meta">$1.82 · 53.2%</div>
+  </div>
+  bar-fill modifier classes: (none = sonnet-4-6) | opus | haiku
+
+  ── AGENT DETAIL ROW example ─────────────────────────────────────────────────
+  <tr>
+    <td><strong>blockwright</strong></td>
+    <td><code>sonnet-4-6</code></td>
+    <td>implement</td>
+    <td><span class="badge pass">pass</span></td>
+    <td class="num">62,400</td>
+    <td class="num">34,200</td>
+    <td class="num">21,000</td>
+    <td class="num">3,100</td>
+    <td class="num">0</td>
+    <td class="num">$1.82</td>
+    <td class="num">22 min</td>
+    <td>
+      <span class="skill-tag">create-component</span>
+      <span class="skill-tag">create-editable-template</span>
+    </td>
+  </tr>
+  Use — for null duration. For auditron append mvn count inside the Duration cell:
+    <td class="num">14 min <span class="mvn-badge">2 mvn</span></td>
+  For measurement_gap, add ¹ superscript and explain below table.
+
+  ── PRICING REF ROW example ──────────────────────────────────────────────────
+  <tr>
+    <td><code>claude-opus-4-7</code> <span class="badge warn">Strategist</span></td>
+    <td class="num">$5.00</td>
+    <td class="num">$25.00</td>
+    <td class="num">$0.50</td>
+    <td class="num">$6.25</td>
+    <td class="num">$10.00</td>
+  </tr>
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token &amp; Cost Report &middot; {{FEATURE_SLUG}} &middot; {{RUN_ID}}</title>
+<style>
+  :root {
+    --c-text:      #363c44;
+    --c-text-soft: #6b727c;
+    --c-bg:        #f5f7f9;
+    --c-card:      #ffffff;
+    --c-border:    #e4e8ec;
+    --c-accent:    #2563b0;
+
+    --c-good:    #2f8a4e;  --c-good-bg: #edf6f0;
+    --c-avg:     #b26a00;  --c-avg-bg:  #fdf1de;
+    --c-poor:    #c8443b;  --c-poor-bg: #fbe9e7;
+    --c-info:    #2563b0;  --c-info-bg: #eaf0fa;
+
+    --c-opus:    #6d28d9;
+    --c-haiku:   #0891b2;
+
+    --radius: 10px;
+    --shadow: 0 1px 3px rgba(54,60,68,.07), 0 1px 2px rgba(54,60,68,.05);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px; line-height: 1.6; color: var(--c-text); background: var(--c-bg);
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 20px 64px; }
+
+  /* ── Header ── */
+  header.report {
+    background: var(--c-card); border: 1px solid var(--c-border);
+    border-radius: var(--radius); box-shadow: var(--shadow); padding: 22px 26px; margin-bottom: 22px;
+  }
+  header.report .eyebrow {
+    font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--c-text-soft); font-weight: 700;
+  }
+  header.report h1 { margin: 6px 0 14px; font-size: 24px; line-height: 1.25; }
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-weight: 800; font-size: 14px; padding: 7px 16px; border-radius: 999px; border: 1.5px solid;
+  }
+  .status-pill::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+  .status-pill.pass { color: var(--c-good); background: var(--c-good-bg); border-color: var(--c-good); }
+  .status-pill.fail { color: var(--c-poor); background: var(--c-poor-bg); border-color: var(--c-poor); }
+  .status-pill.warn { color: var(--c-avg);  background: var(--c-avg-bg);  border-color: var(--c-avg); }
+  .meta { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px 26px; font-size: 13px; color: var(--c-text-soft); }
+  .meta b { color: var(--c-text); font-weight: 600; }
+
+  /* ── Stat cards ── */
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px; margin-bottom: 22px;
+  }
+  .stat-card {
+    background: var(--c-card); border: 1px solid var(--c-border);
+    border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px 22px;
+  }
+  .stat-card .stat-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; color: var(--c-text-soft); margin-bottom: 6px;
+  }
+  .stat-card .stat-value { font-size: 30px; font-weight: 800; color: var(--c-text); line-height: 1.1; }
+  .stat-card .stat-sub { font-size: 12px; color: var(--c-text-soft); margin-top: 5px; }
+
+  /* ── Section cards + collapsible tracks ── */
+  section.card {
+    background: var(--c-card); border: 1px solid var(--c-border);
+    border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 18px; padding: 20px 24px;
+  }
+  details.track {
+    background: var(--c-card); border: 1px solid var(--c-border);
+    border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 18px; scroll-margin-top: 16px;
+  }
+  details.track > summary {
+    list-style: none; cursor: pointer; padding: 16px 24px; font-size: 17px; font-weight: 700;
+    display: flex; align-items: center; gap: 12px;
+  }
+  details.track > summary::-webkit-details-marker { display: none; }
+  details.track > summary::after { content: "\25be"; margin-left: auto; color: var(--c-text-soft); }
+  details.track[open] > summary::after { content: "\25b4"; }
+  details.track > *:not(summary) { padding: 0 24px 20px; }
+
+  h2 { font-size: 18px; margin: 0 0 14px; font-weight: 700; }
+  h3 { font-size: 14px; margin: 18px 0 8px; font-weight: 700; color: var(--c-text-soft); text-transform: uppercase; letter-spacing: .05em; }
+
+  /* ── Badges ── */
+  .badge {
+    display: inline-block; font-size: 12px; font-weight: 700; line-height: 1;
+    padding: 4px 9px; border-radius: 6px; white-space: nowrap; vertical-align: middle;
+  }
+  .badge.pass    { background: var(--c-good-bg); color: var(--c-good); }
+  .badge.fail    { background: var(--c-poor-bg); color: var(--c-poor); }
+  .badge.warn    { background: var(--c-avg-bg);  color: var(--c-avg); }
+  .badge.info    { background: var(--c-info-bg); color: var(--c-info); }
+  .badge.skipped { background: #eceff3;          color: var(--c-text-soft); }
+
+  /* ── Tables ── */
+  .overflow-x { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 13.5px; }
+  thead th {
+    text-align: left; background: var(--c-bg); color: var(--c-text);
+    font-weight: 700; padding: 9px 12px; border: 1px solid var(--c-border);
+  }
+  td { border: 1px solid var(--c-border); padding: 9px 12px; vertical-align: middle; }
+  tbody tr:nth-child(even) td { background: #fafbfc; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .total-row td { font-weight: 700; background: var(--c-bg) !important; border-top: 2px solid var(--c-border); }
+
+  /* ── Token category labels ── */
+  .tok-input  { color: var(--c-accent); font-weight: 700; }
+  .tok-output { color: var(--c-opus);   font-weight: 700; }
+  .tok-cr     { color: var(--c-good);   font-weight: 700; }
+  .tok-cw5    { color: var(--c-avg);    font-weight: 700; }
+  .tok-cw1    { color: #c2410c;         font-weight: 700; }
+
+  /* ── Cost bar chart ── */
+  .cost-bars { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .bar-row { display: grid; grid-template-columns: 130px 1fr 100px; gap: 10px; align-items: center; }
+  .bar-agent { font-size: 13px; font-weight: 600; text-align: right; color: var(--c-text); white-space: nowrap; }
+  .bar-track {
+    background: var(--c-bg); border-radius: 4px; height: 22px;
+    border: 1px solid var(--c-border); overflow: hidden;
+  }
+  .bar-fill { height: 100%; background: var(--c-accent); border-radius: 3px; min-width: 3px; }
+  .bar-fill.opus  { background: var(--c-opus); }
+  .bar-fill.haiku { background: var(--c-haiku); }
+  .bar-meta { font-size: 12px; color: var(--c-text-soft); white-space: nowrap; }
+  .bar-legend { display: flex; gap: 14px; font-size: 12px; color: var(--c-text-soft); margin-bottom: 14px; flex-wrap: wrap; }
+  .bar-legend span { display: flex; align-items: center; gap: 5px; }
+  .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; }
+
+  /* ── Skill tags ── */
+  .skill-tag {
+    display: inline-block; font-size: 11px; background: var(--c-info-bg); color: var(--c-info);
+    border-radius: 4px; padding: 1px 6px; margin: 1px; font-weight: 600; white-space: nowrap;
+  }
+  .mvn-badge {
+    font-size: 11px; background: var(--c-avg-bg); color: var(--c-avg);
+    border-radius: 4px; padding: 1px 5px; font-weight: 700; margin-left: 4px;
+  }
+
+  /* ── Callouts ── */
+  .callout {
+    border-radius: 8px; padding: 12px 16px; margin: 14px 0;
+    border: 1px solid; border-left-width: 5px;
+  }
+  .callout.pass { background: var(--c-good-bg); border-color: var(--c-good); }
+  .callout.fail { background: var(--c-poor-bg); border-color: var(--c-poor); }
+  .callout.warn { background: var(--c-avg-bg);  border-color: var(--c-avg); }
+  .callout.info { background: var(--c-info-bg); border-color: var(--c-info); }
+  .callout p { margin: 4px 0; font-size: 13.5px; }
+
+  /* ── Code ── */
+  code {
+    background: #eceff3; border: 1px solid #dde1e7; border-radius: 4px;
+    padding: 1px 5px; font-family: "SF Mono","Cascadia Code",Consolas,monospace; font-size: 12px;
+  }
+  a { color: var(--c-accent); text-decoration: none; font-weight: 600; }
+  a:hover { text-decoration: underline; }
+
+  /* ── Footer ── */
+  footer.report { color: var(--c-text-soft); font-size: 12px; text-align: center; margin-top: 26px; }
+
+  /* ── Print ── */
+  @media print {
+    body { background: #fff; }
+    .wrap { max-width: none; padding: 0 12mm; }
+    h2, h3 { page-break-after: avoid; }
+    table, .callout, .stat-card { page-break-inside: avoid; }
+    details.track { display: block; }
+    details.track > summary::after { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .bar-row { grid-template-columns: 90px 1fr 72px; }
+    .stat-card .stat-value { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ═══ HEADER ═══════════════════════════════════════════════════════════════ -->
+  <header class="report">
+    <div class="eyebrow">program-agent &middot; orchestration</div>
+    <h1>Token &amp; Cost Report &mdash; {{FEATURE_SLUG}}</h1>
+    <span class="status-pill {{RUN_STATUS_CLASS}}">{{RUN_STATUS}}</span>
+    <div class="meta">
+      <span><b>Run</b> {{RUN_ID}}</span>
+      <span><b>Generated</b> {{GENERATED_AT}}</span>
+      <span><b>Source</b> reports/tokens.json</span>
+    </div>
+  </header>
+
+  <!-- ═══ SUMMARY STAT CARDS ═══════════════════════════════════════════════════ -->
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-label">Total Cost</div>
+      <div class="stat-value">{{TOTAL_COST_FMT}}</div>
+      <div class="stat-sub">USD &mdash; all agents combined</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Total Tokens</div>
+      <div class="stat-value">{{TOTAL_TOKENS_FMT}}</div>
+      <div class="stat-sub">input + output + cache read/write</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Wall-clock Duration</div>
+      <div class="stat-value">{{WALL_CLOCK_FMT}}</div>
+      <div class="stat-sub">run start &rarr; terminal state</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Agents Run</div>
+      <div class="stat-value">{{AGENT_COUNT_FMT}}</div>
+      <div class="stat-sub">of 10 (9 specialists + orchestrator)</div>
+    </div>
+  </div>
+
+  <!-- ═══ TOKEN & COST BREAKDOWN TABLE ════════════════════════════════════════ -->
+  <section class="card">
+    <h2>Token &amp; Cost Breakdown</h2>
+    <div class="overflow-x">
+      <table>
+        <thead>
+          <tr>
+            <th>Token Category</th>
+            <th class="num">Tokens</th>
+            <th class="num">% of Total Tokens</th>
+            <th class="num">Cost (USD)</th>
+            <th class="num">% of Total Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{TOKEN_BREAKDOWN_ROWS}}
+          <tr class="total-row">
+            <td>Total</td>
+            <td class="num">{{TOTAL_TOKENS_RAW}}</td>
+            <td class="num">100%</td>
+            <td class="num">{{TOTAL_COST_FMT}}</td>
+            <td class="num">100%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout info" style="margin-top:16px;">
+      <p><strong>Cost formula:</strong>
+        <code>cost = (input &times; input_rate + output &times; output_rate + cache_read &times; cache_read_rate + cache_write_5m &times; cache_write_5m_rate + cache_write_1h &times; cache_write_1h_rate) / 1,000,000</code>
+      </p>
+      <p>Rates from <code>tokens.json .pricing_ref</code>.
+        Cache reads cost 10% of base input — a 90% saving vs fresh input.
+        Cache writes (5 min) add 25% overhead per token, recovered after one subsequent read.
+        The 1-hour tier doubles the write cost but is not the default in ADLC runs.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ COST DISTRIBUTION (CSS-only horizontal bar chart) ═══════════════════ -->
+  <section class="card">
+    <h2>Cost Distribution by Agent</h2>
+    <div class="bar-legend">
+      <span><span class="swatch" style="background:var(--c-accent)"></span> claude-sonnet-4-6 (8 specialists)</span>
+      <span><span class="swatch" style="background:var(--c-opus)"></span> claude-opus-4-7 (strategist)</span>
+      <span><span class="swatch" style="background:var(--c-haiku)"></span> claude-haiku-4-5 (pilot)</span>
+    </div>
+    <div class="cost-bars">
+      {{COST_BAR_ROWS}}
+    </div>
+    <p style="font-size:12px;color:var(--c-text-soft);margin-top:12px;">
+      Bar width = agent share of <code>total_cost_usd</code>. Sorted descending. Agents not dispatched this run are omitted.
+    </p>
+  </section>
+
+  <!-- ═══ PER-AGENT DETAIL TABLE ═══════════════════════════════════════════════ -->
+  <details class="track" open>
+    <summary>Per-Agent Detail <span class="badge info">{{AGENT_COUNT_FMT}} agents</span></summary>
+    <div class="overflow-x">
+      <table>
+        <thead>
+          <tr>
+            <th>Agent</th>
+            <th>Model</th>
+            <th>Stage</th>
+            <th>Status</th>
+            <th class="num">Input</th>
+            <th class="num">Output</th>
+            <th class="num">Cache Read</th>
+            <th class="num">Cache Write 5m</th>
+            <th class="num">Cache Write 1h</th>
+            <th class="num">Cost (USD)</th>
+            <th class="num">Duration</th>
+            <th>Skills Invoked</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{AGENT_DETAIL_ROWS}}
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--c-text-soft);margin-top:10px;">
+      &sup1;&nbsp;Where <code>measurement_gap</code> is non-null in <code>tokens.json</code>, the value could not be measured from harness telemetry.
+      Per §10.3 rule: §10.2 planning estimates are <em>never</em> substituted for actuals.
+      Auditron <span class="mvn-badge">N mvn</span> shows Maven invocations vs the 2-call budget.
+    </p>
+  </details>
+
+  <!-- ═══ PRICING REFERENCE ════════════════════════════════════════════════════ -->
+  <details class="track">
+    <summary>Pricing Snapshot <span class="badge info">rates used for this run</span></summary>
+    <p style="font-size:13px;color:var(--c-text-soft);margin-top:4px;">
+      Recorded in <code>tokens.json .pricing_ref</code> at run time.
+      Authoritative source: <a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener">platform.claude.com/docs/…/pricing</a>.
+    </p>
+    <div class="overflow-x">
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th class="num">Input ($/M)</th>
+            <th class="num">Output ($/M)</th>
+            <th class="num">Cache Read ($/M)</th>
+            <th class="num">Cache Write 5m ($/M)</th>
+            <th class="num">Cache Write 1h ($/M)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{PRICING_REF_ROWS}}
+        </tbody>
+      </table>
+    </div>
+    <div class="callout warn" style="margin-top:14px;">
+      <p><strong>Tokenizer note:</strong> <code>claude-opus-4-7</code> and later Opus models use a newer tokenizer producing ~30% more tokens for the same text compared to <code>claude-sonnet-4-6</code>. Token counts in this report are actuals from harness telemetry — not estimates.</p>
+    </div>
+  </details>
+
+  <footer class="report">
+    Generated by the ADLC <strong>program-agent</strong> at session close &middot;
+    canonical source: <code>reports/tokens.json</code> &middot;
+    template: <code>.claude/agents/references/tokens-report-template.html</code> &middot;
+    run <code>{{RUN_ID}}</code>
+  </footer>
+
+</div>
+<script>
+  // Standalone (no network). Clicking any in-page anchor opens collapsed <details> before scroll.
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function() {
+      var el = document.querySelector(a.getAttribute('href'));
+      if (el) { var d = el.closest('details'); if (d) d.open = true; }
+    });
+  });
+</script>
+</body>
+</html>

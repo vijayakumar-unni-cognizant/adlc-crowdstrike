@@ -1,0 +1,1 @@
+const { test, expect } = require('@playwright/test'); const { open, oneH1 } = require('./helpers'); test('UI-001 desktop page hierarchy', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); await oneH1(page); await expect(page.locator('.cmp-site-header, .cmp-teaser, .cmp-site-footer')).toHaveCount(6); });

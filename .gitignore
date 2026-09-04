@@ -106,6 +106,8 @@ reports/
 dispatcher/src/conf.d/variables/default.vars
 
 # Agents
-.claude
-.codex
-.github
+# .claude/agents/*
+# !.claude/agents/runs/
+# .claude/skills/
+# .codex
+# .github

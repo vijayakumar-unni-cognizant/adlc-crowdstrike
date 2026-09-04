@@ -1,7 +1,7 @@
 
 //== Font
 
-$font-family:           "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family:           Arial, Helvetica, sans-serif;
 $font-size:             16px;
 $font-height:           1.5;
 
@@ -16,3 +16,15 @@ $color-link:            #2020E0;
 $color-foreground-dark: invert($color-foreground);
 $color-background-dark: invert($color-background);
 $color-link-dark:       invert($color-link);
+
+// CrowdStrike Racing design tokens
+$racing-black: #000;
+$racing-charcoal: #151515;
+$racing-white: #fff;
+$racing-ink: #171717;
+$racing-light: #f4f4f4;
+$racing-red: #e01b2f;
+$racing-display: "Arial Narrow", Arial, Helvetica, sans-serif;
+$racing-gutter-phone: 20px;
+$racing-gutter-tablet: 32px;
+$racing-gutter-desktop: 64px;

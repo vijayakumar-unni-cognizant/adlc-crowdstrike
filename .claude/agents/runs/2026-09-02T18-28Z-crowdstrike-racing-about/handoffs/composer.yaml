@@ -1,0 +1,67 @@
+agent: composer
+stage: Integrate
+status: complete-with-runtime-validation-pending
+project:
+  slug: adlc-crowdstrike
+  source: Maven POM fallback because .aem-skills-config.yaml is absent
+scope:
+  pattern: server-rendered Sites content seeding
+  graphql_or_content_fragments: not-introduced
+content:
+  page: /content/adlc-crowdstrike/us/en/about-us
+  template: /conf/adlc-crowdstrike/settings/wcm/templates/racing-page
+  page_components:
+    teaser_count: 5
+    header_overrides: 0
+    footer_overrides: 0
+  experience_fragments:
+    header: /content/experience-fragments/adlc-crowdstrike/us/en/site/header/master
+    footer: /content/experience-fragments/adlc-crowdstrike/us/en/site/footer/master
+    header_component_count: 1
+    footer_component_count: 1
+  source_fidelity:
+    canonical_inventory: design/source-content-inventory.md
+    source_fields_authored_verbatim: true
+    source_order_preserved: true
+    invented_copy: only inventory-marked accessibility and metadata fields
+assets:
+  manifest: integrate/composer/dam-fixture-manifest.yaml
+  local_png_count: 6
+  visible_page_asset_count: 5
+  intentionally_unused:
+    - /content/dam/adlc-crowdstrike/racing/about-us/falcon-2.png
+  all_png_hashes_and_dimensions_verified: true
+  all_raster_metadata_has_intrinsic_dimensions: true
+  binaries_packaged: true
+  remote_runtime_assets: false
+references:
+  template_resolves: true
+  component_resource_types_resolve: true
+  dam_references_resolve: true
+  numeric_style_ids:
+    hero: [20260902001]
+    section1: [20260902002, 20260902003, 20260902005]
+    section2: [20260902002, 20260902004, 20260902006]
+    section3: [20260902002, 20260902003, 20260902005]
+    section4: [20260902002, 20260902004, 20260902006]
+  cq_styleids_resolve_to_policy_styleids: true
+self_verification:
+  xml_parses: true
+  parent_content_paths_are_cq_pages: true
+  editable_depth_matches_template: true
+  exactly_one_h1_by_policy_context: true
+  no_page_level_xf_overrides: true
+  no_placeholders_or_guessed_urls: true
+  package_filter_has_update_capable_merge_coverage: true
+gaps:
+  - Five legal-link hrefs are not source-verifiable; legalLinks omitted pending approved live verification.
+  - Icon-only social destination hrefs are not source-verifiable; socialLinks omitted pending approved live verification.
+  - Owner rights confirmation is pending for supplied images and mirrored live logo.
+runtime_validation_pending:
+  - Package deploy/read-back for the page, Experience Fragments, DAM binaries, and metadata.
+  - GET /content/adlc-crowdstrike/us/en/about-us.html returns HTTP 200 and renders expected DOM.
+  - Responsive and image-loading behavior on Author and Publish.
+next_actions:
+  - Auditron: validate package structure and static content contracts without consuming Composer Maven budget.
+  - Pilot: smoke /content/adlc-crowdstrike/us/en/about-us.html after deployment.
+  - Content owner: approve and provide verified legal/social destinations before production activation.

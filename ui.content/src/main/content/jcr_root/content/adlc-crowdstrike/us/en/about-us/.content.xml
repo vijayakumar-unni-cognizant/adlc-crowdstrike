@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:primaryType="cq:PageContent"
+        jcr:title="About Us"
+        pageTitle="About Us | CrowdStrike Racing"
+        description="Learn how CrowdStrike Racing brings speed, resilience and teamwork together on the track and in cybersecurity."
+        canonicalUrl="https://crowdstrikeracing.com/about-us/"
+        ogTitle="About Us | CrowdStrike Racing"
+        ogDescription="Learn how CrowdStrike Racing brings speed, resilience and teamwork together on the track and in cybersecurity."
+        ogUrl="https://crowdstrikeracing.com/about-us/"
+        ogImage="/content/dam/adlc-crowdstrike/racing/about-us/about-us-hero-interior.png"
+        cq:template="/conf/adlc-crowdstrike/settings/wcm/templates/racing-page"
+        sling:resourceType="adlc-crowdstrike/components/page">
+        <root jcr:primaryType="nt:unstructured" sling:resourceType="adlc-crowdstrike/components/container" layout="responsiveGrid">
+            <container jcr:primaryType="nt:unstructured" sling:resourceType="adlc-crowdstrike/components/container">
+                <hero jcr:primaryType="nt:unstructured" sling:resourceType="adlc-crowdstrike/components/container" layout="responsiveGrid" cq:styleIds="[20260902011]">
+                    <about_us_hero jcr:primaryType="nt:unstructured" sling:resourceType="adlc-crowdstrike/components/teaser" title="About Us" fileReference="/content/dam/adlc-crowdstrike/racing/about-us/about-us-hero-interior.png" imageAlt="CrowdStrike Racing drivers celebrating together after a win" altValueFromDAM="{Boolean}false" imageLoading="eager" fetchPriority="high" cq:styleIds="[20260902001]"/>
+                </hero>
+                <container jcr:primaryType="nt:unstructured" sling:resourceType="adlc-crowdstrike/components/container" layout="responsiveGrid" cq:styleIds="[20260902012]">
+                    <we_stop_breaches jcr:primaryType="nt:unstructured" sling:resourceType="adlc-crowdstrike/components/teaser" title="We Stop Breaches" jcr:description="&lt;p>CrowdStrike has redefined modern security with the industryâ€™s most advanced agentic security platform, unifying protection across endpoints, cloud workloads, identity, and data. The CrowdStrike Falcon Platform brings AI-driven automation and real-time intelligence to the SOC, combining human expertise with machine-speed action to stop breaches and protect the people, organizations, and technologies shaping the future.&lt;/p>" textIsRich="{Boolean}true" fileReference="/content/dam/adlc-crowdstrike/racing/about-us/we-stop-breaches.png" imageAlt="No. 04 CrowdStrike prototype racing at speed" altValueFromDAM="{Boolean}false" imageLoading="lazy" actionsEnabled="{Boolean}true" cq:styleIds="[20260902002,20260902003,20260902005]"><actions jcr:primaryType="nt:unstructured"><item0 jcr:primaryType="nt:unstructured" text="Learn more about CrowdStrike" link="https://www.crowdstrike.com/"/></actions></we_stop_breaches>
+                    <why_we_race jcr:primaryType="nt:unstructured" sling:resourceType="adlc-crowdstrike/components/teaser" title="Why We Race" jcr:description="&lt;p>Performance under pressure defines both cybersecurity and world-class racing. Speed, agility, and resilience are critical when staying ahead of rapidly-evolving threats, on and off the track.&lt;/p>&lt;p>CrowdStrike, in partnership with AWS, convenes C-level cybersecurity leaders at premier race weekends around the world to explore how operational excellence and teamwork drive sustained performance in high-stakes environments.&lt;/p>" textIsRich="{Boolean}true" fileReference="/content/dam/adlc-crowdstrike/racing/about-us/why-we-race.png" imageAlt="CrowdStrike Racing crew performing a nighttime pit stop on the No. 04 car" altValueFromDAM="{Boolean}false" imageLoading="lazy" cq:styleIds="[20260902002,20260902004,20260902006]"/>
+                    <racing_by_apr jcr:primaryType="nt:unstructured" sling:resourceType="adlc-crowdstrike/components/teaser" title="CrowdStrike Racing by APR" jcr:description="&lt;p>CrowdStrike Racing competes globally in premier sports car championships in the LMP2 prototype class. In IMSA competition, the team partners with technical powerhouse APR (Algarve Pro Racing) as â€œCrowdStrike Racing by APR.â€ The partnership has delivered landmark victories, including a class win at the 2026 24 Hours of Daytona and championship-winning success in the Asian Le Mans Series. Together, CrowdStrike Racing by APR continues to set the pace in prototype endurance racing worldwide.&lt;/p>" textIsRich="{Boolean}true" fileReference="/content/dam/adlc-crowdstrike/racing/about-us/crowdstrike-racing-by-apr.png" imageAlt="No. 04 CrowdStrike prototype competing in a daylight race" altValueFromDAM="{Boolean}false" imageLoading="lazy" cq:styleIds="[20260902002,20260902003,20260902005]"/>
+                    <oreca_07 jcr:primaryType="nt:unstructured" sling:resourceType="adlc-crowdstrike/components/teaser" title="No. 4 CrowdStrike Oreca 07" jcr:description="&lt;p>The ORECA 07 is a closed-cockpit sports car built to the current Le Mans Prototype 2 (LMP2) technical regulations. The car is present in all major championships sanctioned by the FIA and ACO (Automobile Club de lâ€™Ouest) with more than 30 victories around the world.&lt;/p>&lt;ul>&lt;li>Engine: Gibson GK-428, 4.2-liter V8, approx. 600 hp&lt;/li>&lt;li>Gearbox: 6-speed sequential Xtrac 1152 with paddle-shift system&lt;/li>&lt;li>Chassis: Carbon fiber and honeycomb monocoque&lt;/li>&lt;/ul>" textIsRich="{Boolean}true" fileReference="/content/dam/adlc-crowdstrike/racing/about-us/no-4-crowdstrike-oreca-07.png" imageAlt="No. 04 CrowdStrike prototype racing through mist at night" altValueFromDAM="{Boolean}false" imageLoading="lazy" cq:styleIds="[20260902002,20260902004,20260902006]"/>
+                </container>
+            </container>
+        </root>
+    </jcr:content>
+</jcr:root>

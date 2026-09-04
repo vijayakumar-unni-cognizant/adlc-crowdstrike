@@ -1,0 +1,87 @@
+phase: implement
+agent: configsmith
+status: findings_pending
+tracks_used:
+  - security
+  - dispatcher
+configuration_fallback:
+  file: .aem-skills-config.yaml
+  status: absent
+  resolution: POM-derived identifiers approved by dispatch: adlc-crowdstrike / com.adlccrowdstrike
+security:
+  repoinit_scripts: []
+  service_users: []
+  review:
+    findings_summary:
+      high: 0
+      medium: 1
+      low: 1
+    findings:
+      - severity: medium
+        id: CFG-SEO-001
+        finding: No source-backed Externalizer publish-domain mapping exists.
+        disposition: environment-owned follow-up; no hostname was fabricated and no duplicate canonical was added.
+        blocks_promotion: false
+      - severity: low
+        id: CFG-TEST-001
+        finding: Existing UI-test harness contains password environment variable names and example values.
+        disposition: pre-existing test-only configuration; no plaintext deployed credential or new secret was introduced.
+        blocks_promotion: false
+    blocks_promotion: false
+    report_path: .claude/agents/runs/2026-09-02T18-28Z-crowdstrike-racing-about/implement/configsmith/security-review.md
+  static_checks:
+    administrative_resolver: pass
+    service_resolver_or_mapper_required: not_applicable
+    plaintext_application_secrets: pass
+    unsafe_session_write: pass
+policy_provisioning:
+  file: ui.content/src/main/content/jcr_root/conf/adlc-crowdstrike/settings/wcm/policies/.content.xml
+  xml_parse: pass
+  policies_added:
+    - adlc-crowdstrike/components/page/racing-page
+    - adlc-crowdstrike/components/container/racing-root
+    - adlc-crowdstrike/components/container/racing-main
+    - adlc-crowdstrike/components/container/racing-hero-slot
+    - adlc-crowdstrike/components/container/racing-editorial-slot
+    - adlc-crowdstrike/components/container/racing-band
+    - adlc-crowdstrike/components/container/racing-xf-header
+    - adlc-crowdstrike/components/container/racing-xf-footer
+    - adlc-crowdstrike/components/teaser/racing-hero
+    - adlc-crowdstrike/components/teaser/racing-editorial
+    - adlc-crowdstrike/components/experiencefragment/racing-header
+    - adlc-crowdstrike/components/experiencefragment/racing-footer
+  clientlibs:
+    policy: adlc-crowdstrike/components/page/racing-page
+    values: [adlc-crowdstrike.dependencies, adlc-crowdstrike.site]
+    status: pass
+  style_system:
+    hero:
+      ids: ['20260902001']
+      status: pass
+    editorial:
+      ids: ['20260902002', '20260902003', '20260902004', '20260902005', '20260902006']
+      status: pass
+    containers:
+      ids: ['20260902011', '20260902012', '20260902013']
+      status: pass
+  policy_resolution:
+    status: pending_blockwright_mapping
+    evidence: racing-page and revised xf-web-variation policy mapping files were not present at Configsmith completion; target definitions are ready for exact pointer validation.
+dispatcher:
+  files_changed: []
+  validator_result: not_applicable
+  cdn_changes: []
+  evidence:
+    dispatcher_source_tree: absent
+    cdn_yaml: absent
+    dispatcher_sdk: absent
+    dispatcher_mcp: unavailable
+  report_path: .claude/agents/runs/2026-09-02T18-28Z-crowdstrike-racing-about/implement/configsmith/dispatcher-validation.md
+seo:
+  externalizer_configuration: absent
+  result: pending_environment_owned_publish_domain
+  required_follow_up: Configure the actual Cloud Manager publish/author domains, then verify Core Page v3 emits an absolute canonical without adding a second canonical tag.
+validation:
+  maven_invocations: 0
+  static_xml_parse: pass
+  promotion_status: non_blocking_follow_ups_recorded
