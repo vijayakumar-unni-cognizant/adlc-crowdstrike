@@ -1,0 +1,48 @@
+phase: test
+agent: sentinel
+run_id: 2026-09-02T18-28Z-crowdstrike-racing-about
+status: fail
+terminal_verdict: fail
+environment:
+  author: { supplied: true, auth_mode: bearer-token, pre_probe_http: 200 }
+  publish: { supplied: true, auth_mode: none, pre_probe_http: 200 }
+  tier_routing_respected: true
+tracks:
+  ui_tests: fail
+  nfr_baseline: incomplete_with_observed_threshold_failure
+  a11y_deep: incomplete
+  seo_deep: fail
+  observability: not_applicable
+  authoring_provisions: incomplete
+  graphql_content_parity: not_applicable
+  spa_integration: not_applicable
+findings:
+  - { id: SEN-UI-001, severity: high, class: correctness, track: ui-tests, finding: "UI-001 asserts six top-level regions although the approved architecture has seven.", routed_to: blockwright, disposition: open }
+  - { id: SEN-CONTENT-001, severity: high, class: correctness, track: ui-tests, finding: "Authored editorial CTA is absent from Publish HTML.", routed_to: blockwright, disposition: open }
+  - { id: SEN-SEO-001, severity: high, class: correctness, track: seo-deep, finding: "Required description, Open Graph metadata and public canonical are absent/incorrect.", routed_to: blockwright, disposition: open }
+  - { id: SEN-SEO-002, severity: major, class: threshold, track: seo-deep, finding: "robots.txt and sitemap endpoints return 404.", routed_to: configsmith, disposition: open }
+  - { id: SEN-FOOTER-001, severity: high, class: correctness, track: reference-visual, finding: "Logo/footer/social rendering does not satisfy approved content contract.", routed_to: composer, disposition: open }
+  - { id: SEN-VISUAL-001, severity: high, class: correctness, track: reference-visual, finding: "Published text is incorrectly decoded and header label duplicates.", routed_to: composer, disposition: open }
+  - { id: SEN-PERF-001, severity: major, class: threshold, track: nfr-baseline, finding: "2048px 1.48MB hero master served at 358px mobile width.", routed_to: blockwright, disposition: open }
+coverage:
+  matrix: test/sentinel/coverage-matrix.md
+  sources:
+    ui_test_scenarios: { file: design/ui-test-scenarios.md, total_from_file: 20, ids: [UI-001, UI-002, UI-003, UI-004, UI-005, UI-006, UI-007, UI-008, UI-009, UI-010, UI-011, UI-012, UI-013, UI-014, UI-015, UI-016, UI-017, UI-018, UI-019, UI-020] }
+    authoring_test_cases: { file: design/authoring-test-cases.md, total_from_file: 16, ids: [AUTH-001, AUTH-002, AUTH-003, AUTH-004, AUTH-005, AUTH-006, AUTH-007, AUTH-008, AUTH-009, AUTH-010, AUTH-011, AUTH-012, AUTH-013, AUTH-014, AUTH-015, AUTH-016] }
+    functional_test_cases: { file: design/functional-test-cases.md, total_from_file: 30, sentinel_owned: [TC-009, TC-017, TC-019, TC-023, TC-024, TC-025, TC-026, TC-028], auditron_owned: [TC-001, TC-002, TC-003, TC-004, TC-005, TC-006, TC-007, TC-008, TC-010, TC-011, TC-012, TC-013, TC-014, TC-015, TC-016, TC-018, TC-020, TC-021, TC-022, TC-027, TC-029, TC-030] }
+reports:
+  consolidated: [test/sentinel/sentinel-report.md, test/sentinel/sentinel-report.html]
+  coverage: test/sentinel/coverage-matrix.md
+  evidence: [test/sentinel/runtime-probes.partial.json, test/sentinel/seo/status.json, test/sentinel/author-probes/author-probe-status.json, test/sentinel/publish-chromium-1440.png, test/sentinel/publish-chromium-mobile-390.png]
+ui_harness:
+  playwright_present: true
+  cypress_present: false
+  full_publish_launch: "20 IDs across Chromium, Firefox, WebKit and mobile; terminal JUnit/HTML summary not emitted"
+  confirmed_failure_ids: [UI-001, UI-004, UI-005, UI-009, UI-012, UI-015]
+authoring:
+  auth_mode: bearer-token
+  read_only_evidence: pass
+  interactive_cases: incomplete
+  reason: "Shipped Playwright global setup only implements form credentials; bearer-authenticated edit/multifield round-trip was not completed and is not reported as pass."
+handoff_to_program_agent:
+  result: "Terminal Sentinel gate failed. Stop lifecycle progression and route all findings through the P10 human remediation checkpoint; do not self-remediate."

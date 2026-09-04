@@ -1,7 +1,7 @@
 phase: release
 agent: pilot
 run_id: 2026-09-02T18-28Z-crowdstrike-racing-about
-status: blocked_release_evidence_correction
+status: awaiting_sentinel_validation
 pr:
   url: https://github.com/vijayakumar-unni-cognizant/adlc-crowdstrike/pull/1
   base: master
@@ -14,7 +14,7 @@ auditron:
   unit_tests: { pass: 8, fail: 0 }
   integration_tests: { pass: 5, fail: 0 }
 release_hold:
-  reason: "Evidence commit includes unrelated pre-staged ADLC toolchain files outside the requested run folder."
+  reason: "Release-evidence correction is recorded for reviewer awareness; user confirms Cloud deployment succeeded and has authorized Sentinel validation."
   correction_record: deploy/release-evidence-correction.md
-  sentinel_dispatched: false
-next_action: "Human-approved PR scope/evidence correction; no automatic lifecycle dispatch."
+  sentinel_dispatched: true
+next_action: "Sentinel terminal validation against real Author and Publish tiers."

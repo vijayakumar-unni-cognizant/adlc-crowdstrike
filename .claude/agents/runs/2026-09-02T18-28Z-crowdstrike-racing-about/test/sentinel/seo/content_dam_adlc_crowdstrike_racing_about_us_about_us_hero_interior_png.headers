@@ -1,0 +1,23 @@
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 1479597
+Content-Type: application/octet-stream
+Content-MD5: rudZRmH5uFl3BHUfB2u2qg==
+Last-Modified: Fri, 04 Sep 2026 05:40:35 GMT
+ETag: "0x8DF0A470B1D3AD0"
+Content-Disposition: attachment; filename="about-us-hero-interior.png"; filename*=UTF-8''about-us-hero-interior.png
+x-ms-access-tier: Hot
+x-ms-access-tier-inferred: true
+Access-Control-Allow-Origin: *
+Cache-Control: public, max-age=600, immutable
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-vhost: publish
+Accept-Ranges: bytes
+Date: Fri, 04 Sep 2026 06:40:00 GMT
+Age: 986
+Strict-Transport-Security: max-age=31557600
+X-Served-By: cache-hyd1500027-HYD
+X-Cache: HIT
+X-Timer: S1788504000.276074,VS0,VS0,VE1
+

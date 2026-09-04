@@ -1,0 +1,21 @@
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 12865
+x-frame-options: SAMEORIGIN
+last-modified: Fri, 04 Sep 2026 06:21:57 GMT
+etag: "3241-65aa24919f74e"
+cache-control: max-age=300
+expires: Fri, 04 Sep 2026 06:44:55 GMT
+x-vhost: publish
+content-type: text/html;charset=utf-8
+X-Content-Type-Options: nosniff
+Accept-Ranges: bytes
+Age: 0
+Date: Fri, 04 Sep 2026 06:39:55 GMT
+Strict-Transport-Security: max-age=31557600
+set-cookie: affinity="b03d010968ed38c4"; Path=/; HttpOnly; secure
+X-Served-By: cache-hyd1500027-HYD
+X-Cache: MISS
+X-Timer: S1788503995.012088,VS0,VS0,VE32
+Vary: Accept-Encoding
+

@@ -1,0 +1,27 @@
+[
+    {
+        "path":  "/content/adlc-crowdstrike/us/en/about-us.html",
+        "http_status":  "200",
+        "bytes":  12865
+    },
+    {
+        "path":  "/robots.txt",
+        "http_status":  "404",
+        "bytes":  236
+    },
+    {
+        "path":  "/sitemap.xml",
+        "http_status":  "404",
+        "bytes":  236
+    },
+    {
+        "path":  "/sitemap-index.xml",
+        "http_status":  "404",
+        "bytes":  236
+    },
+    {
+        "path":  "/content/dam/adlc-crowdstrike/racing/about-us/about-us-hero-interior.png",
+        "http_status":  "200",
+        "bytes":  1479597
+    }
+]
