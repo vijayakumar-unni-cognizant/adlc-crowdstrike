@@ -1,0 +1,32 @@
+[
+    {
+        "path":  "/content/adlc-crowdstrike/us/en/about-us.html?wcmmode=edit",
+        "http_status":  "200",
+        "bytes":  60020
+    },
+    {
+        "path":  "/content/adlc-crowdstrike/us/en/about-us.infinity.json",
+        "http_status":  "200",
+        "bytes":  5792
+    },
+    {
+        "path":  "/content/experience-fragments/adlc-crowdstrike/us/en/site/header/master.infinity.json",
+        "http_status":  "200",
+        "bytes":  2151
+    },
+    {
+        "path":  "/content/experience-fragments/adlc-crowdstrike/us/en/site/footer/master.infinity.json",
+        "http_status":  "200",
+        "bytes":  1898
+    },
+    {
+        "path":  "/conf/adlc-crowdstrike/settings/wcm/templates/racing-page.infinity.json",
+        "http_status":  "200",
+        "bytes":  5280
+    },
+    {
+        "path":  "/content/dam/adlc-crowdstrike/racing/about-us/about-us-hero-interior.png",
+        "http_status":  "200",
+        "bytes":  1479597
+    }
+]

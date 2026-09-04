@@ -1,0 +1,417 @@
+{
+  "generated_at": "2026-09-04T06:35:53.960Z",
+  "publish": "https://publish-p185256-e1945105.adobeaemcloud.com",
+  "author": "https://author-p185256-e1945105.adobeaemcloud.com",
+  "author_auth_mode": "bearer-token",
+  "probes": [
+    {
+      "tier": "publish",
+      "engine": "chromium",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "http_status": 200,
+      "status": "complete",
+      "title": "About Us",
+      "h1": [
+        "About Us"
+      ],
+      "h2": [
+        "We Stop Breaches",
+        "Why We Race",
+        "CrowdStrike Racing by APR",
+        "No. 4 CrowdStrike Oreca 07",
+        "CrowdStrike Racing",
+        "Why CrowdStrike?"
+      ],
+      "hero": 1,
+      "editorial": 4,
+      "headers": 1,
+      "mains": 1,
+      "footers": 1,
+      "canonical": "https://publish-p185256-e1945105.adobeaemcloud.com/content/adlc-crowdstrike/us/en/about-us.html",
+      "og": {
+        "og:title": null,
+        "og:description": null,
+        "og:image": null,
+        "og:url": null
+      },
+      "description": null,
+      "overflow": false,
+      "images": [
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/crowdstrike-racing-logo.svg",
+          "loading": "auto",
+          "alt": "CrowdStrike Racing Logo",
+          "naturalWidth": 0,
+          "width": 180,
+          "height": 40
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/about-us-hero-interior.png",
+          "loading": "eager",
+          "alt": "CrowdStrike Racing drivers celebrating together after a win",
+          "naturalWidth": 2048,
+          "width": 1408,
+          "height": 520
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/we-stop-breaches.png",
+          "loading": "lazy",
+          "alt": "No. 04 CrowdStrike prototype racing at speed",
+          "naturalWidth": 1024,
+          "width": 704,
+          "height": 470
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/why-we-race.png",
+          "loading": "lazy",
+          "alt": "CrowdStrike Racing crew performing a nighttime pit stop on the No. 04 car",
+          "naturalWidth": 1024,
+          "width": 704,
+          "height": 470
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/crowdstrike-racing-by-apr.png",
+          "loading": "lazy",
+          "alt": "No. 04 CrowdStrike prototype competing in a daylight race",
+          "naturalWidth": 2048,
+          "width": 704,
+          "height": 478
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/no-4-crowdstrike-oreca-07.png",
+          "loading": "lazy",
+          "alt": "No. 04 CrowdStrike prototype racing through mist at night",
+          "naturalWidth": 2048,
+          "width": 704,
+          "height": 469
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/crowdstrike-racing-logo.svg",
+          "loading": "auto",
+          "alt": "CrowdStrike Racing Logo",
+          "naturalWidth": 0,
+          "width": 197,
+          "height": 24
+        }
+      ],
+      "cta": [],
+      "bodyText": "Skip to main content\nThe Team\nThe Team\nCXO Summits\nPhoto Gallery\nAbout Us\nAbout Us\nWe Stop Breaches\n\nCrowdStrike has redefined modern security with the industryâ€™s most advanced agentic security platform, unifying protection across endpoints, cloud workloads, identity, and data. The CrowdStrike Falcon Platform brings AI-driven automation and real-time intelligence to the SOC, combining human expertise with machine-speed action to stop breaches and protect the people, organizations, and technologies shaping the future.\n\nWhy We Race\n\nPerformance under pressure defines both cybersecurity and world-class racing. Speed, agility, and resilience are critical when staying ahead of rapidly-evolving threats, on and off the track.\n\nCrowdStrike, in partnership with AWS, convenes C-level cybersecurity leaders at premier race weekends around the world to explore how operational excellence and teamwork drive sustained performance in high-stakes environments.\n\nCrowdStrike Racing by APR\n\nCrowdStrike Racing competes globally in premier sports car championships in the LMP2 prototype class. In IMSA competition, the team partners with technical powerhouse APR (Algarve Pro Racing) as â€œCrowdStrike Racing by APR.â€ The partnership has delivered landmark victories, including a class win at the 2026 24 Hours of Daytona and championship-winning success in the Asian Le Mans Series. Together, CrowdStrike Racing by APR continues to set the pace in prototype endurance racing worldwide.\n\nNo. 4 CrowdStrike Oreca 07\n\nThe ORECA 07 is a closed-cockpit sports car built to the current Le Mans Prototype 2 (LMP2) technical regulations. The car is present in all major championships sanctioned by the FIA and ACO (Automobile Club de lâ€™Ouest) with more than 30 victories around the world.\n\nEngine: Gibson GK-428, 4.2-liter V8, approx. 600 hp\nGearbox: 6-speed sequential Xtrac 1152 with paddle-shift system\nChassis: Carbon fiber and honeycomb monocoque\nCrowdStrike Racing\nHomeSwag Shopopens in a new tab\nWhy CrowdStrike?\nAbout CrowdStrikeopens in a new tabServicesopens in a new tabIndustry Validationopens in a new tabOur Customersopens in a new tab\n\nCopyright © 2025",
+      "axe": {
+        "violations": []
+      }
+    },
+    {
+      "tier": "publish",
+      "engine": "chromium-mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "http_status": 200,
+      "status": "complete",
+      "title": "About Us",
+      "h1": [
+        "About Us"
+      ],
+      "h2": [
+        "We Stop Breaches",
+        "Why We Race",
+        "CrowdStrike Racing by APR",
+        "No. 4 CrowdStrike Oreca 07",
+        "CrowdStrike Racing",
+        "Why CrowdStrike?"
+      ],
+      "hero": 1,
+      "editorial": 4,
+      "headers": 1,
+      "mains": 1,
+      "footers": 1,
+      "canonical": "https://publish-p185256-e1945105.adobeaemcloud.com/content/adlc-crowdstrike/us/en/about-us.html",
+      "og": {
+        "og:title": null,
+        "og:description": null,
+        "og:image": null,
+        "og:url": null
+      },
+      "description": null,
+      "overflow": false,
+      "images": [
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/crowdstrike-racing-logo.svg",
+          "loading": "auto",
+          "alt": "CrowdStrike Racing Logo",
+          "naturalWidth": 0,
+          "width": 180,
+          "height": 40
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/about-us-hero-interior.png",
+          "loading": "eager",
+          "alt": "CrowdStrike Racing drivers celebrating together after a win",
+          "naturalWidth": 2048,
+          "width": 358,
+          "height": 130
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/we-stop-breaches.png",
+          "loading": "lazy",
+          "alt": "No. 04 CrowdStrike prototype racing at speed",
+          "naturalWidth": 1024,
+          "width": 358,
+          "height": 280
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/why-we-race.png",
+          "loading": "lazy",
+          "alt": "CrowdStrike Racing crew performing a nighttime pit stop on the No. 04 car",
+          "naturalWidth": 1024,
+          "width": 358,
+          "height": 280
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/crowdstrike-racing-by-apr.png",
+          "loading": "lazy",
+          "alt": "No. 04 CrowdStrike prototype competing in a daylight race",
+          "naturalWidth": 2048,
+          "width": 358,
+          "height": 280
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/no-4-crowdstrike-oreca-07.png",
+          "loading": "lazy",
+          "alt": "No. 04 CrowdStrike prototype racing through mist at night",
+          "naturalWidth": 2048,
+          "width": 358,
+          "height": 280
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/crowdstrike-racing-logo.svg",
+          "loading": "auto",
+          "alt": "CrowdStrike Racing Logo",
+          "naturalWidth": 0,
+          "width": 197,
+          "height": 24
+        }
+      ],
+      "cta": [],
+      "bodyText": "Skip to main content\nMenu\nAbout Us\nWe Stop Breaches\n\nCrowdStrike has redefined modern security with the industryâ€™s most advanced agentic security platform, unifying protection across endpoints, cloud workloads, identity, and data. The CrowdStrike Falcon Platform brings AI-driven automation and real-time intelligence to the SOC, combining human expertise with machine-speed action to stop breaches and protect the people, organizations, and technologies shaping the future.\n\nWhy We Race\n\nPerformance under pressure defines both cybersecurity and world-class racing. Speed, agility, and resilience are critical when staying ahead of rapidly-evolving threats, on and off the track.\n\nCrowdStrike, in partnership with AWS, convenes C-level cybersecurity leaders at premier race weekends around the world to explore how operational excellence and teamwork drive sustained performance in high-stakes environments.\n\nCrowdStrike Racing by APR\n\nCrowdStrike Racing competes globally in premier sports car championships in the LMP2 prototype class. In IMSA competition, the team partners with technical powerhouse APR (Algarve Pro Racing) as â€œCrowdStrike Racing by APR.â€ The partnership has delivered landmark victories, including a class win at the 2026 24 Hours of Daytona and championship-winning success in the Asian Le Mans Series. Together, CrowdStrike Racing by APR continues to set the pace in prototype endurance racing worldwide.\n\nNo. 4 CrowdStrike Oreca 07\n\nThe ORECA 07 is a closed-cockpit sports car built to the current Le Mans Prototype 2 (LMP2) technical regulations. The car is present in all major championships sanctioned by the FIA and ACO (Automobile Club de lâ€™Ouest) with more than 30 victories around the world.\n\nEngine: Gibson GK-428, 4.2-liter V8, approx. 600 hp\nGearbox: 6-speed sequential Xtrac 1152 with paddle-shift system\nChassis: Carbon fiber and honeycomb monocoque\nCrowdStrike Racing\nHomeSwag Shopopens in a new tab\nWhy CrowdStrike?\nAbout CrowdStrikeopens in a new tabServicesopens in a new tabIndustry Validationopens in a new tabOur Customersopens in a new tab\n\nCopyright © 2025",
+      "axe": {
+        "violations": []
+      }
+    },
+    {
+      "tier": "publish",
+      "engine": "firefox",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "http_status": 200,
+      "status": "complete",
+      "title": "About Us",
+      "h1": [
+        "About Us"
+      ],
+      "h2": [
+        "We Stop Breaches",
+        "Why We Race",
+        "CrowdStrike Racing by APR",
+        "No. 4 CrowdStrike Oreca 07",
+        "CrowdStrike Racing",
+        "Why CrowdStrike?"
+      ],
+      "hero": 1,
+      "editorial": 4,
+      "headers": 1,
+      "mains": 1,
+      "footers": 1,
+      "canonical": "https://publish-p185256-e1945105.adobeaemcloud.com/content/adlc-crowdstrike/us/en/about-us.html",
+      "og": {
+        "og:title": null,
+        "og:description": null,
+        "og:image": null,
+        "og:url": null
+      },
+      "description": null,
+      "overflow": false,
+      "images": [
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/crowdstrike-racing-logo.svg",
+          "loading": "eager",
+          "alt": "CrowdStrike Racing Logo",
+          "naturalWidth": 0,
+          "width": 180,
+          "height": 40
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/about-us-hero-interior.png",
+          "loading": "eager",
+          "alt": "CrowdStrike Racing drivers celebrating together after a win",
+          "naturalWidth": 2048,
+          "width": 1408,
+          "height": 520
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/we-stop-breaches.png",
+          "loading": "lazy",
+          "alt": "No. 04 CrowdStrike prototype racing at speed",
+          "naturalWidth": 1024,
+          "width": 704,
+          "height": 470
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/why-we-race.png",
+          "loading": "lazy",
+          "alt": "CrowdStrike Racing crew performing a nighttime pit stop on the No. 04 car",
+          "naturalWidth": 1024,
+          "width": 704,
+          "height": 470
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/crowdstrike-racing-by-apr.png",
+          "loading": "lazy",
+          "alt": "No. 04 CrowdStrike prototype competing in a daylight race",
+          "naturalWidth": 0,
+          "width": 704,
+          "height": 478
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/no-4-crowdstrike-oreca-07.png",
+          "loading": "lazy",
+          "alt": "No. 04 CrowdStrike prototype racing through mist at night",
+          "naturalWidth": 0,
+          "width": 704,
+          "height": 470
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/crowdstrike-racing-logo.svg",
+          "loading": "eager",
+          "alt": "CrowdStrike Racing Logo",
+          "naturalWidth": 0,
+          "width": 181,
+          "height": 24
+        }
+      ],
+      "cta": [],
+      "bodyText": "Skip to main content\nThe Team\nThe Team\nCXO Summits\nPhoto Gallery\nAbout Us\nAbout Us\nWe Stop Breaches\n\nCrowdStrike has redefined modern security with the industryâ€™s most advanced agentic security platform, unifying protection across endpoints, cloud workloads, identity, and data. The CrowdStrike Falcon Platform brings AI-driven automation and real-time intelligence to the SOC, combining human expertise with machine-speed action to stop breaches and protect the people, organizations, and technologies shaping the future.\n\nWhy We Race\n\nPerformance under pressure defines both cybersecurity and world-class racing. Speed, agility, and resilience are critical when staying ahead of rapidly-evolving threats, on and off the track.\n\nCrowdStrike, in partnership with AWS, convenes C-level cybersecurity leaders at premier race weekends around the world to explore how operational excellence and teamwork drive sustained performance in high-stakes environments.\n\nCrowdStrike Racing by APR\n\nCrowdStrike Racing competes globally in premier sports car championships in the LMP2 prototype class. In IMSA competition, the team partners with technical powerhouse APR (Algarve Pro Racing) as â€œCrowdStrike Racing by APR.â€ The partnership has delivered landmark victories, including a class win at the 2026 24 Hours of Daytona and championship-winning success in the Asian Le Mans Series. Together, CrowdStrike Racing by APR continues to set the pace in prototype endurance racing worldwide.\n\nNo. 4 CrowdStrike Oreca 07\n\nThe ORECA 07 is a closed-cockpit sports car built to the current Le Mans Prototype 2 (LMP2) technical regulations. The car is present in all major championships sanctioned by the FIA and ACO (Automobile Club de lâ€™Ouest) with more than 30 victories around the world.\n\nEngine: Gibson GK-428, 4.2-liter V8, approx. 600 hp\nGearbox: 6-speed sequential Xtrac 1152 with paddle-shift system\nChassis: Carbon fiber and honeycomb monocoque\nCrowdStrike Racing\nHomeSwag Shopopens in a new tab\nWhy CrowdStrike?\nAbout CrowdStrikeopens in a new tabServicesopens in a new tabIndustry Validationopens in a new tabOur Customersopens in a new tab\n\nCopyright © 2025",
+      "axe": {
+        "violations": []
+      }
+    },
+    {
+      "tier": "publish",
+      "engine": "webkit",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "http_status": 200,
+      "status": "complete",
+      "title": "About Us",
+      "h1": [
+        "About Us"
+      ],
+      "h2": [
+        "We Stop Breaches",
+        "Why We Race",
+        "CrowdStrike Racing by APR",
+        "No. 4 CrowdStrike Oreca 07",
+        "CrowdStrike Racing",
+        "Why CrowdStrike?"
+      ],
+      "hero": 1,
+      "editorial": 4,
+      "headers": 1,
+      "mains": 1,
+      "footers": 1,
+      "canonical": "https://publish-p185256-e1945105.adobeaemcloud.com/content/adlc-crowdstrike/us/en/about-us.html",
+      "og": {
+        "og:title": null,
+        "og:description": null,
+        "og:image": null,
+        "og:url": null
+      },
+      "description": null,
+      "overflow": false,
+      "images": [
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/crowdstrike-racing-logo.svg",
+          "loading": "eager",
+          "alt": "CrowdStrike Racing Logo",
+          "naturalWidth": 0,
+          "width": 40,
+          "height": 22
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/about-us-hero-interior.png",
+          "loading": "eager",
+          "alt": "CrowdStrike Racing drivers celebrating together after a win",
+          "naturalWidth": 2048,
+          "width": 1408,
+          "height": 520
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/we-stop-breaches.png",
+          "loading": "lazy",
+          "alt": "No. 04 CrowdStrike prototype racing at speed",
+          "naturalWidth": 1024,
+          "width": 704,
+          "height": 470
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/why-we-race.png",
+          "loading": "lazy",
+          "alt": "CrowdStrike Racing crew performing a nighttime pit stop on the No. 04 car",
+          "naturalWidth": 1024,
+          "width": 704,
+          "height": 470
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/crowdstrike-racing-by-apr.png",
+          "loading": "lazy",
+          "alt": "No. 04 CrowdStrike prototype competing in a daylight race",
+          "naturalWidth": 2048,
+          "width": 704,
+          "height": 471
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/no-4-crowdstrike-oreca-07.png",
+          "loading": "lazy",
+          "alt": "No. 04 CrowdStrike prototype racing through mist at night",
+          "naturalWidth": 0,
+          "width": 704,
+          "height": 465
+        },
+        {
+          "src": "https://publish-p185256-e1945105.adobeaemcloud.com/content/dam/adlc-crowdstrike/racing/about-us/crowdstrike-racing-logo.svg",
+          "loading": "eager",
+          "alt": "CrowdStrike Racing Logo",
+          "naturalWidth": 0,
+          "width": 48,
+          "height": 22
+        }
+      ],
+      "cta": [],
+      "bodyText": "Skip to main content\n\nThe Team The Team\nCXO Summits\nPhoto Gallery\nAbout Us\n\nAbout Us\n\nWe Stop Breaches\nCrowdStrike has redefined modern security with the industryâ€™s most advanced agentic security platform, unifying protection across endpoints, cloud workloads, identity, and data. The CrowdStrike Falcon Platform brings AI-driven automation and real-time intelligence to the SOC, combining human expertise with machine-speed action to stop breaches and protect the people, organizations, and technologies shaping the future.\n\n\nWhy We Race\nPerformance under pressure defines both cybersecurity and world-class racing. Speed, agility, and resilience are critical when staying ahead of rapidly-evolving threats, on and off the track.\n\nCrowdStrike, in partnership with AWS, convenes C-level cybersecurity leaders at premier race weekends around the world to explore how operational excellence and teamwork drive sustained performance in high-stakes environments.\n\n\nCrowdStrike Racing by APR\nCrowdStrike Racing competes globally in premier sports car championships in the LMP2 prototype class. In IMSA competition, the team partners with technical powerhouse APR (Algarve Pro Racing) as â€œCrowdStrike Racing by APR.â€ The partnership has delivered landmark victories, including a class win at the 2026 24 Hours of Daytona and championship-winning success in the Asian Le Mans Series. Together, CrowdStrike Racing by APR continues to set the pace in prototype endurance racing worldwide.\n\n\nNo. 4 CrowdStrike Oreca 07\nThe ORECA 07 is a closed-cockpit sports car built to the current Le Mans Prototype 2 (LMP2) technical regulations. The car is present in all major championships sanctioned by the FIA and ACO (Automobile Club de lâ€™Ouest) with more than 30 victories around the world.\n\nEngine: Gibson GK-428, 4.2-liter V8, approx. 600 hp\nGearbox: 6-speed sequential Xtrac 1152 with paddle-shift system\nChassis: Carbon fiber and honeycomb monocoque\n\nCrowdStrike Racing\n\nHomeSwag Shopopens in a new tab\nWhy CrowdStrike?\n\nAbout CrowdStrikeopens in a new tabServicesopens in a new tabIndustry Validationopens in a new tabOur Customersopens in a new tab\nCopyright © 2025",
+      "axe": {
+        "violations": []
+      }
+    },
+    {
+      "tier": "author",
+      "engine": "chromium",
+      "http_status": 200,
+      "title": "About Us",
+      "h1": [
+        "About Us"
+      ],
+      "teaserCount": 5,
+      "header": 1,
+      "footer": 1,
+      "bodyHasLogin": false
+    }
+  ]
+}

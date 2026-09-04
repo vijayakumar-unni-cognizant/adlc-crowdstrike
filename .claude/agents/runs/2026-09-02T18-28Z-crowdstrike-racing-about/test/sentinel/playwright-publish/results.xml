@@ -1,0 +1,954 @@
+<testsuites id="" name="" tests="80" failures="17" skipped="8" errors="0" time="352.410615">
+<testsuite name="ui-001.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="1" skipped="0" time="25.143" errors="0">
+<testcase name="UI-001 desktop page hierarchy" classname="ui-001.spec.js" time="25.143">
+<failure message="ui-001.spec.js:1:101 UI-001 desktop page hierarchy" type="FAILURE">
+<![CDATA[  [publish-chromium] › ui-001.spec.js:1:101 › UI-001 desktop page hierarchy ────────────────────────
+
+    Error: Timed out 10000ms waiting for expect(locator).toHaveCount(expected)
+
+    Locator: locator('.cmp-site-header, .cmp-teaser, .cmp-site-footer')
+    Expected: 6
+    Received: 7
+    Call log:
+      - expect.toHaveCount with timeout 10000ms
+      - waiting for locator('.cmp-site-header, .cmp-teaser, .cmp-site-footer')
+        13 × locator resolved to 7 elements
+           - unexpected value "7"
+
+
+    > 1 | const { test, expect } = require('@playwright/test'); const { open, oneH1 } = require('./helpers'); test('UI-001 desktop page hierarchy', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); await oneH1(page); await expect(page.locator('.cmp-site-header, .cmp-teaser, .cmp-site-footer')).toHaveCount(6); });
+        |                                                                                                                                                                                                                                                                                                                                              ^
+      2 |
+        at C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\ui-001.spec.js:1:334
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-001-UI-001-desktop-page-hierarchy-publish-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-001-UI-001-desktop-page-hierarchy-publish-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts\ui-001-UI-001-desktop-page-hierarchy-publish-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\ui-001-UI-001-desktop-page-hierarchy-publish-chromium\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="ui-002.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="0" skipped="0" time="15.085" errors="0">
+<testcase name="UI-002 tablet stack" classname="ui-002.spec.js" time="15.085">
+</testcase>
+</testsuite>
+<testsuite name="ui-003.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="0" skipped="0" time="14.561" errors="0">
+<testcase name="UI-003 mobile navigation" classname="ui-003.spec.js" time="14.561">
+</testcase>
+</testsuite>
+<testsuite name="ui-004.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="0" skipped="0" time="34.489" errors="0">
+<testcase name="UI-004 fluid widths do not overflow" classname="ui-004.spec.js" time="34.489">
+</testcase>
+</testsuite>
+<testsuite name="ui-005.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="0" skipped="0" time="15.304" errors="0">
+<testcase name="UI-005 desktop team disclosure keyboard" classname="ui-005.spec.js" time="15.304">
+</testcase>
+</testsuite>
+<testsuite name="ui-006.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="0" skipped="0" time="15.242" errors="0">
+<testcase name="UI-006 mobile menu state" classname="ui-006.spec.js" time="15.242">
+</testcase>
+</testsuite>
+<testsuite name="ui-007.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="0" skipped="0" time="18.476" errors="0">
+<testcase name="UI-007 landmarks and skip link" classname="ui-007.spec.js" time="18.476">
+</testcase>
+</testsuite>
+<testsuite name="ui-008.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="0" skipped="0" time="14.282" errors="0">
+<testcase name="UI-008 hero mapping and image" classname="ui-008.spec.js" time="14.282">
+</testcase>
+</testsuite>
+<testsuite name="ui-009.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="0" skipped="0" time="15.207" errors="0">
+<testcase name="UI-009 editorial content mapping" classname="ui-009.spec.js" time="15.207">
+</testcase>
+</testsuite>
+<testsuite name="ui-010.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="0" skipped="0" time="13.59" errors="0">
+<testcase name="UI-010 desktop fifty-fifty panes" classname="ui-010.spec.js" time="13.59">
+</testcase>
+</testsuite>
+<testsuite name="ui-011.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="0" skipped="0" time="16.184" errors="0">
+<testcase name="UI-011 stacked DOM reading order" classname="ui-011.spec.js" time="16.184">
+</testcase>
+</testsuite>
+<testsuite name="ui-012.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="1" skipped="0" time="22.383" errors="0">
+<testcase name="UI-012 editorial CTA and list semantics" classname="ui-012.spec.js" time="22.383">
+<failure message="ui-012.spec.js:1:94 UI-012 editorial CTA and list semantics" type="FAILURE">
+<![CDATA[  [publish-chromium] › ui-012.spec.js:1:94 › UI-012 editorial CTA and list semantics ───────────────
+
+    Error: Timed out 10000ms waiting for expect(locator).toHaveCount(expected)
+
+    Locator: locator('.cmp-teaser--racing-editorial').first().getByRole('link')
+    Expected: 1
+    Received: 0
+    Call log:
+      - expect.toHaveCount with timeout 10000ms
+      - waiting for locator('.cmp-teaser--racing-editorial').first().getByRole('link')
+        13 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+    > 1 | const { test, expect } = require('@playwright/test'); const { open } = require('./helpers'); test('UI-012 editorial CTA and list semantics', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); await expect(page.locator('.cmp-teaser--racing-editorial').first().getByRole('link')).toHaveCount(1); await expect(page.locator('.cmp-teaser--racing-editorial').last().locator('ul > li')).toHaveCount(3); });
+        |                                                                                                                                                                                                                                                                                                                                      ^
+      2 |
+        at C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\ui-012.spec.js:1:326
+
+    attachment #1: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-012-UI-012-editorial-CTA-and-list-semantics-publish-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts\ui-012-UI-012-editorial-CTA-and-list-semantics-publish-chromium\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="ui-013.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="0" skipped="0" time="13.704" errors="0">
+<testcase name="UI-013 footer responsive and accessible" classname="ui-013.spec.js" time="13.704">
+</testcase>
+</testsuite>
+<testsuite name="ui-014.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="0" skipped="0" time="10.806" errors="0">
+<testcase name="UI-014 images use local DAM" classname="ui-014.spec.js" time="10.806">
+</testcase>
+</testsuite>
+<testsuite name="ui-015.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="1" skipped="0" time="21.425" errors="0">
+<testcase name="UI-015 metadata and SSR" classname="ui-015.spec.js" time="21.425">
+<failure message="ui-015.spec.js:1:94 UI-015 metadata and SSR" type="FAILURE">
+<![CDATA[  [publish-chromium] › ui-015.spec.js:1:94 › UI-015 metadata and SSR ───────────────────────────────
+
+    Error: Timed out 10000ms waiting for expect(locator).toHaveCount(expected)
+
+    Locator: locator('head meta[property="og:title"]')
+    Expected: 1
+    Received: 0
+    Call log:
+      - expect.toHaveCount with timeout 10000ms
+      - waiting for locator('head meta[property="og:title"]')
+        13 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+    > 1 | const { test, expect } = require('@playwright/test'); const { open } = require('./helpers'); test('UI-015 metadata and SSR', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); await expect(page.locator('head link[rel="canonical"]')).toHaveCount(1); await expect(page.locator('head meta[property="og:title"]')).toHaveCount(1); });
+        |                                                                                                                                                                                                                                                                                                                                                                      ^
+      2 |
+        at C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\ui-015.spec.js:1:358
+
+    attachment #1: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-015-UI-015-metadata-and-SSR-publish-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts\ui-015-UI-015-metadata-and-SSR-publish-chromium\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="ui-016.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="0" skipped="0" time="17.96" errors="0">
+<testcase name="UI-016 a11y states" classname="ui-016.spec.js" time="17.96">
+</testcase>
+</testsuite>
+<testsuite name="ui-017.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="0" skipped="0" time="19.902" errors="0">
+<testcase name="UI-017 browser semantic parity" classname="ui-017.spec.js" time="19.902">
+</testcase>
+</testsuite>
+<testsuite name="ui-018.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="0" skipped="1" time="0.841" errors="0">
+<testcase name="UI-018 author teaser policies" classname="ui-018.spec.js" time="0.841">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="ui-019.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="0" skipped="1" time="1.106" errors="0">
+<testcase name="UI-019 author chrome XF render" classname="ui-019.spec.js" time="1.106">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="ui-020.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-chromium" tests="1" failures="0" skipped="0" time="17.083" errors="0">
+<testcase name="UI-020 canonical page census" classname="ui-020.spec.js" time="17.083">
+</testcase>
+</testsuite>
+<testsuite name="ui-001.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="1" skipped="0" time="17.744" errors="0">
+<testcase name="UI-001 desktop page hierarchy" classname="ui-001.spec.js" time="17.744">
+<failure message="ui-001.spec.js:1:101 UI-001 desktop page hierarchy" type="FAILURE">
+<![CDATA[  [publish-firefox] › ui-001.spec.js:1:101 › UI-001 desktop page hierarchy ─────────────────────────
+
+    Error: Timed out 10000ms waiting for expect(locator).toHaveCount(expected)
+
+    Locator: locator('.cmp-site-header, .cmp-teaser, .cmp-site-footer')
+    Expected: 6
+    Received: 7
+    Call log:
+      - expect.toHaveCount with timeout 10000ms
+      - waiting for locator('.cmp-site-header, .cmp-teaser, .cmp-site-footer')
+        13 × locator resolved to 7 elements
+           - unexpected value "7"
+
+
+    > 1 | const { test, expect } = require('@playwright/test'); const { open, oneH1 } = require('./helpers'); test('UI-001 desktop page hierarchy', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); await oneH1(page); await expect(page.locator('.cmp-site-header, .cmp-teaser, .cmp-site-footer')).toHaveCount(6); });
+        |                                                                                                                                                                                                                                                                                                                                              ^
+      2 |
+        at C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\ui-001.spec.js:1:334
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-001-UI-001-desktop-page-hierarchy-publish-firefox\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-001-UI-001-desktop-page-hierarchy-publish-firefox\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts\ui-001-UI-001-desktop-page-hierarchy-publish-firefox\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\ui-001-UI-001-desktop-page-hierarchy-publish-firefox\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="ui-002.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="0" skipped="0" time="10.474" errors="0">
+<testcase name="UI-002 tablet stack" classname="ui-002.spec.js" time="10.474">
+</testcase>
+</testsuite>
+<testsuite name="ui-003.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="0" skipped="0" time="11.966" errors="0">
+<testcase name="UI-003 mobile navigation" classname="ui-003.spec.js" time="11.966">
+</testcase>
+</testsuite>
+<testsuite name="ui-004.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="0" skipped="0" time="21.649" errors="0">
+<testcase name="UI-004 fluid widths do not overflow" classname="ui-004.spec.js" time="21.649">
+</testcase>
+</testsuite>
+<testsuite name="ui-005.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="0" skipped="0" time="10.259" errors="0">
+<testcase name="UI-005 desktop team disclosure keyboard" classname="ui-005.spec.js" time="10.259">
+</testcase>
+</testsuite>
+<testsuite name="ui-006.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="0" skipped="0" time="11.794" errors="0">
+<testcase name="UI-006 mobile menu state" classname="ui-006.spec.js" time="11.794">
+</testcase>
+</testsuite>
+<testsuite name="ui-007.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="0" skipped="0" time="12.454" errors="0">
+<testcase name="UI-007 landmarks and skip link" classname="ui-007.spec.js" time="12.454">
+</testcase>
+</testsuite>
+<testsuite name="ui-008.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="0" skipped="0" time="6.142" errors="0">
+<testcase name="UI-008 hero mapping and image" classname="ui-008.spec.js" time="6.142">
+</testcase>
+</testsuite>
+<testsuite name="ui-009.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="0" skipped="0" time="9.474" errors="0">
+<testcase name="UI-009 editorial content mapping" classname="ui-009.spec.js" time="9.474">
+</testcase>
+</testsuite>
+<testsuite name="ui-010.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="0" skipped="0" time="6.352" errors="0">
+<testcase name="UI-010 desktop fifty-fifty panes" classname="ui-010.spec.js" time="6.352">
+</testcase>
+</testsuite>
+<testsuite name="ui-011.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="0" skipped="0" time="12.008" errors="0">
+<testcase name="UI-011 stacked DOM reading order" classname="ui-011.spec.js" time="12.008">
+</testcase>
+</testsuite>
+<testsuite name="ui-012.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="1" skipped="0" time="15.875" errors="0">
+<testcase name="UI-012 editorial CTA and list semantics" classname="ui-012.spec.js" time="15.875">
+<failure message="ui-012.spec.js:1:94 UI-012 editorial CTA and list semantics" type="FAILURE">
+<![CDATA[  [publish-firefox] › ui-012.spec.js:1:94 › UI-012 editorial CTA and list semantics ────────────────
+
+    Error: Timed out 10000ms waiting for expect(locator).toHaveCount(expected)
+
+    Locator: locator('.cmp-teaser--racing-editorial').first().getByRole('link')
+    Expected: 1
+    Received: 0
+    Call log:
+      - expect.toHaveCount with timeout 10000ms
+      - waiting for locator('.cmp-teaser--racing-editorial').first().getByRole('link')
+        13 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+    > 1 | const { test, expect } = require('@playwright/test'); const { open } = require('./helpers'); test('UI-012 editorial CTA and list semantics', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); await expect(page.locator('.cmp-teaser--racing-editorial').first().getByRole('link')).toHaveCount(1); await expect(page.locator('.cmp-teaser--racing-editorial').last().locator('ul > li')).toHaveCount(3); });
+        |                                                                                                                                                                                                                                                                                                                                      ^
+      2 |
+        at C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\ui-012.spec.js:1:326
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-012-UI-012-editorial-CTA-and-list-semantics-publish-firefox\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-012-UI-012-editorial-CTA-and-list-semantics-publish-firefox\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts\ui-012-UI-012-editorial-CTA-and-list-semantics-publish-firefox\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\ui-012-UI-012-editorial-CTA-and-list-semantics-publish-firefox\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="ui-013.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="0" skipped="0" time="4.704" errors="0">
+<testcase name="UI-013 footer responsive and accessible" classname="ui-013.spec.js" time="4.704">
+</testcase>
+</testsuite>
+<testsuite name="ui-014.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="0" skipped="0" time="5.734" errors="0">
+<testcase name="UI-014 images use local DAM" classname="ui-014.spec.js" time="5.734">
+</testcase>
+</testsuite>
+<testsuite name="ui-015.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="1" skipped="0" time="19.026" errors="0">
+<testcase name="UI-015 metadata and SSR" classname="ui-015.spec.js" time="19.026">
+<failure message="ui-015.spec.js:1:94 UI-015 metadata and SSR" type="FAILURE">
+<![CDATA[  [publish-firefox] › ui-015.spec.js:1:94 › UI-015 metadata and SSR ────────────────────────────────
+
+    Error: Timed out 10000ms waiting for expect(locator).toHaveCount(expected)
+
+    Locator: locator('head meta[property="og:title"]')
+    Expected: 1
+    Received: 0
+    Call log:
+      - expect.toHaveCount with timeout 10000ms
+      - waiting for locator('head meta[property="og:title"]')
+        13 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+    > 1 | const { test, expect } = require('@playwright/test'); const { open } = require('./helpers'); test('UI-015 metadata and SSR', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); await expect(page.locator('head link[rel="canonical"]')).toHaveCount(1); await expect(page.locator('head meta[property="og:title"]')).toHaveCount(1); });
+        |                                                                                                                                                                                                                                                                                                                                                                      ^
+      2 |
+        at C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\ui-015.spec.js:1:358
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-015-UI-015-metadata-and-SSR-publish-firefox\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-015-UI-015-metadata-and-SSR-publish-firefox\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts\ui-015-UI-015-metadata-and-SSR-publish-firefox\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\ui-015-UI-015-metadata-and-SSR-publish-firefox\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="ui-016.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="0" skipped="0" time="13.401" errors="0">
+<testcase name="UI-016 a11y states" classname="ui-016.spec.js" time="13.401">
+</testcase>
+</testsuite>
+<testsuite name="ui-017.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="0" skipped="0" time="8.477" errors="0">
+<testcase name="UI-017 browser semantic parity" classname="ui-017.spec.js" time="8.477">
+</testcase>
+</testsuite>
+<testsuite name="ui-018.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="0" skipped="1" time="2.282" errors="0">
+<testcase name="UI-018 author teaser policies" classname="ui-018.spec.js" time="2.282">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="ui-019.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="0" skipped="1" time="2.816" errors="0">
+<testcase name="UI-019 author chrome XF render" classname="ui-019.spec.js" time="2.816">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="ui-020.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-firefox" tests="1" failures="0" skipped="0" time="7.543" errors="0">
+<testcase name="UI-020 canonical page census" classname="ui-020.spec.js" time="7.543">
+</testcase>
+</testsuite>
+<testsuite name="ui-001.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="1" skipped="0" time="41.677" errors="0">
+<testcase name="UI-001 desktop page hierarchy" classname="ui-001.spec.js" time="41.677">
+<failure message="ui-001.spec.js:1:101 UI-001 desktop page hierarchy" type="FAILURE">
+<![CDATA[  [publish-webkit] › ui-001.spec.js:1:101 › UI-001 desktop page hierarchy ──────────────────────────
+
+    Error: Timed out 10000ms waiting for expect(locator).toHaveCount(expected)
+
+    Locator: locator('.cmp-site-header, .cmp-teaser, .cmp-site-footer')
+    Expected: 6
+    Received: 7
+    Call log:
+      - expect.toHaveCount with timeout 10000ms
+      - waiting for locator('.cmp-site-header, .cmp-teaser, .cmp-site-footer')
+        12 × locator resolved to 7 elements
+           - unexpected value "7"
+
+
+    > 1 | const { test, expect } = require('@playwright/test'); const { open, oneH1 } = require('./helpers'); test('UI-001 desktop page hierarchy', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); await oneH1(page); await expect(page.locator('.cmp-site-header, .cmp-teaser, .cmp-site-footer')).toHaveCount(6); });
+        |                                                                                                                                                                                                                                                                                                                                              ^
+      2 |
+        at C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\ui-001.spec.js:1:334
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-001-UI-001-desktop-page-hierarchy-publish-webkit\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-001-UI-001-desktop-page-hierarchy-publish-webkit\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts\ui-001-UI-001-desktop-page-hierarchy-publish-webkit\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\ui-001-UI-001-desktop-page-hierarchy-publish-webkit\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="ui-002.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="0" skipped="0" time="32.481" errors="0">
+<testcase name="UI-002 tablet stack" classname="ui-002.spec.js" time="32.481">
+</testcase>
+</testsuite>
+<testsuite name="ui-003.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="0" skipped="0" time="30.885" errors="0">
+<testcase name="UI-003 mobile navigation" classname="ui-003.spec.js" time="30.885">
+</testcase>
+</testsuite>
+<testsuite name="ui-004.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="1" skipped="0" time="61.178" errors="0">
+<testcase name="UI-004 fluid widths do not overflow" classname="ui-004.spec.js" time="61.178">
+<failure message="ui-004.spec.js:1:94 UI-004 fluid widths do not overflow" type="FAILURE">
+<![CDATA[  [publish-webkit] › ui-004.spec.js:1:94 › UI-004 fluid widths do not overflow ─────────────────────
+
+    Test timeout of 60000ms exceeded.
+
+    Error: page.goto: Test timeout of 60000ms exceeded.
+    Call log:
+      - navigating to "https://publish-p185256-e1945105.adobeaemcloud.com/content/adlc-crowdstrike/us/en/about-us.html", waiting until "domcontentloaded"
+
+
+       at helpers.js:3
+
+      1 | const { expect } = require('@playwright/test'); const AxeBuilder = require('@axe-core/playwright').default;
+      2 | const PAGE = '/content/adlc-crowdstrike/us/en/about-us.html';
+    > 3 | async function open(page) { await page.goto(PAGE, { waitUntil: 'domcontentloaded' }); }
+        |                                        ^
+      4 | async function oneH1(page) { await expect(page.locator('h1')).toHaveCount(1); }
+      5 | async function noSeriousAxe(page) { const result = await new AxeBuilder({ page }).withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa']).analyze(); expect(result.violations.filter((v) => ['critical','serious'].includes(v.impact))).toEqual([]); }
+      6 | module.exports = { PAGE, open, oneH1, noSeriousAxe };
+        at open (C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\helpers.js:3:40)
+        at C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\ui-004.spec.js:1:342
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-004-UI-004-fluid-widths-do-not-overflow-publish-webkit\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-004-UI-004-fluid-widths-do-not-overflow-publish-webkit\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts\ui-004-UI-004-fluid-widths-do-not-overflow-publish-webkit\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\ui-004-UI-004-fluid-widths-do-not-overflow-publish-webkit\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="ui-005.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="0" skipped="0" time="29.286" errors="0">
+<testcase name="UI-005 desktop team disclosure keyboard" classname="ui-005.spec.js" time="29.286">
+</testcase>
+</testsuite>
+<testsuite name="ui-006.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="0" skipped="0" time="34.071" errors="0">
+<testcase name="UI-006 mobile menu state" classname="ui-006.spec.js" time="34.071">
+</testcase>
+</testsuite>
+<testsuite name="ui-007.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="0" skipped="0" time="33.015" errors="0">
+<testcase name="UI-007 landmarks and skip link" classname="ui-007.spec.js" time="33.015">
+</testcase>
+</testsuite>
+<testsuite name="ui-008.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="0" skipped="0" time="23.816" errors="0">
+<testcase name="UI-008 hero mapping and image" classname="ui-008.spec.js" time="23.816">
+</testcase>
+</testsuite>
+<testsuite name="ui-009.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="0" skipped="0" time="25.23" errors="0">
+<testcase name="UI-009 editorial content mapping" classname="ui-009.spec.js" time="25.23">
+</testcase>
+</testsuite>
+<testsuite name="ui-010.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="0" skipped="0" time="23.98" errors="0">
+<testcase name="UI-010 desktop fifty-fifty panes" classname="ui-010.spec.js" time="23.98">
+</testcase>
+</testsuite>
+<testsuite name="ui-011.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="0" skipped="0" time="30.316" errors="0">
+<testcase name="UI-011 stacked DOM reading order" classname="ui-011.spec.js" time="30.316">
+</testcase>
+</testsuite>
+<testsuite name="ui-012.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="1" skipped="0" time="40.74" errors="0">
+<testcase name="UI-012 editorial CTA and list semantics" classname="ui-012.spec.js" time="40.74">
+<failure message="ui-012.spec.js:1:94 UI-012 editorial CTA and list semantics" type="FAILURE">
+<![CDATA[  [publish-webkit] › ui-012.spec.js:1:94 › UI-012 editorial CTA and list semantics ─────────────────
+
+    Error: Timed out 10000ms waiting for expect(locator).toHaveCount(expected)
+
+    Locator: locator('.cmp-teaser--racing-editorial').first().getByRole('link')
+    Expected: 1
+    Received: 0
+    Call log:
+      - expect.toHaveCount with timeout 10000ms
+      - waiting for locator('.cmp-teaser--racing-editorial').first().getByRole('link')
+        12 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+    > 1 | const { test, expect } = require('@playwright/test'); const { open } = require('./helpers'); test('UI-012 editorial CTA and list semantics', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); await expect(page.locator('.cmp-teaser--racing-editorial').first().getByRole('link')).toHaveCount(1); await expect(page.locator('.cmp-teaser--racing-editorial').last().locator('ul > li')).toHaveCount(3); });
+        |                                                                                                                                                                                                                                                                                                                                      ^
+      2 |
+        at C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\ui-012.spec.js:1:326
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-012-UI-012-editorial-CTA-and-list-semantics-publish-webkit\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-012-UI-012-editorial-CTA-and-list-semantics-publish-webkit\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts\ui-012-UI-012-editorial-CTA-and-list-semantics-publish-webkit\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\ui-012-UI-012-editorial-CTA-and-list-semantics-publish-webkit\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="ui-013.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="0" skipped="0" time="33.043" errors="0">
+<testcase name="UI-013 footer responsive and accessible" classname="ui-013.spec.js" time="33.043">
+</testcase>
+</testsuite>
+<testsuite name="ui-014.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="0" skipped="0" time="29.958" errors="0">
+<testcase name="UI-014 images use local DAM" classname="ui-014.spec.js" time="29.958">
+</testcase>
+</testsuite>
+<testsuite name="ui-015.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="1" skipped="0" time="38.144" errors="0">
+<testcase name="UI-015 metadata and SSR" classname="ui-015.spec.js" time="38.144">
+<failure message="ui-015.spec.js:1:94 UI-015 metadata and SSR" type="FAILURE">
+<![CDATA[  [publish-webkit] › ui-015.spec.js:1:94 › UI-015 metadata and SSR ─────────────────────────────────
+
+    Error: Timed out 10000ms waiting for expect(locator).toHaveCount(expected)
+
+    Locator: locator('head meta[property="og:title"]')
+    Expected: 1
+    Received: 0
+    Call log:
+      - expect.toHaveCount with timeout 10000ms
+      - waiting for locator('head meta[property="og:title"]')
+        11 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+    > 1 | const { test, expect } = require('@playwright/test'); const { open } = require('./helpers'); test('UI-015 metadata and SSR', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); await expect(page.locator('head link[rel="canonical"]')).toHaveCount(1); await expect(page.locator('head meta[property="og:title"]')).toHaveCount(1); });
+        |                                                                                                                                                                                                                                                                                                                                                                      ^
+      2 |
+        at C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\ui-015.spec.js:1:358
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-015-UI-015-metadata-and-SSR-publish-webkit\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-015-UI-015-metadata-and-SSR-publish-webkit\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts\ui-015-UI-015-metadata-and-SSR-publish-webkit\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\ui-015-UI-015-metadata-and-SSR-publish-webkit\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="ui-016.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="0" skipped="0" time="31.538" errors="0">
+<testcase name="UI-016 a11y states" classname="ui-016.spec.js" time="31.538">
+</testcase>
+</testsuite>
+<testsuite name="ui-017.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="0" skipped="0" time="30.544" errors="0">
+<testcase name="UI-017 browser semantic parity" classname="ui-017.spec.js" time="30.544">
+</testcase>
+</testsuite>
+<testsuite name="ui-018.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="0" skipped="1" time="5.729" errors="0">
+<testcase name="UI-018 author teaser policies" classname="ui-018.spec.js" time="5.729">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="ui-019.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="0" skipped="1" time="3.876" errors="0">
+<testcase name="UI-019 author chrome XF render" classname="ui-019.spec.js" time="3.876">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="ui-020.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-webkit" tests="1" failures="0" skipped="0" time="19.352" errors="0">
+<testcase name="UI-020 canonical page census" classname="ui-020.spec.js" time="19.352">
+</testcase>
+</testsuite>
+<testsuite name="ui-001.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="1" skipped="0" time="24.693" errors="0">
+<testcase name="UI-001 desktop page hierarchy" classname="ui-001.spec.js" time="24.693">
+<failure message="ui-001.spec.js:1:101 UI-001 desktop page hierarchy" type="FAILURE">
+<![CDATA[  [publish-mobile] › ui-001.spec.js:1:101 › UI-001 desktop page hierarchy ──────────────────────────
+
+    Error: Timed out 10000ms waiting for expect(locator).toHaveCount(expected)
+
+    Locator: locator('.cmp-site-header, .cmp-teaser, .cmp-site-footer')
+    Expected: 6
+    Received: 7
+    Call log:
+      - expect.toHaveCount with timeout 10000ms
+      - waiting for locator('.cmp-site-header, .cmp-teaser, .cmp-site-footer')
+        12 × locator resolved to 7 elements
+           - unexpected value "7"
+
+
+    > 1 | const { test, expect } = require('@playwright/test'); const { open, oneH1 } = require('./helpers'); test('UI-001 desktop page hierarchy', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); await oneH1(page); await expect(page.locator('.cmp-site-header, .cmp-teaser, .cmp-site-footer')).toHaveCount(6); });
+        |                                                                                                                                                                                                                                                                                                                                              ^
+      2 |
+        at C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\ui-001.spec.js:1:334
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-001-UI-001-desktop-page-hierarchy-publish-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-001-UI-001-desktop-page-hierarchy-publish-mobile\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts\ui-001-UI-001-desktop-page-hierarchy-publish-mobile\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\ui-001-UI-001-desktop-page-hierarchy-publish-mobile\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="ui-002.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="0" skipped="0" time="19.583" errors="0">
+<testcase name="UI-002 tablet stack" classname="ui-002.spec.js" time="19.583">
+</testcase>
+</testsuite>
+<testsuite name="ui-003.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="0" skipped="0" time="21.837" errors="0">
+<testcase name="UI-003 mobile navigation" classname="ui-003.spec.js" time="21.837">
+</testcase>
+</testsuite>
+<testsuite name="ui-004.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="1" skipped="0" time="67.257" errors="0">
+<testcase name="UI-004 fluid widths do not overflow" classname="ui-004.spec.js" time="67.257">
+<failure message="ui-004.spec.js:1:94 UI-004 fluid widths do not overflow" type="FAILURE">
+<![CDATA[  [publish-mobile] › ui-004.spec.js:1:94 › UI-004 fluid widths do not overflow ─────────────────────
+
+    Test timeout of 60000ms exceeded.
+
+    Error: page.goto: Test timeout of 60000ms exceeded.
+    Call log:
+      - navigating to "https://publish-p185256-e1945105.adobeaemcloud.com/content/adlc-crowdstrike/us/en/about-us.html", waiting until "domcontentloaded"
+
+
+       at helpers.js:3
+
+      1 | const { expect } = require('@playwright/test'); const AxeBuilder = require('@axe-core/playwright').default;
+      2 | const PAGE = '/content/adlc-crowdstrike/us/en/about-us.html';
+    > 3 | async function open(page) { await page.goto(PAGE, { waitUntil: 'domcontentloaded' }); }
+        |                                        ^
+      4 | async function oneH1(page) { await expect(page.locator('h1')).toHaveCount(1); }
+      5 | async function noSeriousAxe(page) { const result = await new AxeBuilder({ page }).withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa']).analyze(); expect(result.violations.filter((v) => ['critical','serious'].includes(v.impact))).toEqual([]); }
+      6 | module.exports = { PAGE, open, oneH1, noSeriousAxe };
+        at open (C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\helpers.js:3:40)
+        at C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\ui-004.spec.js:1:342
+
+    attachment #1: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-004-UI-004-fluid-widths-do-not-overflow-publish-mobile\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts\ui-004-UI-004-fluid-widths-do-not-overflow-publish-mobile\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="ui-005.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="1" skipped="0" time="28.096" errors="0">
+<testcase name="UI-005 desktop team disclosure keyboard" classname="ui-005.spec.js" time="28.096">
+<failure message="ui-005.spec.js:1:94 UI-005 desktop team disclosure keyboard" type="FAILURE">
+<![CDATA[  [publish-mobile] › ui-005.spec.js:1:94 › UI-005 desktop team disclosure keyboard ─────────────────
+
+    Error: Timed out 10000ms waiting for expect(locator).toHaveAttribute(expected)
+
+    Locator: locator('.cmp-site-header__submenu-toggle')
+    Expected string: "true"
+    Received string: "false"
+    Call log:
+      - expect.toHaveAttribute with timeout 10000ms
+      - waiting for locator('.cmp-site-header__submenu-toggle')
+        12 × locator resolved to <button type="button" aria-expanded="false" aria-controls="site-header-team-menu" class="cmp-site-header__submenu-toggle">The Team</button>
+           - unexpected value "false"
+
+
+    > 1 | const { test, expect } = require('@playwright/test'); const { open } = require('./helpers'); test('UI-005 desktop team disclosure keyboard', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); const control = page.locator('.cmp-site-header__submenu-toggle'); await control.press('Enter'); await expect(control).toHaveAttribute('aria-expanded', 'true'); await page.keyboard.press('Escape'); await expect(control).toHaveAttribute('aria-expanded', 'false'); });
+        |                                                                                                                                                                                                                                                                                                                                                                      ^
+      2 |
+        at C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\ui-005.spec.js:1:358
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-005-UI-005-desktop-team-disclosure-keyboard-publish-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-005-UI-005-desktop-team-disclosure-keyboard-publish-mobile\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts\ui-005-UI-005-desktop-team-disclosure-keyboard-publish-mobile\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\ui-005-UI-005-desktop-team-disclosure-keyboard-publish-mobile\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="ui-006.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="0" skipped="0" time="23.549" errors="0">
+<testcase name="UI-006 mobile menu state" classname="ui-006.spec.js" time="23.549">
+</testcase>
+</testsuite>
+<testsuite name="ui-007.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="0" skipped="0" time="37.035" errors="0">
+<testcase name="UI-007 landmarks and skip link" classname="ui-007.spec.js" time="37.035">
+</testcase>
+</testsuite>
+<testsuite name="ui-008.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="0" skipped="0" time="22.573" errors="0">
+<testcase name="UI-008 hero mapping and image" classname="ui-008.spec.js" time="22.573">
+</testcase>
+</testsuite>
+<testsuite name="ui-009.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="1" skipped="0" time="11.3" errors="0">
+<testcase name="UI-009 editorial content mapping" classname="ui-009.spec.js" time="11.3">
+<failure message="ui-009.spec.js:1:94 UI-009 editorial content mapping" type="FAILURE">
+<![CDATA[  [publish-mobile] › ui-009.spec.js:1:94 › UI-009 editorial content mapping ────────────────────────
+
+    Error: page.goto: SSL connect error
+    Call log:
+      - navigating to "https://publish-p185256-e1945105.adobeaemcloud.com/content/adlc-crowdstrike/us/en/about-us.html", waiting until "domcontentloaded"
+
+
+       at helpers.js:3
+
+      1 | const { expect } = require('@playwright/test'); const AxeBuilder = require('@axe-core/playwright').default;
+      2 | const PAGE = '/content/adlc-crowdstrike/us/en/about-us.html';
+    > 3 | async function open(page) { await page.goto(PAGE, { waitUntil: 'domcontentloaded' }); }
+        |                                        ^
+      4 | async function oneH1(page) { await expect(page.locator('h1')).toHaveCount(1); }
+      5 | async function noSeriousAxe(page) { const result = await new AxeBuilder({ page }).withTags(['wcag2a','wcag2aa','wcag21a','wcag21aa']).analyze(); expect(result.violations.filter((v) => ['critical','serious'].includes(v.impact))).toEqual([]); }
+      6 | module.exports = { PAGE, open, oneH1, noSeriousAxe };
+        at open (C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\helpers.js:3:40)
+        at C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\ui-009.spec.js:1:221
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-009-UI-009-editorial-content-mapping-publish-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-009-UI-009-editorial-content-mapping-publish-mobile\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts\ui-009-UI-009-editorial-content-mapping-publish-mobile\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\ui-009-UI-009-editorial-content-mapping-publish-mobile\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="ui-010.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="1" skipped="0" time="26.502" errors="0">
+<testcase name="UI-010 desktop fifty-fifty panes" classname="ui-010.spec.js" time="26.502">
+<failure message="ui-010.spec.js:1:94 UI-010 desktop fifty-fifty panes" type="FAILURE">
+<![CDATA[  [publish-mobile] › ui-010.spec.js:1:94 › UI-010 desktop fifty-fifty panes ────────────────────────
+
+    Error: expect(received).toBeTruthy()
+
+    Received: false
+
+    > 1 | const { test, expect } = require('@playwright/test'); const { open } = require('./helpers'); test('UI-010 desktop fifty-fifty panes', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); const values = await page.locator('.cmp-teaser--racing-editorial .cmp-teaser__content').evaluateAll((els) => els.map((el) => getComputedStyle(el).flex)); expect(values.every((value) => value === '0 0 50%')).toBeTruthy(); });
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^
+      2 |
+        at C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\ui-010.spec.js:1:440
+
+    attachment #1: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-010-UI-010-desktop-fifty-fifty-panes-publish-mobile\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts\ui-010-UI-010-desktop-fifty-fifty-panes-publish-mobile\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="ui-011.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="0" skipped="0" time="26.903" errors="0">
+<testcase name="UI-011 stacked DOM reading order" classname="ui-011.spec.js" time="26.903">
+</testcase>
+</testsuite>
+<testsuite name="ui-012.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="1" skipped="0" time="31.129" errors="0">
+<testcase name="UI-012 editorial CTA and list semantics" classname="ui-012.spec.js" time="31.129">
+<failure message="ui-012.spec.js:1:94 UI-012 editorial CTA and list semantics" type="FAILURE">
+<![CDATA[  [publish-mobile] › ui-012.spec.js:1:94 › UI-012 editorial CTA and list semantics ─────────────────
+
+    Error: Timed out 10000ms waiting for expect(locator).toHaveCount(expected)
+
+    Locator: locator('.cmp-teaser--racing-editorial').first().getByRole('link')
+    Expected: 1
+    Received: 0
+    Call log:
+      - expect.toHaveCount with timeout 10000ms
+      - waiting for locator('.cmp-teaser--racing-editorial').first().getByRole('link')
+        11 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+    > 1 | const { test, expect } = require('@playwright/test'); const { open } = require('./helpers'); test('UI-012 editorial CTA and list semantics', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); await expect(page.locator('.cmp-teaser--racing-editorial').first().getByRole('link')).toHaveCount(1); await expect(page.locator('.cmp-teaser--racing-editorial').last().locator('ul > li')).toHaveCount(3); });
+        |                                                                                                                                                                                                                                                                                                                                      ^
+      2 |
+        at C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\ui-012.spec.js:1:326
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-012-UI-012-editorial-CTA-and-list-semantics-publish-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-012-UI-012-editorial-CTA-and-list-semantics-publish-mobile\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts\ui-012-UI-012-editorial-CTA-and-list-semantics-publish-mobile\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\ui-012-UI-012-editorial-CTA-and-list-semantics-publish-mobile\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="ui-013.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="0" skipped="0" time="26.137" errors="0">
+<testcase name="UI-013 footer responsive and accessible" classname="ui-013.spec.js" time="26.137">
+</testcase>
+</testsuite>
+<testsuite name="ui-014.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="0" skipped="0" time="30.58" errors="0">
+<testcase name="UI-014 images use local DAM" classname="ui-014.spec.js" time="30.58">
+</testcase>
+</testsuite>
+<testsuite name="ui-015.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="1" skipped="0" time="29.183" errors="0">
+<testcase name="UI-015 metadata and SSR" classname="ui-015.spec.js" time="29.183">
+<failure message="ui-015.spec.js:1:94 UI-015 metadata and SSR" type="FAILURE">
+<![CDATA[  [publish-mobile] › ui-015.spec.js:1:94 › UI-015 metadata and SSR ─────────────────────────────────
+
+    Error: Timed out 10000ms waiting for expect(locator).toHaveCount(expected)
+
+    Locator: locator('head meta[property="og:title"]')
+    Expected: 1
+    Received: 0
+    Call log:
+      - expect.toHaveCount with timeout 10000ms
+      - waiting for locator('head meta[property="og:title"]')
+        12 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+    > 1 | const { test, expect } = require('@playwright/test'); const { open } = require('./helpers'); test('UI-015 metadata and SSR', async ({ page }, info) => { test.skip(info.project.name === 'author-chromium'); await open(page); await expect(page.locator('head link[rel="canonical"]')).toHaveCount(1); await expect(page.locator('head meta[property="og:title"]')).toHaveCount(1); });
+        |                                                                                                                                                                                                                                                                                                                                                                      ^
+      2 |
+        at C:\AEM\Repos\adlc-crowdstrike\ui.tests\test-module\tests\ui-015.spec.js:1:358
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-015-UI-015-metadata-and-SSR-publish-mobile\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\.claude\agents\runs\2026-09-02T18-28Z-crowdstrike-racing-about\test\sentinel\playwright-publish\artifacts\ui-015-UI-015-metadata-and-SSR-publish-mobile\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|artifacts\ui-015-UI-015-metadata-and-SSR-publish-mobile\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\ui-015-UI-015-metadata-and-SSR-publish-mobile\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="ui-016.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="0" skipped="0" time="27.513" errors="0">
+<testcase name="UI-016 a11y states" classname="ui-016.spec.js" time="27.513">
+</testcase>
+</testsuite>
+<testsuite name="ui-017.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="0" skipped="0" time="26.167" errors="0">
+<testcase name="UI-017 browser semantic parity" classname="ui-017.spec.js" time="26.167">
+</testcase>
+</testsuite>
+<testsuite name="ui-018.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="0" skipped="1" time="4.078" errors="0">
+<testcase name="UI-018 author teaser policies" classname="ui-018.spec.js" time="4.078">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="ui-019.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="0" skipped="1" time="2.975" errors="0">
+<testcase name="UI-019 author chrome XF render" classname="ui-019.spec.js" time="2.975">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="ui-020.spec.js" timestamp="2026-09-04T06:23:27.068Z" hostname="publish-mobile" tests="1" failures="0" skipped="0" time="18.367" errors="0">
+<testcase name="UI-020 canonical page census" classname="ui-020.spec.js" time="18.367">
+</testcase>
+</testsuite>
+</testsuites>
